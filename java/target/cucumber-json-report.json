@@ -1,0 +1,95 @@
+[
+  {
+    "id": "tic-tac-toe",
+    "description": "",
+    "name": "Tic Tac Toe",
+    "keyword": "Feature",
+    "line": 1,
+    "elements": [
+      {
+        "id": "tic-tac-toe;staring-a-new-tic-tac-toe-game",
+        "description": "",
+        "name": "Staring a new Tic Tac Toe game",
+        "keyword": "Scenario",
+        "line": 3,
+        "steps": [
+          {
+            "result": {
+              "duration": 129159000,
+              "status": "passed"
+            },
+            "name": "a Tic Tac Toe game",
+            "keyword": "Given ",
+            "line": 5,
+            "match": {
+              "location": "TicTacToeSteps.a_Tic_Tac_Toe_game()"
+            }
+          },
+          {
+            "result": {
+              "duration": 81000,
+              "status": "passed"
+            },
+            "name": "I start a new game",
+            "keyword": "When ",
+            "line": 6,
+            "match": {
+              "location": "TicTacToeSteps.I_start_a_new_game()"
+            }
+          },
+          {
+            "result": {
+              "duration": 6092000,
+              "status": "passed"
+            },
+            "name": "I\u0027m presented with an empty board",
+            "keyword": "Then ",
+            "line": 7,
+            "match": {
+              "location": "TicTacToeSteps.I_m_presented_with_an_empty_board()"
+            }
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "id": "tic-tac-toe;placing-marks",
+        "description": "",
+        "name": "Placing marks",
+        "keyword": "Scenario",
+        "line": 9,
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "name": "I\u0027m informed it is my turn",
+            "keyword": "Given ",
+            "line": 11,
+            "match": {}
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "name": "I choose where my mark should appear",
+            "keyword": "When ",
+            "line": 12,
+            "match": {}
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "name": "my mark is displayed on the board",
+            "keyword": "Then ",
+            "line": 13,
+            "match": {}
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "uri": "org/craftedsw/tictactoe/feature/tictactoe.feature"
+  }
+]
