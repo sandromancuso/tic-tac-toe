@@ -1,8 +1,5 @@
 package org.craftedsw.tictactoe;
 
-import java.util.Arrays;
-
-import static java.lang.String.format;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.Player.PLAYER_TWO;
 

@@ -60,7 +60,7 @@ public class TicTacToe {
     public static void main(String[] args) {
         TicTacToe ticTacToe = new TicTacToe(new Console(), new Board());
 
-        ticTacToe.newSinglePlayerGame(new InvencibleOpponent());
+        ticTacToe.newSinglePlayerGame(new InvincibleOpponent());
     }
 
 }

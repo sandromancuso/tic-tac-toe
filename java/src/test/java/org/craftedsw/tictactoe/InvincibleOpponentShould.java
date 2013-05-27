@@ -8,9 +8,9 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class InvencibleOpponentShould {
+public class InvincibleOpponentShould {
 
-    private InvencibleOpponent opponent;
+    private InvincibleOpponent opponent;
     private Board board = mock(Board.class);
     private String[] marks;
 
@@ -18,7 +18,7 @@ public class InvencibleOpponentShould {
     public void initialise() {
         this.marks =  new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " "};
         when(board.marks()).thenReturn(marks);
-        opponent = new InvencibleOpponent();
+        opponent = new InvincibleOpponent();
     }
 
     @Test public void
