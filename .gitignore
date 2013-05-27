@@ -5,5 +5,9 @@
 *.war
 *.ear
 
-./java/target/*
-./java/.idea/*
+/java/target
+/java/.idea
+/java/*.iml
+/java/.classpath
+/java/.project
+/java/.settings
