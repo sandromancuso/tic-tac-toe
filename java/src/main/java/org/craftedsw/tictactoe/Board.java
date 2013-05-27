@@ -1,5 +1,7 @@
 package org.craftedsw.tictactoe;
 
+import java.util.Arrays;
+
 import static java.lang.String.format;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.Player.PLAYER_TWO;
@@ -49,6 +51,10 @@ public class Board {
         currentPlayer = (currentPlayer == PLAYER_ONE)
                                 ? PLAYER_TWO
                                 : PLAYER_ONE;
+    }
+
+    protected String[] marks() {
+        return marks;
     }
 
 }

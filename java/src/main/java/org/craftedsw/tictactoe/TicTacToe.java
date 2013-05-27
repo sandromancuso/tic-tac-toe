@@ -40,11 +40,9 @@ public class TicTacToe {
             int cellToBeMarked = console.ask(ASK_FOR_NEXT_MARK);
             board.placeMarkOn(cellToBeMarked - 1);
             if (!board.hasWinner()) {
-                board.placeMarkOn(opponent.nextMark(board) - 1);
+                board.placeMarkOn(opponent.nextMark(board));
             }
-            if (!board.hasWinner()) {
-                console.print(board.representation());
-            }
+            console.print(board.representation());
         }
         console.print(board.winner() == PLAYER_ONE
                                 ? YOU_WIN
@@ -62,7 +60,7 @@ public class TicTacToe {
     public static void main(String[] args) {
         TicTacToe ticTacToe = new TicTacToe(new Console(), new Board());
 
-        ticTacToe.newGame();
+        ticTacToe.newSinglePlayerGame(new InvencibleOpponent());
     }
 
 }
