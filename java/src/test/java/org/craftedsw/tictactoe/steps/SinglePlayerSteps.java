@@ -66,7 +66,6 @@ public class SinglePlayerSteps {
 
         @Override
         public void print(String text) {
-            System.out.println("IC ***** " + text);
             lastPrintedText = text;
         }
     }

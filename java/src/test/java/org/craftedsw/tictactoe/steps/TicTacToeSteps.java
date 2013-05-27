@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 import static com.jayway.awaitility.Awaitility.await;
+import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
+import static org.craftedsw.tictactoe.TicTacToe.WINNER_IS;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
@@ -43,7 +45,6 @@ public class TicTacToeSteps {
     public void I_place_a_mark_on_cell(int cell) throws IOException, InterruptedException {
         this.markPositions = new ArrayList<String>();
         this.markPositions.add(String.valueOf(cell));
-
     }
 
     @Then("^my mark is displayed on the board$")
@@ -61,7 +62,7 @@ public class TicTacToeSteps {
     @Then("^Player One wins$")
     public void Player_One_wins() throws InterruptedException {
         gameThread.join();
-        assertThat(lastPrintedText, is("Winner is: " + Player.PLAYER_ONE));
+        assertThat(lastPrintedText, is(WINNER_IS + PLAYER_ONE));
     }
 
     private void startNewGame() throws InterruptedException {
