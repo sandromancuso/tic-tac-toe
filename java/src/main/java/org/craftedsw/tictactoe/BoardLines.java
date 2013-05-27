@@ -11,9 +11,9 @@ class BoardLines {
     private static final Line ROW_2 = new Line(CELL_4, CELL_5, CELL_6);
     private static final Line ROW_3 = new Line(CELL_7, CELL_8, CELL_9);
 
-    private static final Line COLUM_1 = new Line(CELL_1, CELL_4, CELL_7);
-    private static final Line COLUM_2 = new Line(CELL_2, CELL_5, CELL_8);
-    private static final Line COLUM_3 = new Line(CELL_3, CELL_6, CELL_9);
+    private static final Line COLUMN_1 = new Line(CELL_1, CELL_4, CELL_7);
+    private static final Line COLUMN_2 = new Line(CELL_2, CELL_5, CELL_8);
+    private static final Line COLUMN_3 = new Line(CELL_3, CELL_6, CELL_9);
 
     private static final Line DIAGONAL_1 = new Line(CELL_1, CELL_5, CELL_9);
     private static final Line DIAGONAL_2 = new Line(CELL_3, CELL_5, CELL_7);
@@ -21,7 +21,7 @@ class BoardLines {
     private List<Line> boardLines = new ArrayList<Line>();
 
     public BoardLines() {
-        add(ROW_1, ROW_2, ROW_3, COLUM_1, COLUM_2, COLUM_3, DIAGONAL_1, DIAGONAL_2);
+        add(ROW_1, ROW_2, ROW_3, COLUMN_1, COLUMN_2, COLUMN_3, DIAGONAL_1, DIAGONAL_2);
     }
 
     private void add(Line... lines) {
