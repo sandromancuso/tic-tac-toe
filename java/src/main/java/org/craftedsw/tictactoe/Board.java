@@ -24,18 +24,16 @@ public class Board {
     private Player currentPlayer = PLAYER_ONE;
 
 
-    public static String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
+    public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
 
     public String representation() {
         return BoardDisplay.representation(marks);
     }
 
     public void placeMarkOn(int cellToBeMarked) {
-        System.out.println("**** " + currentPlayer + " [" + cellToBeMarked + "]");
         marks[cellToBeMarked] = currentPlayer.mark();
         if (!hasWinner()) {
             switchPlayers();
-            System.out.println("**** " + currentPlayer + " turn");
         }
     }
 

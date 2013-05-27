@@ -5,6 +5,7 @@
 *.war
 *.ear
 
+/.idea
 /java/target
 /java/.idea
 /java/*.iml
