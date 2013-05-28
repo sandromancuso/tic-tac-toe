@@ -5,7 +5,7 @@ import java.util.List;
 
 import static org.craftedsw.tictactoe.Board.*;
 
-class BoardLines {
+public class BoardLines {
 
     private static final Line ROW_1 = new Line(CELL_1, CELL_2, CELL_3);
     private static final Line ROW_2 = new Line(CELL_4, CELL_5, CELL_6);
