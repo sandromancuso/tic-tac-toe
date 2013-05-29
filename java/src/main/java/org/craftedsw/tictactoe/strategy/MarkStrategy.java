@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe.strategy;
 
 import org.craftedsw.tictactoe.BoardLines;
+import org.craftedsw.tictactoe.Line;
 
 public class MarkStrategy {
 
@@ -8,6 +9,10 @@ public class MarkStrategy {
     private BoardLines boardLines = new BoardLines();
 
     public int winMark(String[] marks) {
+        Line winningLine = boardLines.winningLine(marks);
+        if (winningLine != null) {
+            return winningLine.firstEmptyCell(marks);
+        }
         return NONE;
     }
 

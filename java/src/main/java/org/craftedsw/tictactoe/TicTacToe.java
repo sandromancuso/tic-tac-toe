@@ -63,6 +63,7 @@ public class TicTacToe {
         TicTacToe ticTacToe = new TicTacToe(new Console(), new Board());
 
         ticTacToe.newSinglePlayerGame(new InvincibleOpponent(new MarkStrategy()));
+//        ticTacToe.newGame();
     }
 
 }

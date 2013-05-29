@@ -39,4 +39,8 @@ public class BoardLines {
         return false;
     }
 
+
+    public Line winningLine(String[] marks) {
+        return null;
+    }
 }
