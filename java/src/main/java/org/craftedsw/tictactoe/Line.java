@@ -1,7 +1,5 @@
 package org.craftedsw.tictactoe;
 
-import java.util.*;
-
 import static org.craftedsw.tictactoe.Board.EMPTY_CELL;
 
 public class Line {
