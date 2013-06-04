@@ -1,5 +1,9 @@
 package org.craftedsw.tictactoe;
 
+import org.apache.commons.lang3.StringUtils;
+
+import static org.apache.commons.lang3.StringUtils.remove;
+import static org.apache.commons.lang3.StringUtils.repeat;
 import static org.craftedsw.tictactoe.Board.EMPTY_CELL;
 
 public class Line {
@@ -27,13 +31,16 @@ public class Line {
              && marks[secondCell].equals(marks[thirdCell]);
     }
 
-    public boolean isWinningLine(String[] marks) {
-        String x = marks[firstCell] + marks[secondCell] + marks[thirdCell];
-        x = x.replace(" ", "");
-        if (x.length() == 2) {
-            return  (x.equals("XX") || x.equals("00"));
-        }
-        return false;
+    public boolean isWinningLine(Player player, String[] marks) {
+        return remove(lineAsString(marks), EMPTY_CELL).equals(repeat(player.mark(), 2));
+    }
+
+    public boolean isLoosingLine(Player opponent, String[] marks) {
+        return isWinningLine(opponent, marks);
+    }
+
+    private String lineAsString(String[] marks) {
+        return marks[firstCell] + marks[secondCell] + marks[thirdCell];
     }
 
     public int firstEmptyCell(String[] marks) {
