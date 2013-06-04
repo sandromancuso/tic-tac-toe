@@ -7,16 +7,16 @@ import static org.craftedsw.tictactoe.Board.*;
 
 public class BoardLines {
 
-    private static final Line ROW_1 = new Line(CELL_1, CELL_2, CELL_3);
-    private static final Line ROW_2 = new Line(CELL_4, CELL_5, CELL_6);
-    private static final Line ROW_3 = new Line(CELL_7, CELL_8, CELL_9);
+    public static final Line ROW_1 = new Line(CELL_1, CELL_2, CELL_3);
+    public static final Line ROW_2 = new Line(CELL_4, CELL_5, CELL_6);
+    public static final Line ROW_3 = new Line(CELL_7, CELL_8, CELL_9);
 
-    private static final Line COLUMN_1 = new Line(CELL_1, CELL_4, CELL_7);
-    private static final Line COLUMN_2 = new Line(CELL_2, CELL_5, CELL_8);
-    private static final Line COLUMN_3 = new Line(CELL_3, CELL_6, CELL_9);
+    public static final Line COLUMN_1 = new Line(CELL_1, CELL_4, CELL_7);
+    public static final Line COLUMN_2 = new Line(CELL_2, CELL_5, CELL_8);
+    public static final Line COLUMN_3 = new Line(CELL_3, CELL_6, CELL_9);
 
-    private static final Line DIAGONAL_1 = new Line(CELL_1, CELL_5, CELL_9);
-    private static final Line DIAGONAL_2 = new Line(CELL_3, CELL_5, CELL_7);
+    public static final Line DIAGONAL_1 = new Line(CELL_1, CELL_5, CELL_9);
+    public static final Line DIAGONAL_2 = new Line(CELL_3, CELL_5, CELL_7);
 
     private List<Line> boardLines = new ArrayList<Line>();
 
@@ -41,6 +41,11 @@ public class BoardLines {
 
 
     public Line winningLine(String[] marks) {
+        for (Line line : boardLines) {
+            if (line.isWinningLine(marks)) {
+                return line;
+            }
+        }
         return null;
     }
 }

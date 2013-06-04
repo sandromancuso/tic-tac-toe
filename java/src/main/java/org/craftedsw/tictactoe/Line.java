@@ -1,5 +1,7 @@
 package org.craftedsw.tictactoe;
 
+import java.util.*;
+
 import static org.craftedsw.tictactoe.Board.EMPTY_CELL;
 
 public class Line {
@@ -25,6 +27,15 @@ public class Line {
         return (marks[firstCell] != EMPTY_CELL)
              && marks[firstCell].equals(marks[secondCell])
              && marks[secondCell].equals(marks[thirdCell]);
+    }
+
+    public boolean isWinningLine(String[] marks) {
+        String x = marks[firstCell] + marks[secondCell] + marks[thirdCell];
+        x = x.replace(" ", "");
+        if (x.length() == 2) {
+            return  (x.equals("XX") || x.equals("00"));
+        }
+        return false;
     }
 
     public int firstEmptyCell(String[] marks) {
