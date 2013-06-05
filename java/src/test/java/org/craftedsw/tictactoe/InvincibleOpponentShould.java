@@ -35,7 +35,7 @@ public class InvincibleOpponentShould {
         when(markStrategy.winMark(PLAYER_ONE, marks)).thenReturn(NONE);
         when(markStrategy.defenceMark(PLAYER_TWO, marks)).thenReturn(NONE);
 
-        int nextMark = opponent.nextMark(board);
+        int nextMark = opponent.nextCell(board);
 
         assertThat(nextMark, is(CELL_2));
     }
@@ -44,7 +44,7 @@ public class InvincibleOpponentShould {
     should_place_mark_according_to_winning_mark() {
         when(markStrategy.winMark(PLAYER_ONE, marks)).thenReturn(CELL_3);
 
-        int nextMark = opponent.nextMark(board);
+        int nextMark = opponent.nextCell(board);
 
         assertThat(nextMark, is(CELL_3));
     }
@@ -54,7 +54,7 @@ public class InvincibleOpponentShould {
         when(markStrategy.winMark(PLAYER_ONE, marks)).thenReturn(NONE);
         when(markStrategy.defenceMark(PLAYER_TWO, marks)).thenReturn(CELL_3);
 
-        int nextMark = opponent.nextMark(board);
+        int nextMark = opponent.nextCell(board);
 
         assertThat(nextMark, is(CELL_3));
     }

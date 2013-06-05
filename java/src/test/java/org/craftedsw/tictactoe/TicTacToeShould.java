@@ -39,14 +39,14 @@ public class TicTacToeShould {
         inOrder.verify(console).print(CURRENT_BOARD_STATE_MSG);
         inOrder.verify(board).representation();
         inOrder.verify(console).ask(ASK_FOR_NEXT_MARK);
-        inOrder.verify(board).placeMarkOn(CELL_3 - 1);
+        inOrder.verify(board).place(CELL_3 - 1);
         inOrder.verify(board).representation();
     }
 
     @Test public void
     ask_game_to_place_its_mark_after_player_placed_hers() {
         when(console.ask(ASK_FOR_NEXT_MARK)).thenReturn(1, 2, 3); // one based
-        when(opponent.nextMark(board)).thenReturn(3, 4); // zero based
+        when(opponent.nextCell(board)).thenReturn(3, 4); // zero based
 
         ticTacToe.newSinglePlayerGame(opponent);
 

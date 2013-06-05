@@ -29,7 +29,7 @@ public class TicTacToe {
         console.print(board.representation());
         while (!board.hasWinner() && !quit) {
             int cellToBeMarked = console.ask(ASK_FOR_NEXT_MARK);
-            board.placeMarkOn(cellToBeMarked - 1);
+            board.place(cellToBeMarked - 1);
             console.print(board.representation());
         }
         console.print(WINNER_IS + board.winner());
@@ -40,16 +40,19 @@ public class TicTacToe {
         console.print(CURRENT_BOARD_STATE_MSG);
         console.print(board.representation());
         while (!board.hasWinner() && !quit) {
-            int cellToBeMarked = console.ask(ASK_FOR_NEXT_MARK);
-            board.placeMarkOn(cellToBeMarked - 1);
+            board.place(playerNextCell());
             if (!board.hasWinner()) {
-                board.placeMarkOn(opponent.nextMark(board));
+                board.place(opponent.nextCell(board));
             }
             console.print(board.representation());
         }
         console.print(board.winner() == PLAYER_ONE
                                 ? YOU_WIN
                                 : YOU_LOSE);
+    }
+
+    private int playerNextCell() {
+        return console.ask(ASK_FOR_NEXT_MARK) - 1;
     }
 
     public String boardRepresentation() {

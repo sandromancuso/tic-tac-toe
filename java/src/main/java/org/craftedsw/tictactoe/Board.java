@@ -29,7 +29,7 @@ public class Board {
         return BoardDisplay.representation(marks);
     }
 
-    public void placeMarkOn(int cellToBeMarked) {
+    public void place(int cellToBeMarked) {
         marks[cellToBeMarked] = currentPlayer.mark();
         if (!hasWinner()) {
             switchPlayers();

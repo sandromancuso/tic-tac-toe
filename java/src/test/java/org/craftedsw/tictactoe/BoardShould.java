@@ -43,7 +43,7 @@ public class BoardShould {
             "---+---+---" + "\n" +
             "   |   |   ";
 
-        board.placeMarkOn(CELL_2);
+        board.place(CELL_2);
 
         assertThat(board.representation(), is(equalTo(BOARD_WITH_X_ON_CELL_2)));
     }
@@ -58,41 +58,41 @@ public class BoardShould {
             "---+---+---" + "\n" +
             " X |   | 0 ";
 
-        board.placeMarkOn(CELL_1);
-        board.placeMarkOn(CELL_5);
-        board.placeMarkOn(CELL_2);
-        board.placeMarkOn(CELL_3);
-        board.placeMarkOn(CELL_7);
-        board.placeMarkOn(CELL_9);
+        board.place(CELL_1);
+        board.place(CELL_5);
+        board.place(CELL_2);
+        board.place(CELL_3);
+        board.place(CELL_7);
+        board.place(CELL_9);
 
         assertThat(board.representation(), is(equalTo(BOARD)));
     }
 
     @Test public void
     informs_there_is_no_winner() {
-        board.placeMarkOn(CELL_1);
+        board.place(CELL_1);
 
         assertThat(board.hasWinner(), is(false));
     }
 
     @Test public void
     informs_there_is_winner_when_same_mark_is_placed_on_top_row() {
-        board.placeMarkOn(CELL_1); // X
-        board.placeMarkOn(CELL_4); // 0
-        board.placeMarkOn(CELL_2); // X
-        board.placeMarkOn(CELL_5); // 0
-        board.placeMarkOn(CELL_3); // X
+        board.place(CELL_1); // X
+        board.place(CELL_4); // 0
+        board.place(CELL_2); // X
+        board.place(CELL_5); // 0
+        board.place(CELL_3); // X
 
         assertThat(board.hasWinner(), is(true));
     }
 
     @Test public void
     informs_there_is_winner_when_same_mark_is_placed_on_middle_row() {
-        board.placeMarkOn(CELL_4); // X
-        board.placeMarkOn(CELL_1); // 0
-        board.placeMarkOn(CELL_5); // X
-        board.placeMarkOn(CELL_2); // 0
-        board.placeMarkOn(CELL_6); // X
+        board.place(CELL_4); // X
+        board.place(CELL_1); // 0
+        board.place(CELL_5); // X
+        board.place(CELL_2); // 0
+        board.place(CELL_6); // X
 
         assertThat(board.hasWinner(), is(true));
         assertThat(board.winner(), is(PLAYER_ONE));
@@ -100,11 +100,11 @@ public class BoardShould {
 
     @Test public void
     informs_there_is_winner_when_same_mark_is_placed_on_first_column() {
-        board.placeMarkOn(CELL_1); // X
-        board.placeMarkOn(CELL_5); // 0
-        board.placeMarkOn(CELL_4); // X
-        board.placeMarkOn(CELL_2); // 0
-        board.placeMarkOn(CELL_7); // X
+        board.place(CELL_1); // X
+        board.place(CELL_5); // 0
+        board.place(CELL_4); // X
+        board.place(CELL_2); // 0
+        board.place(CELL_7); // X
 
         assertThat(board.hasWinner(), is(true));
         assertThat(board.winner(), is(PLAYER_ONE));

@@ -19,7 +19,7 @@ public class InvincibleOpponent implements Opponent {
     }
 
     @Override
-    public int nextMark(Board board) {
+    public int nextCell(Board board) {
         int mark = markStrategy.winMark(player, board.marks());
         if (mark == NONE) {
             mark = markStrategy.defenceMark(getOpponent(), board.marks());
