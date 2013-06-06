@@ -1,5 +1,6 @@
 package org.craftedsw.tictactoe;
 
+import org.craftedsw.tictactoe.strategy.AttackStrategy;
 import org.craftedsw.tictactoe.strategy.MarkStrategy;
 
 import java.util.Arrays;
@@ -11,10 +12,13 @@ import static org.craftedsw.tictactoe.strategy.MarkStrategy.NONE;
 public class InvincibleOpponent implements Opponent {
 
     private final MarkStrategy markStrategy;
+    private final AttackStrategy attackStrategy;
     private final Player player;
 
-    public InvincibleOpponent(Player player, MarkStrategy markStrategy) {
+    public InvincibleOpponent(Player player, MarkStrategy markStrategy,
+                              AttackStrategy attackStrategy) {
         this.markStrategy = markStrategy;
+        this.attackStrategy = attackStrategy;
         this.player = player;
     }
 
@@ -24,7 +28,10 @@ public class InvincibleOpponent implements Opponent {
         if (mark == NONE) {
             mark = markStrategy.defenceMark(getOpponent(), board.marks());
             if (mark == NONE) {
-                mark = firstEmptyCell(board);
+                mark = attackStrategy.nextMark(player, new Marks(board.marks()));
+                if (mark == NONE) {
+                    mark = firstEmptyCell(board);
+                }
             }
         }
         return mark;

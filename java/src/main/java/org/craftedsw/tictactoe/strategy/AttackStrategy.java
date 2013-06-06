@@ -10,7 +10,7 @@ public class AttackStrategy {
     public int nextMark(Player playerOne, Marks marks) {
         int cell = CELL_1;
         if (marks.containsSingleMark() && marks.hasAnyCornerMarked()) {
-            cell = CELL_1;
+            cell = marks.emptyOppositeCell(CELL_1);
         }
         return cell;
     }

@@ -1,8 +1,6 @@
 package org.craftedsw.tictactoe.builder;
 
 import org.craftedsw.tictactoe.Marks;
-import org.craftedsw.tictactoe.Player;
-import sun.jvm.hotspot.oops.Mark;
 
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.Player.PLAYER_TWO;

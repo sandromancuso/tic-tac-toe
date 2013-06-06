@@ -15,7 +15,15 @@ public class Board {
     public static final int CELL_8 = 7;
     public static final int CELL_9 = 8;
 
+    public static final int NO_CELL = -1;
     public static final String EMPTY_CELL = " ";
+
+    public static final int[][] OPPOSITE_CORNER_CELLS = new int[][] {
+            {CELL_1, CELL_9},
+            {CELL_9, CELL_1},
+            {CELL_3, CELL_7},
+            {CELL_7, CELL_3},
+    };
 
     private String[] marks = new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " "};
     private BoardLines boardLines = new BoardLines();

@@ -1,5 +1,6 @@
 package org.craftedsw.tictactoe;
 
+import org.craftedsw.tictactoe.strategy.AttackStrategy;
 import org.craftedsw.tictactoe.strategy.MarkStrategy;
 
 import static org.craftedsw.tictactoe.Board.ASK_FOR_NEXT_MARK;
@@ -66,7 +67,8 @@ public class TicTacToe {
     public static void main(String[] args) {
         TicTacToe ticTacToe = new TicTacToe(new Console(), new Board());
 
-        ticTacToe.newSinglePlayerGame(new InvincibleOpponent(PLAYER_TWO, new MarkStrategy()));
+        ticTacToe.newSinglePlayerGame(
+                new InvincibleOpponent(PLAYER_TWO, new MarkStrategy(), new AttackStrategy()));
 //        ticTacToe.newGame();
     }
 
