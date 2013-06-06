@@ -1,6 +1,5 @@
 package org.craftedsw.tictactoe;
 
-import org.craftedsw.tictactoe.builder.MarksBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,11 +7,9 @@ import static org.craftedsw.tictactoe.Board.CELL_1;
 import static org.craftedsw.tictactoe.Board.CELL_5;
 import static org.craftedsw.tictactoe.BoardLines.ROW_2;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.Player.PLAYER_TWO;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertThat;
 
 public class BoardLinesShould {
@@ -29,7 +26,7 @@ public class BoardLinesShould {
         String[] marks = marks()
                                .fromPlayerOneAt(CELL_1, CELL_5)
                                .fromPlayerTwoAt(Board.CELL_4, Board.CELL_9)
-                               .build();
+                               .buildAsArray();
 
         assertThat(boardLines.winningLine(PLAYER_ONE, marks),  is(nullValue()));
     }

@@ -5,7 +5,6 @@ import org.junit.Test;
 import static org.craftedsw.tictactoe.Board.*;
 import static org.craftedsw.tictactoe.BoardLines.*;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.Player.PLAYER_TWO;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -17,7 +16,7 @@ public class LineShould {
         String[] marks = marks()
                               .fromPlayerOneAt(CELL_1, CELL_2)
                               .fromPlayerTwoAt(CELL_3, CELL_4)
-                              .build();
+                              .buildAsArray();
 
         assertThat(ROW_1.isWinningLine(PLAYER_ONE, marks), is(false));
         assertThat(ROW_2.isWinningLine(PLAYER_ONE, marks), is(false));
@@ -31,7 +30,7 @@ public class LineShould {
         String[] marks = marks()
                               .fromPlayerOneAt(CELL_1, CELL_2)
                               .fromPlayerTwoAt(CELL_3, CELL_4)
-                              .build();
+                              .buildAsArray();
 
         assertThat(ROW_1.isLoosingLine(PLAYER_ONE, marks), is(false));
         assertThat(ROW_2.isLoosingLine(PLAYER_ONE, marks), is(false));
@@ -45,7 +44,7 @@ public class LineShould {
         String[] marks = marks()
                             .fromPlayerOneAt(CELL_1, CELL_5, CELL_6, CELL_7)
                             .fromPlayerTwoAt(CELL_3, CELL_8, CELL_9)
-                            .build();
+                            .buildAsArray();
 
         assertThat(DIAGONAL_1.isWinningLine(PLAYER_ONE, marks), is(false));
         assertThat(COLUMN_1.isWinningLine(PLAYER_ONE, marks), is(true));
@@ -57,7 +56,7 @@ public class LineShould {
         String[] marks = marks()
                             .fromPlayerOneAt(CELL_1, CELL_5, CELL_6, CELL_7)
                             .fromPlayerTwoAt(CELL_3, CELL_8, CELL_9)
-                            .build();
+                            .buildAsArray();
 
         Player opponent = PLAYER_ONE;
 

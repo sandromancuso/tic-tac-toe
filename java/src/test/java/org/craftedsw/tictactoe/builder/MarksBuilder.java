@@ -1,6 +1,8 @@
 package org.craftedsw.tictactoe.builder;
 
+import org.craftedsw.tictactoe.Marks;
 import org.craftedsw.tictactoe.Player;
+import sun.jvm.hotspot.oops.Mark;
 
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.Player.PLAYER_TWO;
@@ -24,11 +26,15 @@ public class MarksBuilder {
         return this;
     }
 
-    public String[] build() {
+    public String[] buildAsArray() {
         String[] marks = new String[] {" ", " ", " ", " ", " ", " ", " ", " ", " "};
         addPlayerOneMarks(marks);
         addPlayerTwoMarks(marks);
         return marks;
+    }
+
+    public Marks build() {
+        return new Marks(buildAsArray());
     }
 
     private void addPlayerOneMarks(String[] marks) {
