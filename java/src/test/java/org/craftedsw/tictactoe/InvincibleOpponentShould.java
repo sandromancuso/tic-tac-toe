@@ -2,9 +2,9 @@ package org.craftedsw.tictactoe;
 
 import org.craftedsw.tictactoe.strategy.AttackStrategy;
 import org.craftedsw.tictactoe.strategy.MarkStrategy;
+import org.craftedsw.tictactoe.strategy.WinStrategy;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import static org.craftedsw.tictactoe.Board.CELL_2;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
@@ -19,25 +19,27 @@ public class InvincibleOpponentShould {
 
     private static final int CELL_3 = 2;
     private InvincibleOpponent opponent;
+    private WinStrategy winStrategy = mock(WinStrategy.class);
     private MarkStrategy markStrategy = mock(MarkStrategy.class);
     private AttackStrategy attackStrategy = mock(AttackStrategy.class);
     private Board board = mock(Board.class);
-    private String[] marks;
+    private Marks marks;
 
     @Before
     public void initialise() {
-        this.marks =  new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " "};
+        this.marks =  new Marks(new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " "});
         when(board.marks()).thenReturn(marks);
-        opponent = new InvincibleOpponent(PLAYER_ONE, markStrategy, attackStrategy);
+        opponent = new InvincibleOpponent(PLAYER_ONE, winStrategy, markStrategy, attackStrategy);
         when(attackStrategy.nextMark(any(Player.class), any(Marks.class))).thenReturn(NONE);
     }
 
     @Test public void
     should_place_mark_on_first_empty_cell() {
-        this.marks =  new String[]{"0", " ", "X", " ", " ", " ", " ", " ", " "};
+        this.marks =  new Marks(new String[]{"0", " ", "X", " ", " ", " ", " ", " ", " "});
         when(board.marks()).thenReturn(marks);
-        when(markStrategy.winMark(PLAYER_ONE, marks)).thenReturn(NONE);
-        when(markStrategy.defenceMark(PLAYER_TWO, marks)).thenReturn(NONE);
+        when(winStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(NONE);
+        when(markStrategy.defenceMark(PLAYER_TWO, marks.asArray())).thenReturn(NONE);
+        when(attackStrategy.nextMark(PLAYER_ONE, marks)).thenReturn(NONE);
 
         int nextMark = opponent.nextCell(board);
 
@@ -46,7 +48,7 @@ public class InvincibleOpponentShould {
 
     @Test public void
     should_place_mark_according_to_winning_mark() {
-        when(markStrategy.winMark(PLAYER_ONE, marks)).thenReturn(CELL_3);
+        when(winStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(CELL_3);
 
         int nextMark = opponent.nextCell(board);
 
@@ -55,8 +57,8 @@ public class InvincibleOpponentShould {
 
     @Test public void
     should_defend_when_needed() {
-        when(markStrategy.winMark(PLAYER_ONE, marks)).thenReturn(NONE);
-        when(markStrategy.defenceMark(PLAYER_TWO, marks)).thenReturn(CELL_3);
+        when(winStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(NONE);
+        when(markStrategy.defenceMark(PLAYER_TWO, marks.asArray())).thenReturn(CELL_3);
 
         int nextMark = opponent.nextCell(board);
 

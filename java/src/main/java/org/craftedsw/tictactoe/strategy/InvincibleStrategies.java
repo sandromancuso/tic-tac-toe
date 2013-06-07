@@ -11,7 +11,7 @@ public class InvincibleStrategies implements Iterable<Strategy> {
     private List<Strategy> strategies = new ArrayList<Strategy>();
 
     public InvincibleStrategies(Player player) {
-        strategies.add(new WinStrategy(player));
+        strategies.add(new WinStrategy());
         strategies.add(new DefenceStrategy(player));
         strategies.add(new CornerMarkStrategy(player));
         strategies.add(new FirstEmptyCellStrategy(player));

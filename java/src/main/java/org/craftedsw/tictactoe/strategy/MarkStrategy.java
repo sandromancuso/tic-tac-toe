@@ -9,13 +9,13 @@ public class MarkStrategy {
     public static final int NONE = -1;
     private BoardLines boardLines = new BoardLines();
 
-    public int winMark(Player player, String[] marks) {
-        Line winningLine = boardLines.winningLine(player, marks);
-        if (winningLine != null) {
-            return winningLine.firstEmptyCell(marks);
-        }
-        return NONE;
-    }
+//    public int winMark(Player player, String[] marks) {
+//        Line winningLine = boardLines.winningLine(player, marks);
+//        if (winningLine != null) {
+//            return winningLine.firstEmptyCell(marks);
+//        }
+//        return NONE;
+//    }
 
     public int defenceMark(Player opponent, String[] marks) {
         Line loosingLine = boardLines.loosingLine(opponent, marks);

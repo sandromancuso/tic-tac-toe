@@ -1,5 +1,8 @@
 package org.craftedsw.tictactoe;
 
+import java.util.Arrays;
+
+import static java.util.Arrays.asList;
 import static org.craftedsw.tictactoe.Board.*;
 
 public class Marks {
@@ -37,6 +40,10 @@ public class Marks {
                     : NO_CELL;
     }
 
+    public String[] asArray() {
+        return this.marks;
+    }
+
     private boolean isEmpty(int cell) {
         return EMPTY_CELL.equals(marks[cell]);
     }
@@ -56,5 +63,9 @@ public class Marks {
             }
         }
         return false;
+    }
+
+    public int firstEmptyCell() {
+        return asList(marks).indexOf(EMPTY_CELL);
     }
 }

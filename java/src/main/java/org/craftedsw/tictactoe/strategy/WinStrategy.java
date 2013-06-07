@@ -1,14 +1,21 @@
 package org.craftedsw.tictactoe.strategy;
 
-import org.craftedsw.tictactoe.Marks;
-import org.craftedsw.tictactoe.Player;
+import org.craftedsw.tictactoe.*;
 
 public class WinStrategy implements Strategy {
-    public WinStrategy(Player player) {
+
+    private final BoardLines boardLines;
+
+    public WinStrategy() {
+        this.boardLines = new BoardLines();
     }
 
     @Override
     public int nextCell(Player player, Marks marks) {
-        return 0;
+        Line winningLine = boardLines.winningLine(player, marks.asArray());
+        if (winningLine != null) {
+            return winningLine.firstEmptyCell(marks.asArray());
+        }
+        return Board.NO_CELL;
     }
 }

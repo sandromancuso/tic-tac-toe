@@ -1,5 +1,6 @@
 package org.craftedsw.tictactoe.strategy;
 
+import org.craftedsw.tictactoe.Marks;
 import org.craftedsw.tictactoe.Player;
 import org.junit.Assert;
 import org.junit.Test;
@@ -40,19 +41,19 @@ public class WinStrategyShould {
 
     private final int cellToBeMarked;
     private final Player player;
-    private final String[] marks;
+    private final Marks marks;
 
     public WinStrategyShould(String[] marks, Player player, int cellToBeMarked) {
-        this.marks = marks;
+        this.marks = new Marks(marks);
         this.player = player;
         this.cellToBeMarked = cellToBeMarked;
     }
 
     @Test public void
     should_return_the_winning_cell_to_be_marked() {
-        MarkStrategy markStrategy = new MarkStrategy();
+        WinStrategy markStrategy = new WinStrategy();
 
-        assertThat(markStrategy.winMark(player, marks), is(cellToBeMarked));
+        assertThat(markStrategy.nextCell(player, marks), is(cellToBeMarked));
     }
 
 }

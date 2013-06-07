@@ -1,6 +1,5 @@
 package org.craftedsw.tictactoe.strategy;
 
-import org.craftedsw.tictactoe.Player;
 import org.junit.Test;
 
 import java.util.Iterator;

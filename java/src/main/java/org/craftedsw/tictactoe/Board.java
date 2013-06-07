@@ -52,13 +52,17 @@ public class Board {
         return currentPlayer;
     }
 
+    public Marks marks() {
+        return new Marks(marksAsArray());
+    }
+
     private void switchPlayers() {
         currentPlayer = (currentPlayer == PLAYER_ONE)
                                 ? PLAYER_TWO
                                 : PLAYER_ONE;
     }
 
-    protected String[] marks() {
+    protected String[] marksAsArray() {
         return marks;
     }
 

@@ -81,4 +81,11 @@ public class MarksShould {
 
         assertThat(marks.emptyOppositeCell(CELL_1), is(NO_CELL));
     }
+
+    @Test public void
+    should_inform_which_is_the_first_empty_cell() {
+        Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_2, CELL_7, CELL_9).build();
+
+        assertThat(marks.firstEmptyCell(), is(CELL_3));
+    }
 }

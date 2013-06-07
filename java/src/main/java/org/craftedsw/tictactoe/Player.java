@@ -14,4 +14,10 @@ public enum Player {
     public String mark() {
         return mark;
     }
+
+    public Player opponent() {
+        return this.equals(PLAYER_ONE)
+                        ? PLAYER_TWO
+                        : PLAYER_ONE;
+    }
 }
