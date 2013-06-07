@@ -1,14 +1,18 @@
 package org.craftedsw.tictactoe.strategy;
 
-import org.craftedsw.tictactoe.Marks;
-import org.craftedsw.tictactoe.Player;
+import org.craftedsw.tictactoe.*;
+
+import static org.craftedsw.tictactoe.Board.NO_CELL;
 
 public class DefenceStrategy implements Strategy {
-    public DefenceStrategy(Player player) {
-    }
 
     @Override
     public int nextCell(Player player, Marks marks) {
-        return 0;
+        BoardLines boardLines = new BoardLines();
+        Line loosingLine = boardLines.loosingLine(player.opponent(), marks.asArray());
+        if (loosingLine != null) {
+            return loosingLine.firstEmptyCell(marks.asArray());
+        }
+        return NO_CELL;
     }
 }
