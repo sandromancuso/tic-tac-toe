@@ -38,7 +38,11 @@ public class Board {
     }
 
     public void place(int cellToBeMarked) {
+        if (!EMPTY_CELL.equals(marks[cellToBeMarked])) {
+            throw new RuntimeException("Cell already occupied [" + cellToBeMarked + "]");
+        }
         marks[cellToBeMarked] = currentPlayer.mark();
+
         if (!hasWinner()) {
             switchPlayers();
         }

@@ -3,14 +3,16 @@ package org.craftedsw.tictactoe;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
+import org.mockito.Matchers;
 
 import static org.craftedsw.tictactoe.Board.ASK_FOR_NEXT_MARK;
 import static org.craftedsw.tictactoe.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.TicTacToe.*;
+import static org.craftedsw.tictactoe.TicTacToe.CURRENT_BOARD_STATE_MSG;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
+import static org.mockito.Matchers.any;
 
 public class TicTacToeShould {
 
@@ -45,9 +47,8 @@ public class TicTacToeShould {
 
     @Test public void
     ask_game_to_place_its_mark_after_player_placed_hers() {
-        when(console.ask(ASK_FOR_NEXT_MARK)).thenReturn(1, 2, 3); // one based
-        when(opponent.nextCell(board.marks())).thenReturn(3, 4); // zero based
-        when(board.hasWinner()).thenReturn(false, false, false, false, false, true);
+        when(opponent.nextCell(any(Marks.class))).thenReturn(0, 1, 2); // zero based
+        when(console.ask(ASK_FOR_NEXT_MARK)).thenReturn(4, 5); // one based
 
         ticTacToe.newSinglePlayerGame(opponent);
 

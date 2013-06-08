@@ -110,4 +110,10 @@ public class BoardShould {
         assertThat(board.winner(), is(PLAYER_ONE));
     }
 
+    @Test(expected = Exception.class) public void
+    should_throw_exception_when_cell_is_placed_in_an_occupied_position() {
+        board.place(CELL_1);
+        board.place(CELL_1);
+    }
+
 }

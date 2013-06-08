@@ -23,7 +23,7 @@ public class AttackStrategyShould {
 
     @Test public void
     should_choose_top_corner_if_board_is_empty() {
-        Marks marks = new Marks(marks().buildAsArray());
+        Marks marks = marks().build();
 
         int cell = attackStrategy.nextCell(PLAYER_ONE, marks);
 
