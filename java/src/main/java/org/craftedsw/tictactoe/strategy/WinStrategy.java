@@ -2,6 +2,8 @@ package org.craftedsw.tictactoe.strategy;
 
 import org.craftedsw.tictactoe.*;
 
+import static org.craftedsw.tictactoe.Board.NO_CELL;
+
 public class WinStrategy implements Strategy {
 
     private final BoardLines boardLines;
@@ -12,10 +14,12 @@ public class WinStrategy implements Strategy {
 
     @Override
     public int nextCell(Player player, Marks marks) {
+        int cell = NO_CELL;
         Line winningLine = boardLines.winningLine(player, marks.asArray());
         if (winningLine != null) {
-            return winningLine.firstEmptyCell(marks.asArray());
+            cell =  winningLine.firstEmptyCell(marks.asArray());
         }
-        return Board.NO_CELL;
+        System.out.println("Win "+ player + " [" + cell + "]");
+        return cell;
     }
 }

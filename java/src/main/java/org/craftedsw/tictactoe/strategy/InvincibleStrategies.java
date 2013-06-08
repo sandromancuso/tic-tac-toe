@@ -14,7 +14,7 @@ public class InvincibleStrategies implements Iterable<Strategy> {
         strategies.add(new WinStrategy());
         strategies.add(new DefenceStrategy());
         strategies.add(new CornerMarkStrategy(player));
-        strategies.add(new FirstEmptyCellStrategy(player));
+        strategies.add(new FirstEmptyCellStrategy());
     }
 
     @Override

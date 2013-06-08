@@ -18,15 +18,16 @@ public class InvincibleOpponent implements Opponent {
 
     @Override
     public int nextCell(Marks marks) {
-        int nextCell;
+        int nextCell = NO_CELL;
         Iterator<Strategy> iterator = strategies.iterator();
         while (iterator.hasNext()) {
             nextCell = iterator.next().nextCell(player, marks);
             if (nextCell != NO_CELL) {
-                return nextCell;
+                break;
             }
         }
-        return NO_CELL;
+        System.out.println("Attack "+ player + " [" + NO_CELL + "]");
+        return nextCell;
     }
 
 }

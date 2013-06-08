@@ -8,11 +8,13 @@ public class DefenceStrategy implements Strategy {
 
     @Override
     public int nextCell(Player player, Marks marks) {
+        int cell = NO_CELL;
         BoardLines boardLines = new BoardLines();
         Line loosingLine = boardLines.loosingLine(player.opponent(), marks.asArray());
         if (loosingLine != null) {
-            return loosingLine.firstEmptyCell(marks.asArray());
+            cell = loosingLine.firstEmptyCell(marks.asArray());
         }
-        return NO_CELL;
+        System.out.println("Defence "+ player + " [" + cell + "]");
+        return cell;
     }
 }
