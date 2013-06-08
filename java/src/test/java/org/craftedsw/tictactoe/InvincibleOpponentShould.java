@@ -1,68 +1,58 @@
 package org.craftedsw.tictactoe;
 
-import org.craftedsw.tictactoe.strategy.AttackStrategy;
-import org.craftedsw.tictactoe.strategy.DefenceStrategy;
-import org.craftedsw.tictactoe.strategy.WinStrategy;
+import org.craftedsw.tictactoe.builder.MarksBuilder;
+import org.craftedsw.tictactoe.strategy.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.craftedsw.tictactoe.Board.CELL_2;
+import java.util.Iterator;
+
+import static org.craftedsw.tictactoe.Board.CELL_3;
+import static org.craftedsw.tictactoe.Board.CELL_4;
 import static org.craftedsw.tictactoe.Board.NO_CELL;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.Player.PLAYER_TWO;
+import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class InvincibleOpponentShould {
 
-    private static final int CELL_3 = 2;
+    @Mock private InvincibleStrategies strategies;
+    @Mock private Iterator<Strategy> strategiesIterator;
+    @Mock private WinStrategy winStrategy;
+    @Mock private DefenceStrategy defenceStrategy;
+    @Mock private AttackStrategy attackStrategy;
+
     private InvincibleOpponent opponent;
-    private WinStrategy winStrategy = mock(WinStrategy.class);
-    private DefenceStrategy defenceStrategy = mock(DefenceStrategy.class);
-    private AttackStrategy attackStrategy = mock(AttackStrategy.class);
-    private Board board = mock(Board.class);
-    private Marks marks;
+    private Marks marks = marks().build();
 
     @Before
     public void initialise() {
-        this.marks =  new Marks(new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " "});
-        when(board.marks()).thenReturn(marks);
-        opponent = new InvincibleOpponent(PLAYER_ONE, winStrategy, defenceStrategy, attackStrategy);
-        when(attackStrategy.nextMark(any(Player.class), any(Marks.class))).thenReturn(NO_CELL);
+        opponent = new InvincibleOpponent(PLAYER_ONE, strategies);
+        when(strategies.iterator()).thenReturn(strategiesIterator);
+        when(strategiesIterator.next()).thenReturn(winStrategy, defenceStrategy, attackStrategy);
+        when(strategiesIterator.hasNext()).thenReturn(true, true, true, false);
     }
 
     @Test public void
-    should_place_mark_on_first_empty_cell() {
-        this.marks =  new Marks(new String[]{"0", " ", "X", " ", " ", " ", " ", " ", " "});
-        when(board.marks()).thenReturn(marks);
-        when(winStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(NO_CELL);
-        when(defenceStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(NO_CELL);
-        when(attackStrategy.nextMark(PLAYER_ONE, marks)).thenReturn(NO_CELL);
-
-        int nextMark = opponent.nextCell(board);
-
-        assertThat(nextMark, is(CELL_2));
-    }
-
-    @Test public void
-    should_place_mark_according_to_winning_mark() {
+    should_return_same_cell_returned_by_first_strategy() {
         when(winStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(CELL_3);
 
-        int nextMark = opponent.nextCell(board);
-
-        assertThat(nextMark, is(CELL_3));
+        assertThat(opponent.nextCell(marks), is(CELL_3));
     }
 
     @Test public void
-    should_defend_when_needed() {
+    should_return_cell_from_third_strategy_when_previous_strategies_returned_no_cell() {
         when(winStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(NO_CELL);
-        when(defenceStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(CELL_3);
+        when(defenceStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(NO_CELL);
+        when(attackStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(CELL_4);
 
-        int nextMark = opponent.nextCell(board);
-
-        assertThat(nextMark, is(CELL_3));
+        assertThat(opponent.nextCell(marks), is(CELL_4));
     }
 
 }

@@ -5,14 +5,14 @@ import org.craftedsw.tictactoe.Player;
 
 import static org.craftedsw.tictactoe.Board.CELL_1;
 
-public class AttackStrategy {
+public class AttackStrategy implements Strategy {
 
-    public int nextMark(Player playerOne, Marks marks) {
+    @Override
+    public int nextCell(Player player, Marks marks) {
         int cell = CELL_1;
         if (marks.containsSingleMark() && marks.hasAnyCornerMarked()) {
             cell = marks.emptyOppositeCell(CELL_1);
         }
         return cell;
     }
-
 }

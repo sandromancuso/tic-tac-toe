@@ -84,7 +84,7 @@ public class SinglePlayerSteps {
         int index = 0;
 
         @Override
-        public int nextCell(Board board) {
+        public int nextCell(Marks marks) {
             await().until(userPlacesAMark());
             return new Integer(opponentMarks.get(index++));
         }

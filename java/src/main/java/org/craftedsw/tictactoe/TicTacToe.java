@@ -2,6 +2,7 @@ package org.craftedsw.tictactoe;
 
 import org.craftedsw.tictactoe.strategy.AttackStrategy;
 import org.craftedsw.tictactoe.strategy.DefenceStrategy;
+import org.craftedsw.tictactoe.strategy.InvincibleStrategies;
 import org.craftedsw.tictactoe.strategy.WinStrategy;
 
 import static org.craftedsw.tictactoe.Board.ASK_FOR_NEXT_MARK;
@@ -44,7 +45,7 @@ public class TicTacToe {
         while (!board.hasWinner() && !quit) {
             board.place(playerNextCell());
             if (!board.hasWinner()) {
-                board.place(opponent.nextCell(board));
+                board.place(opponent.nextCell(board.marks()));
             }
             console.print(board.representation());
         }
@@ -70,9 +71,7 @@ public class TicTacToe {
 
         ticTacToe.newSinglePlayerGame(
                 new InvincibleOpponent(PLAYER_TWO,
-                                        new WinStrategy(),
-                                        new DefenceStrategy(),
-                                        new AttackStrategy()));
+                                        new InvincibleStrategies(PLAYER_TWO)));
 //        ticTacToe.newGame();
     }
 

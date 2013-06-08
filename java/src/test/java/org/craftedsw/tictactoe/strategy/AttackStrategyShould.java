@@ -25,7 +25,7 @@ public class AttackStrategyShould {
     should_choose_top_corner_if_board_is_empty() {
         Marks marks = new Marks(marks().buildAsArray());
 
-        int cell = attackStrategy.nextMark(PLAYER_ONE, marks);
+        int cell = attackStrategy.nextCell(PLAYER_ONE, marks);
 
         assertThat(cell, is(CELL_1));
     }
@@ -34,7 +34,7 @@ public class AttackStrategyShould {
     should_choose_opposite_corner_if_there_is_only_one_mark_in_a_corner() {
         Marks marks = new Marks(marks().fromPlayerOneAt(CELL_1).buildAsArray());
 
-        int cell = attackStrategy.nextMark(PLAYER_TWO, marks);
+        int cell = attackStrategy.nextCell(PLAYER_TWO, marks);
 
         assertThat(cell, is(CELL_9));
     }

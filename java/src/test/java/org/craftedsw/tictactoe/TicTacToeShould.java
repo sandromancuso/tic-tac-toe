@@ -46,7 +46,8 @@ public class TicTacToeShould {
     @Test public void
     ask_game_to_place_its_mark_after_player_placed_hers() {
         when(console.ask(ASK_FOR_NEXT_MARK)).thenReturn(1, 2, 3); // one based
-        when(opponent.nextCell(board)).thenReturn(3, 4); // zero based
+        when(opponent.nextCell(board.marks())).thenReturn(3, 4); // zero based
+        when(board.hasWinner()).thenReturn(false, false, false, false, false, true);
 
         ticTacToe.newSinglePlayerGame(opponent);
 
