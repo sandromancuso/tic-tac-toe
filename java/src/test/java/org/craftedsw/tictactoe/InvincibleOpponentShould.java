@@ -1,6 +1,5 @@
 package org.craftedsw.tictactoe;
 
-import org.craftedsw.tictactoe.builder.MarksBuilder;
 import org.craftedsw.tictactoe.strategy.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,9 +9,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Iterator;
 
-import static org.craftedsw.tictactoe.Board.CELL_3;
-import static org.craftedsw.tictactoe.Board.CELL_4;
-import static org.craftedsw.tictactoe.Board.NO_CELL;
+import static org.craftedsw.tictactoe.Board.*;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.CoreMatchers.is;

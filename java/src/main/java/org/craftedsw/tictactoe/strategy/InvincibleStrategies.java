@@ -13,7 +13,7 @@ public class InvincibleStrategies implements Iterable<Strategy> {
     public InvincibleStrategies(Player player) {
         strategies.add(new WinStrategy());
         strategies.add(new DefenceStrategy());
-        strategies.add(new CornerMarkStrategy(player));
+        strategies.add(new CornerMarkStrategy());
         strategies.add(new FirstEmptyCellStrategy());
     }
 

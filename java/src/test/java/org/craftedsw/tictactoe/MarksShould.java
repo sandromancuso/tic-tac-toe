@@ -1,5 +1,6 @@
 package org.craftedsw.tictactoe;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
@@ -7,7 +8,10 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 import static org.craftedsw.tictactoe.Board.*;
+import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
+import static org.craftedsw.tictactoe.Player.PLAYER_TWO;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -87,5 +91,19 @@ public class MarksShould {
         Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_2, CELL_7, CELL_9).build();
 
         assertThat(marks.firstEmptyCell(), is(CELL_3));
+    }
+
+    @Test public void
+    should_return_corner_cells_marked_by_player() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_1, CELL_2, CELL_7)
+                            .fromPlayerTwoAt(CELL_3, CELL_9)
+                            .build();
+
+        assertThat(marks.cornerMarksFor(PLAYER_ONE),
+                                            is(equalTo(new Integer[]{CELL_1, CELL_7})));;
+        assertThat(marks.cornerMarksFor(PLAYER_TWO),
+                                            is(equalTo(new Integer[]{CELL_3, CELL_9})));;
+
     }
 }

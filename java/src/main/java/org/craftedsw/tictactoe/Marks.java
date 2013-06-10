@@ -1,6 +1,8 @@
 package org.craftedsw.tictactoe;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.craftedsw.tictactoe.Board.*;
@@ -67,5 +69,15 @@ public class Marks {
 
     public int firstEmptyCell() {
         return asList(marks).indexOf(EMPTY_CELL);
+    }
+
+    public Integer[] cornerMarksFor(Player player) {
+        List<Integer> cornerMarks = new ArrayList<Integer>();
+        for (int cornerCell : CORNER_CELLS) {
+            if (player.mark().equals(marks[cornerCell])) {
+                cornerMarks.add(cornerCell);
+            }
+        }
+        return cornerMarks.toArray(new Integer[] {});
     }
 }
