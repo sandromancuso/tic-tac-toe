@@ -24,12 +24,12 @@ public class CornerStrategyShould {
         return Arrays.asList(new Object[][]{
                 {new String[]{"X", " ", " ", " ", " ", " ", " ", " ", " "}, PLAYER_TWO, CELL_9},
                 {new String[]{" ", " ", "X", " ", " ", " ", " ", " ", " "}, PLAYER_TWO, CELL_7},
-//                {new String[]{" ", " ", " ", " ", " ", " ", "X", " ", " "}, PLAYER_TWO, CELL_3},
-//                {new String[]{" ", " ", " ", " ", " ", " ", " ", " ", "X"}, PLAYER_TWO, CELL_1},
-//                {new String[]{"0", " ", " ", " ", " ", " ", " ", " ", " "}, PLAYER_ONE, CELL_9},
-//                {new String[]{" ", " ", "0", " ", " ", " ", " ", " ", " "}, PLAYER_ONE, CELL_7},
-//                {new String[]{" ", " ", " ", " ", " ", " ", "0", " ", " "}, PLAYER_ONE, CELL_3},
-//                {new String[]{" ", " ", " ", " ", " ", " ", " ", " ", "0"}, PLAYER_ONE, CELL_1},
+                {new String[]{" ", " ", " ", " ", " ", " ", "X", " ", " "}, PLAYER_TWO, CELL_3},
+                {new String[]{" ", " ", " ", " ", " ", " ", " ", " ", "X"}, PLAYER_TWO, CELL_1},
+                {new String[]{"0", " ", " ", " ", " ", " ", " ", " ", " "}, PLAYER_ONE, CELL_9},
+                {new String[]{" ", " ", "0", " ", " ", " ", " ", " ", " "}, PLAYER_ONE, CELL_7},
+                {new String[]{" ", " ", " ", " ", " ", " ", "0", " ", " "}, PLAYER_ONE, CELL_3},
+                {new String[]{" ", " ", " ", " ", " ", " ", " ", " ", "0"}, PLAYER_ONE, CELL_1},
 
 //                {new String[]{"0", "0", " ", "X", "X", " ", " ", "X", " "}, PLAYER_TWO, CELL_3},
 //                {new String[]{"0", "0", " ", "X", " ", "X", " ", " ", " "}, PLAYER_ONE, CELL_5},
