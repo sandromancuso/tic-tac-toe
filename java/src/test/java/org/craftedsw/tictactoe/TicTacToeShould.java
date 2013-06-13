@@ -3,12 +3,11 @@ package org.craftedsw.tictactoe;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
-import org.mockito.Matchers;
 
 import static org.craftedsw.tictactoe.Board.ASK_FOR_NEXT_MARK;
 import static org.craftedsw.tictactoe.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
 import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.TicTacToe.CURRENT_BOARD_STATE_MSG;
+import static org.craftedsw.tictactoe.TicTacToe.CURRENT_BOARD_STATE_MESSAGE;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
@@ -38,7 +37,7 @@ public class TicTacToeShould {
 
         InOrder inOrder = inOrder(console, board);
         inOrder.verify(console).print(CELL_INDEX_INSTRUCTIONS);
-        inOrder.verify(console).print(CURRENT_BOARD_STATE_MSG);
+        inOrder.verify(console).print(CURRENT_BOARD_STATE_MESSAGE);
         inOrder.verify(board).representation();
         inOrder.verify(console).ask(ASK_FOR_NEXT_MARK);
         inOrder.verify(board).place(CELL_3 - 1);
@@ -57,6 +56,8 @@ public class TicTacToeShould {
 
     @Test public void
     should_end_the_game_when_board_is_full() {
+        when(opponent.nextCell(any(Marks.class))).thenReturn(0); // zero based
+        when(console.ask(ASK_FOR_NEXT_MARK)).thenReturn(4);
         when(board.isFull()).thenReturn(true);
 
         ticTacToe.newSinglePlayerGame(opponent);
