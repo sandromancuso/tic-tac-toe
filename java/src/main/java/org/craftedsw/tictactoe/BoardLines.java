@@ -30,7 +30,7 @@ public class BoardLines {
         }
     }
 
-    public boolean hasWinnerLine(String[] marks) {
+    public boolean hasWinnerLine(Marks marks) {
         for (Line line : boardLines) {
             if (line.isWinner(marks)) {
                 return true;

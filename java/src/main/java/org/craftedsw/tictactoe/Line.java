@@ -25,10 +25,10 @@ public class Line {
         cells[2] = thirdCell;
     }
 
-    public boolean isWinner(String[] marks) {
-        return (marks[firstCell] != EMPTY_CELL)
-             && marks[firstCell].equals(marks[secondCell])
-             && marks[secondCell].equals(marks[thirdCell]);
+    public boolean isWinner(Marks marks) {
+        return (marks.at(firstCell) != EMPTY_CELL)
+             && marks.at(firstCell).equals(marks.at(secondCell))
+             && marks.at(secondCell).equals(marks.at(thirdCell));
     }
 
     public boolean isWinningLine(Player player, String[] marks) {

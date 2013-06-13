@@ -52,7 +52,7 @@ public class Board {
     }
 
     public boolean hasWinner() {
-        return boardLines.hasWinnerLine(marks.asArray());
+        return boardLines.hasWinnerLine(marks);
     }
 
     public Player winner() {

@@ -141,4 +141,11 @@ public class MarksShould {
 
         marks.placeMarkAt(CELL_2, PLAYER_ONE.mark());
     }
+
+    @Test public void
+    should_return_a_mark_at_specified_position() {
+        Marks marks = marks().fromPlayerOneAt(CELL_3).build();
+
+        assertThat(marks.at(CELL_3), is(PLAYER_ONE.mark()));
+    }
 }
