@@ -18,6 +18,11 @@ public class Board {
     public static final int NO_CELL = -1;
     public static final String EMPTY_CELL = " ";
 
+    public static final int[] ALL_CELLS = new int[] {
+            CELL_1, CELL_2, CELL_3,
+            CELL_4, CELL_5, CELL_6,
+            CELL_7, CELL_8, CELL_9
+    };
     public static final int[] CORNER_CELLS = new int[] {CELL_1, CELL_3, CELL_7, CELL_9};
 
     public static final int[][] OPPOSITE_CORNER_CELLS = new int[][] {
@@ -72,4 +77,7 @@ public class Board {
         return marks;
     }
 
+    public boolean isFull() {
+        return marks().isFull();
+    }
 }

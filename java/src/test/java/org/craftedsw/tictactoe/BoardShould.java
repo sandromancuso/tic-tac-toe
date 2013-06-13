@@ -116,4 +116,20 @@ public class BoardShould {
         board.place(CELL_1);
     }
 
+    @Test public void
+    should_inform_when_it_is_not_full() {
+        board.place(CELL_1);
+
+        assertThat(board.isFull(), is(false));
+    }
+
+    @Test public void
+    should_inform_when_it_is_full() {
+        for (int cell : ALL_CELLS) {
+            board.place(cell);
+        }
+
+        assertThat(board.isFull(), is(true));
+    }
+
 }

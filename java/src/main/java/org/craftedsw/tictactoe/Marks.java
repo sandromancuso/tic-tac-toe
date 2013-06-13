@@ -46,6 +46,20 @@ public class Marks {
         return this.marks;
     }
 
+    public int firstEmptyCell() {
+        return asList(marks).indexOf(EMPTY_CELL);
+    }
+
+    public Integer[] cornerMarksFor(Player player) {
+        List<Integer> cornerMarks = new ArrayList<Integer>();
+        for (int cornerCell : CORNER_CELLS) {
+            if (player.mark().equals(marks[cornerCell])) {
+                cornerMarks.add(cornerCell);
+            }
+        }
+        return cornerMarks.toArray(new Integer[] {});
+    }
+
     private boolean isEmpty(int cell) {
         return EMPTY_CELL.equals(marks[cell]);
     }
@@ -67,17 +81,7 @@ public class Marks {
         return false;
     }
 
-    public int firstEmptyCell() {
-        return asList(marks).indexOf(EMPTY_CELL);
-    }
-
-    public Integer[] cornerMarksFor(Player player) {
-        List<Integer> cornerMarks = new ArrayList<Integer>();
-        for (int cornerCell : CORNER_CELLS) {
-            if (player.mark().equals(marks[cornerCell])) {
-                cornerMarks.add(cornerCell);
-            }
-        }
-        return cornerMarks.toArray(new Integer[] {});
+    public boolean isFull() {
+        return stringRepresentation().replace(" ", "").trim().length() == ALL_CELLS.length;
     }
 }

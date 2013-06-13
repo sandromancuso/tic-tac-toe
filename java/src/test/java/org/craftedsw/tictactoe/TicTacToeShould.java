@@ -55,5 +55,14 @@ public class TicTacToeShould {
         assertThat(board.winner(), is(PLAYER_ONE));
     }
 
+    @Test public void
+    should_end_the_game_when_board_is_full() {
+        when(board.isFull()).thenReturn(true);
+
+        ticTacToe.newSinglePlayerGame(opponent);
+
+        assertThat(board.hasWinner(), is(false));
+    }
+
 
 }

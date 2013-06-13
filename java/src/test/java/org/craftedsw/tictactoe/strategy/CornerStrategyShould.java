@@ -29,21 +29,7 @@ public class CornerStrategyShould {
                 {new String[]{"0", " ", " ", " ", " ", " ", " ", " ", " "}, PLAYER_ONE, CELL_9},
                 {new String[]{" ", " ", "0", " ", " ", " ", " ", " ", " "}, PLAYER_ONE, CELL_7},
                 {new String[]{" ", " ", " ", " ", " ", " ", "0", " ", " "}, PLAYER_ONE, CELL_3},
-                {new String[]{" ", " ", " ", " ", " ", " ", " ", " ", "0"}, PLAYER_ONE, CELL_1},
-
-//                {new String[]{"0", "0", " ", "X", "X", " ", " ", "X", " "}, PLAYER_TWO, CELL_3},
-//                {new String[]{"0", "0", " ", "X", " ", "X", " ", " ", " "}, PLAYER_ONE, CELL_5},
-//                {new String[]{" ", " ", "X", "0", " ", "0", "X", "X", " "}, PLAYER_TWO, CELL_5},
-//                {new String[]{"0", " ", " ", "0", " ", " ", " ", "X", "X"}, PLAYER_ONE, CELL_7},
-//                {new String[]{" ", " ", " ", " ", " ", " ", " ", "0", "0"}, PLAYER_TWO, CELL_7},
-//                {new String[]{"X", " ", " ", " ", " ", " ", " ", " ", "X"}, PLAYER_ONE, CELL_5},
-//                {new String[]{"0", "X", "X", "X", "0", " ", " ", " ", " "}, PLAYER_TWO, CELL_9},
-//                {new String[]{" ", "0", " ", " ", "X", " ", "X", "0", " "}, PLAYER_ONE, CELL_3},
-//                {new String[]{" ", " ", "0", "X", "0", " ", " ", "X", "X"}, PLAYER_TWO, CELL_7},
-//                {new String[]{" ", "0", "0", "X", " ", " ", "X", " ", " "}, PLAYER_ONE, CELL_1},
-//                {new String[]{"0", " ", " ", " ", "X", "X", "0", "X", " "}, PLAYER_TWO, CELL_4},
-//                {new String[]{"0", "0", " ", "X", "X", " ", "X", "0", "X"}, PLAYER_ONE, CELL_6},
-//                {new String[]{"0", " ", "X", " ", "X", " ", "0", " ", "X"}, PLAYER_TWO, CELL_4}
+                {new String[]{" ", " ", " ", " ", " ", " ", " ", " ", "0"}, PLAYER_ONE, CELL_1}
         });
     }
 

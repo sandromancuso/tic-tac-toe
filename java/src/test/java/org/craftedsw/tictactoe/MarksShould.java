@@ -33,6 +33,25 @@ public class MarksShould {
     }
 
     @Test public void
+    should_inform_when_it_is_not_full() {
+        Marks marks = marks()
+                        .fromPlayerOneAt(CELL_1)
+                        .fromPlayerTwoAt(CELL_9).build();
+
+        assertThat(marks.isFull(), is(false));
+    }
+
+    @Test public void
+    should_inform_when_it_is_full() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_1, CELL_2, CELL_3, CELL_4, CELL_5)
+                            .fromPlayerTwoAt(CELL_6, CELL_7, CELL_8, CELL_9)
+                            .build();
+
+        assertThat(marks.isFull(), is(true));
+    }
+
+    @Test public void
     should_inform_when_it_contains_more_than_one_mark() {
         Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_2).build();
 
