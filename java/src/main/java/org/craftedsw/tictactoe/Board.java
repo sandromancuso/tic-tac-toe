@@ -32,7 +32,7 @@ public class Board {
             {CELL_7, CELL_3},
     };
 
-    private String[] marks = new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " "};
+    private Marks marks = new Marks(new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " "});
     private BoardLines boardLines = new BoardLines();
 
     private Player currentPlayer = PLAYER_ONE;
@@ -41,22 +41,18 @@ public class Board {
     public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
 
     public String representation() {
-        return BoardDisplay.representation(marks);
+        return BoardDisplay.representation(marks.asArray());
     }
 
     public void place(int cellToBeMarked) {
-        if (!EMPTY_CELL.equals(marks[cellToBeMarked])) {
-            throw new RuntimeException("Cell already occupied [" + cellToBeMarked + "]");
-        }
-        marks[cellToBeMarked] = currentPlayer.mark();
-
+        marks.placeMarkAt(cellToBeMarked, currentPlayer.mark());
         if (!hasWinner()) {
             switchPlayers();
         }
     }
 
     public boolean hasWinner() {
-        return boardLines.hasWinnerLine(marks);
+        return boardLines.hasWinnerLine(marks.asArray());
     }
 
     public Player winner() {
@@ -64,17 +60,13 @@ public class Board {
     }
 
     public Marks marks() {
-        return new Marks(marksAsArray());
+        return marks;
     }
 
     private void switchPlayers() {
         currentPlayer = (currentPlayer == PLAYER_ONE)
                                 ? PLAYER_TWO
                                 : PLAYER_ONE;
-    }
-
-    protected String[] marksAsArray() {
-        return marks;
     }
 
     public boolean isFull() {

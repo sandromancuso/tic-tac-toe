@@ -125,4 +125,20 @@ public class MarksShould {
                                             is(equalTo(new Integer[]{CELL_3, CELL_9})));;
 
     }
+
+    @Test public void
+    should_place_mark_at_a_specified_position() {
+        Marks marks = marks().build();
+
+        marks.placeMarkAt(CELL_3, PLAYER_ONE.mark());
+
+        assertThat(marks.containsMarkAt(CELL_3, PLAYER_ONE.mark()), is(true));
+    }
+
+    @Test(expected = RuntimeException.class) public void
+    should_throw_exception_when_mark_is_placed_on_a_marked_cell() {
+        Marks marks = marks().fromPlayerOneAt(CELL_2).build();
+
+        marks.placeMarkAt(CELL_2, PLAYER_ONE.mark());
+    }
 }

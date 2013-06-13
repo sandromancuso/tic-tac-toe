@@ -48,6 +48,10 @@ public class TicTacToe {
             }
             console.print(board.representation());
         }
+        displayGameResult();
+    }
+
+    private void displayGameResult() {
         if (board.hasWinner()) {
             console.print(board.winner() == PLAYER_TWO
                                 ? YOU_WIN

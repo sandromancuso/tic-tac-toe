@@ -60,7 +60,11 @@ public class Marks {
         return cornerMarks.toArray(new Integer[] {});
     }
 
-    private boolean isEmpty(int cell) {
+    public boolean isFull() {
+        return stringRepresentation().replace(" ", "").trim().length() == ALL_CELLS.length;
+    }
+
+    public boolean isEmpty(int cell) {
         return EMPTY_CELL.equals(marks[cell]);
     }
 
@@ -81,7 +85,15 @@ public class Marks {
         return false;
     }
 
-    public boolean isFull() {
-        return stringRepresentation().replace(" ", "").trim().length() == ALL_CELLS.length;
+    public void placeMarkAt(int cell, String mark) {
+        if (!isEmpty(cell)) {
+            throw new RuntimeException("Cell already occupied [" + cell + "]");
+        }
+
+        this.marks[cell] = mark;
+    }
+
+    public boolean containsMarkAt(int cell, String mark) {
+        return marks[cell].equals(mark);
     }
 }
