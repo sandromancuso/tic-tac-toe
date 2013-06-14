@@ -18,8 +18,8 @@ public class BoardDisplay {
                     "---+---+---"    + "\n" +
                     " %s | %s | %s ";
 
-    public static String representation(String[] marks) {
-        return format(EMPTY_BOARD, marks);
+    public static String representation(Marks marks) {
+        return format(EMPTY_BOARD, marks.asArray());
     }
 
 }

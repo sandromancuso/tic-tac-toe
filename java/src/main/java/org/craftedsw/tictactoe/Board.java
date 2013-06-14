@@ -41,7 +41,7 @@ public class Board {
     public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
 
     public String representation() {
-        return BoardDisplay.representation(marks.asArray());
+        return BoardDisplay.representation(marks);
     }
 
     public void place(int cellToBeMarked) {

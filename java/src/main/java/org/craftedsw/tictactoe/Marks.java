@@ -42,10 +42,6 @@ public class Marks {
                     : NO_CELL;
     }
 
-    public String[] asArray() {
-        return this.marks;
-    }
-
     public int firstEmptyCell() {
         return asList(marks).indexOf(EMPTY_CELL);
     }
@@ -99,5 +95,9 @@ public class Marks {
 
     public String at(int mark) {
         return marks[mark];
+    }
+
+    public String[] asArray() {
+        return marks;
     }
 }
