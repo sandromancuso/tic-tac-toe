@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static org.craftedsw.tictactoe.model.board.Board.*;
 
 public class Marks {
     private final String[] marks;
@@ -24,32 +23,32 @@ public class Marks {
     }
 
     public boolean hasAnyCornerMarked() {
-        return atLeastOneIsMarked(CELL_1, CELL_3, CELL_7, CELL_9);
+        return atLeastOneIsMarked(BoardStructure.CELL_1, BoardStructure.CELL_3, BoardStructure.CELL_7, BoardStructure.CELL_9);
     }
 
     public int oppositeCornerOf(int cell) {
-        for (int[] oppositeCells : OPPOSITE_CORNER_CELLS) {
+        for (int[] oppositeCells : BoardStructure.OPPOSITE_CORNER_CELLS) {
             if (cell == oppositeCells[0]) {
                 return oppositeCells[1];
             }
         }
-        return NO_CELL;
+        return BoardStructure.NO_CELL;
     }
 
     public int emptyOppositeCell(int cell) {
         int oppositeCell = oppositeCornerOf(cell);
         return (isEmpty(oppositeCell))
                     ? oppositeCell
-                    : NO_CELL;
+                    : BoardStructure.NO_CELL;
     }
 
     public int firstEmptyCell() {
-        return asList(marks).indexOf(EMPTY_CELL);
+        return asList(marks).indexOf(BoardStructure.EMPTY_CELL);
     }
 
     public Integer[] cornerMarksFor(Player player) {
         List<Integer> cornerMarks = new ArrayList<Integer>();
-        for (int cornerCell : CORNER_CELLS) {
+        for (int cornerCell : BoardStructure.CORNER_CELLS) {
             if (player.mark().equals(marks[cornerCell])) {
                 cornerMarks.add(cornerCell);
             }
@@ -58,11 +57,11 @@ public class Marks {
     }
 
     public boolean isFull() {
-        return stringRepresentation().replace(" ", "").trim().length() == ALL_CELLS.length;
+        return stringRepresentation().replace(" ", "").trim().length() == BoardStructure.ALL_CELLS.length;
     }
 
     public boolean isEmpty(int cell) {
-        return EMPTY_CELL.equals(marks[cell]);
+        return BoardStructure.EMPTY_CELL.equals(marks[cell]);
     }
 
     private String stringRepresentation() {
@@ -75,7 +74,7 @@ public class Marks {
 
     private boolean atLeastOneIsMarked(int... cells) {
         for (int cell : cells) {
-            if (!EMPTY_CELL.equals(marks[cell])) {
+            if (!BoardStructure.EMPTY_CELL.equals(marks[cell])) {
                 return true;
             }
         }

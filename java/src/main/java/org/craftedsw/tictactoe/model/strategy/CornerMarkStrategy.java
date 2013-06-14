@@ -3,7 +3,7 @@ package org.craftedsw.tictactoe.model.strategy;
 import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.model.game.Player;
 
-import static org.craftedsw.tictactoe.model.board.Board.NO_CELL;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class CornerMarkStrategy implements Strategy {
 

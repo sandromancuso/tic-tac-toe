@@ -4,7 +4,6 @@ import org.craftedsw.tictactoe.model.game.Player;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.craftedsw.tictactoe.model.board.Board.*;
 import static org.craftedsw.tictactoe.model.board.BoardLines.ROW_2;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
@@ -24,8 +23,8 @@ public class BoardLinesShould {
     @Test public void
     should_return_null_when_there_is_no_winning_line() {
         Marks marks = marks()
-                           .fromPlayerOneAt(CELL_1, CELL_5)
-                           .fromPlayerTwoAt(Board.CELL_4, Board.CELL_9)
+                           .fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_5)
+                           .fromPlayerTwoAt(BoardStructure.CELL_4, BoardStructure.CELL_9)
                            .build();
 
         assertThat(boardLines.winningLine(PLAYER_ONE, marks),  is(nullValue()));
@@ -34,8 +33,8 @@ public class BoardLinesShould {
     @Test public void
     should_return_a_winning_line() {
         Marks marks = marks()
-                            .fromPlayerOneAt(CELL_4, CELL_6)
-                            .fromPlayerTwoAt(CELL_1, CELL_7)
+                            .fromPlayerOneAt(BoardStructure.CELL_4, BoardStructure.CELL_6)
+                            .fromPlayerTwoAt(BoardStructure.CELL_1, BoardStructure.CELL_7)
                             .build();
 
         Line winningLine = boardLines.winningLine(PLAYER_ONE, marks);
@@ -46,8 +45,8 @@ public class BoardLinesShould {
     @Test public void
     should_return_a_loosing_line() {
         Marks marks = marks()
-                .fromPlayerOneAt(CELL_4, CELL_6)
-                .fromPlayerTwoAt(CELL_1, CELL_7)
+                .fromPlayerOneAt(BoardStructure.CELL_4, BoardStructure.CELL_6)
+                .fromPlayerTwoAt(BoardStructure.CELL_1, BoardStructure.CELL_7)
                 .build();
 //        String[] marks = new String[] {"0", " ", " ", "X", " ", "X", "0", " ", " "};
         Player opponent = PLAYER_ONE;

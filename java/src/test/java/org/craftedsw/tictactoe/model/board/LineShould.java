@@ -3,7 +3,6 @@ package org.craftedsw.tictactoe.model.board;
 import org.craftedsw.tictactoe.model.game.Player;
 import org.junit.Test;
 
-import static org.craftedsw.tictactoe.model.board.Board.*;
 import static org.craftedsw.tictactoe.model.board.BoardLines.*;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
@@ -15,8 +14,8 @@ public class LineShould {
     @Test public void
     should_inform_when_a_line_is_not_a_winning_line() {
         Marks marks = marks()
-                              .fromPlayerOneAt(CELL_1, CELL_2)
-                              .fromPlayerTwoAt(CELL_3, CELL_4)
+                              .fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_2)
+                              .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_4)
                               .build();
 
         assertThat(ROW_1.isWinningLine(PLAYER_ONE, marks), is(false));
@@ -29,8 +28,8 @@ public class LineShould {
     @Test public void
     should_inform_when_a_line_is_not_a_loosing_line() {
         Marks marks = marks()
-                              .fromPlayerOneAt(CELL_1, CELL_2)
-                              .fromPlayerTwoAt(CELL_3, CELL_4)
+                              .fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_2)
+                              .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_4)
                               .build();
 
         assertThat(ROW_1.isLoosingLine(PLAYER_ONE, marks), is(false));
@@ -43,8 +42,8 @@ public class LineShould {
     @Test public void
     should_inform_when_a_line_is_a_winning_line() {
         Marks marks = marks()
-                            .fromPlayerOneAt(CELL_1, CELL_5, CELL_6, CELL_7)
-                            .fromPlayerTwoAt(CELL_3, CELL_8, CELL_9)
+                            .fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_5, BoardStructure.CELL_6, BoardStructure.CELL_7)
+                            .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_8, BoardStructure.CELL_9)
                             .build();
 
         assertThat(DIAGONAL_1.isWinningLine(PLAYER_ONE, marks), is(false));
@@ -55,8 +54,8 @@ public class LineShould {
     @Test public void
     should_inform_when_a_line_is_a_loosing_line() {
         Marks marks = marks()
-                            .fromPlayerOneAt(CELL_1, CELL_5, CELL_6, CELL_7)
-                            .fromPlayerTwoAt(CELL_3, CELL_8, CELL_9)
+                            .fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_5, BoardStructure.CELL_6, BoardStructure.CELL_7)
+                            .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_8, BoardStructure.CELL_9)
                             .build();
 
         Player opponent = PLAYER_ONE;

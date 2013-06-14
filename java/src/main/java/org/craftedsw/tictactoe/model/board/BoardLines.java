@@ -5,20 +5,18 @@ import org.craftedsw.tictactoe.model.game.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.craftedsw.tictactoe.model.board.Board.*;
-
 public class BoardLines {
 
-    public static final Line ROW_1 = new Line(CELL_1, CELL_2, CELL_3);
-    public static final Line ROW_2 = new Line(CELL_4, CELL_5, CELL_6);
-    public static final Line ROW_3 = new Line(CELL_7, CELL_8, CELL_9);
+    public static final Line ROW_1 = new Line(BoardStructure.CELL_1, BoardStructure.CELL_2, BoardStructure.CELL_3);
+    public static final Line ROW_2 = new Line(BoardStructure.CELL_4, BoardStructure.CELL_5, BoardStructure.CELL_6);
+    public static final Line ROW_3 = new Line(BoardStructure.CELL_7, BoardStructure.CELL_8, BoardStructure.CELL_9);
 
-    public static final Line COLUMN_1 = new Line(CELL_1, CELL_4, CELL_7);
-    public static final Line COLUMN_2 = new Line(CELL_2, CELL_5, CELL_8);
-    public static final Line COLUMN_3 = new Line(CELL_3, CELL_6, CELL_9);
+    public static final Line COLUMN_1 = new Line(BoardStructure.CELL_1, BoardStructure.CELL_4, BoardStructure.CELL_7);
+    public static final Line COLUMN_2 = new Line(BoardStructure.CELL_2, BoardStructure.CELL_5, BoardStructure.CELL_8);
+    public static final Line COLUMN_3 = new Line(BoardStructure.CELL_3, BoardStructure.CELL_6, BoardStructure.CELL_9);
 
-    public static final Line DIAGONAL_1 = new Line(CELL_1, CELL_5, CELL_9);
-    public static final Line DIAGONAL_2 = new Line(CELL_3, CELL_5, CELL_7);
+    public static final Line DIAGONAL_1 = new Line(BoardStructure.CELL_1, BoardStructure.CELL_5, BoardStructure.CELL_9);
+    public static final Line DIAGONAL_2 = new Line(BoardStructure.CELL_3, BoardStructure.CELL_5, BoardStructure.CELL_7);
 
     private List<Line> boardLines = new ArrayList<Line>();
 

@@ -5,7 +5,7 @@ import org.craftedsw.tictactoe.model.strategy.*;
 
 import java.util.Iterator;
 
-import static org.craftedsw.tictactoe.model.board.Board.NO_CELL;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class Opponent {
 

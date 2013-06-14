@@ -6,7 +6,6 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import static org.craftedsw.tictactoe.model.board.Board.*;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
@@ -26,7 +25,7 @@ public class MarksShould {
 
     @Test public void
     should_inform_when_it_is_not_empty() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_1).build();
 
         assertThat(marks.isEmpty(), is(false));
     }
@@ -34,8 +33,8 @@ public class MarksShould {
     @Test public void
     should_inform_when_it_is_not_full() {
         Marks marks = marks()
-                        .fromPlayerOneAt(CELL_1)
-                        .fromPlayerTwoAt(CELL_9).build();
+                        .fromPlayerOneAt(BoardStructure.CELL_1)
+                        .fromPlayerTwoAt(BoardStructure.CELL_9).build();
 
         assertThat(marks.isFull(), is(false));
     }
@@ -43,8 +42,8 @@ public class MarksShould {
     @Test public void
     should_inform_when_it_is_full() {
         Marks marks = marks()
-                            .fromPlayerOneAt(CELL_1, CELL_2, CELL_3, CELL_4, CELL_5)
-                            .fromPlayerTwoAt(CELL_6, CELL_7, CELL_8, CELL_9)
+                            .fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_2, BoardStructure.CELL_3, BoardStructure.CELL_4, BoardStructure.CELL_5)
+                            .fromPlayerTwoAt(BoardStructure.CELL_6, BoardStructure.CELL_7, BoardStructure.CELL_8, BoardStructure.CELL_9)
                             .build();
 
         assertThat(marks.isFull(), is(true));
@@ -52,28 +51,28 @@ public class MarksShould {
 
     @Test public void
     should_inform_when_it_contains_more_than_one_mark() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_2).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_2).build();
 
         assertThat(marks.containsSingleMark(), is(false));
     }
 
     @Test public void
     should_inform_when_it_contains_a_single_mark() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_1).build();
 
         assertThat(marks.containsSingleMark(), is(true));
     }
 
     @Test public void
     should_inform_when_no_corners_are_marked() {
-        Marks marks = marks().fromPlayerOneAt(CELL_2).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_2).build();
 
         assertThat(marks.hasAnyCornerMarked(), is(false));
     }
 
     @Test public void
     should_inform_when_at_least_one_corner_is_marked() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_3, CELL_7, CELL_9).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_3, BoardStructure.CELL_7, BoardStructure.CELL_9).build();
 
         assertThat(marks.hasAnyCornerMarked(), is(true));
     }
@@ -81,10 +80,10 @@ public class MarksShould {
     @DataPoints
     public static int[][] oppositeCorners() {
         return new int[][] {
-                {CELL_1, CELL_9},
-                {CELL_9, CELL_1},
-                {CELL_3, CELL_7},
-                {CELL_7, CELL_3}
+                {BoardStructure.CELL_1, BoardStructure.CELL_9},
+                {BoardStructure.CELL_9, BoardStructure.CELL_1},
+                {BoardStructure.CELL_3, BoardStructure.CELL_7},
+                {BoardStructure.CELL_7, BoardStructure.CELL_3}
         };
     }
 
@@ -99,29 +98,29 @@ public class MarksShould {
 
     @Test public void
     should_return_no_empty_opposite_cell_when_already_marked() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_3, CELL_7, CELL_9).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_3, BoardStructure.CELL_7, BoardStructure.CELL_9).build();
 
-        assertThat(marks.emptyOppositeCell(CELL_1), is(NO_CELL));
+        assertThat(marks.emptyOppositeCell(BoardStructure.CELL_1), is(BoardStructure.NO_CELL));
     }
 
     @Test public void
     should_inform_which_is_the_first_empty_cell() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_2, CELL_7, CELL_9).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_2, BoardStructure.CELL_7, BoardStructure.CELL_9).build();
 
-        assertThat(marks.firstEmptyCell(), is(CELL_3));
+        assertThat(marks.firstEmptyCell(), is(BoardStructure.CELL_3));
     }
 
     @Test public void
     should_return_corner_cells_marked_by_player() {
         Marks marks = marks()
-                            .fromPlayerOneAt(CELL_1, CELL_2, CELL_7)
-                            .fromPlayerTwoAt(CELL_3, CELL_9)
+                            .fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_2, BoardStructure.CELL_7)
+                            .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_9)
                             .build();
 
         assertThat(marks.cornerMarksFor(PLAYER_ONE),
-                                            is(equalTo(new Integer[]{CELL_1, CELL_7})));;
+                                            is(equalTo(new Integer[]{BoardStructure.CELL_1, BoardStructure.CELL_7})));;
         assertThat(marks.cornerMarksFor(PLAYER_TWO),
-                                            is(equalTo(new Integer[]{CELL_3, CELL_9})));;
+                                            is(equalTo(new Integer[]{BoardStructure.CELL_3, BoardStructure.CELL_9})));;
 
     }
 
@@ -129,22 +128,22 @@ public class MarksShould {
     should_place_mark_at_a_specified_position() {
         Marks marks = marks().build();
 
-        marks.placeMarkAt(CELL_3, PLAYER_ONE.mark());
+        marks.placeMarkAt(BoardStructure.CELL_3, PLAYER_ONE.mark());
 
-        assertThat(marks.containsMarkAt(CELL_3, PLAYER_ONE.mark()), is(true));
+        assertThat(marks.containsMarkAt(BoardStructure.CELL_3, PLAYER_ONE.mark()), is(true));
     }
 
     @Test(expected = RuntimeException.class) public void
     should_throw_exception_when_mark_is_placed_on_a_marked_cell() {
-        Marks marks = marks().fromPlayerOneAt(CELL_2).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_2).build();
 
-        marks.placeMarkAt(CELL_2, PLAYER_ONE.mark());
+        marks.placeMarkAt(BoardStructure.CELL_2, PLAYER_ONE.mark());
     }
 
     @Test public void
     should_return_a_mark_at_specified_position() {
-        Marks marks = marks().fromPlayerOneAt(CELL_3).build();
+        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_3).build();
 
-        assertThat(marks.at(CELL_3), is(PLAYER_ONE.mark()));
+        assertThat(marks.at(BoardStructure.CELL_3), is(PLAYER_ONE.mark()));
     }
 }

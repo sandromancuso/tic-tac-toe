@@ -4,8 +4,8 @@ import org.craftedsw.tictactoe.model.game.Player;
 
 import static org.apache.commons.lang3.StringUtils.remove;
 import static org.apache.commons.lang3.StringUtils.repeat;
-import static org.craftedsw.tictactoe.model.board.Board.EMPTY_CELL;
-import static org.craftedsw.tictactoe.model.board.Board.NO_CELL;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.EMPTY_CELL;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class Line {
 

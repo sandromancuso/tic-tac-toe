@@ -4,8 +4,8 @@ import org.craftedsw.tictactoe.model.board.Marks;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.craftedsw.tictactoe.model.board.Board.CELL_1;
-import static org.craftedsw.tictactoe.model.board.Board.CELL_9;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_1;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_9;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
