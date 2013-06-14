@@ -8,9 +8,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
 
-public class InvincibleStrategiesShould {
+public class GameStrategiesShould {
 
-    private InvincibleStrategies invincibleStrategies = new InvincibleStrategies();
+    private GameStrategies gameStrategies = new GameStrategies();
 
     private Class[] strategies = new Class[] {
             WinStrategy.class,
@@ -23,7 +23,7 @@ public class InvincibleStrategiesShould {
     should_contain_strategies_in_a_specific_order() {
         Strategy strategy;
         int strategyIndex = 0;
-        Iterator<Strategy> strategiesIterator = invincibleStrategies.iterator();
+        Iterator<Strategy> strategiesIterator = gameStrategies.iterator();
         while (strategiesIterator.hasNext()) {
             strategy = strategiesIterator.next();
             assertThat(strategy, is(instanceOf(strategies[strategyIndex])));

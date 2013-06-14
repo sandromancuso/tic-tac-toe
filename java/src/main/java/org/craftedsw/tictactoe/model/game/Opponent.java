@@ -10,9 +10,9 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 public class Opponent {
 
     private Player player;
-    private InvincibleStrategies strategies;
+    private GameStrategies strategies;
 
-    public Opponent(Player player, InvincibleStrategies strategies) {
+    public Opponent(Player player, GameStrategies strategies) {
         this.player = player;
         this.strategies = strategies;
     }

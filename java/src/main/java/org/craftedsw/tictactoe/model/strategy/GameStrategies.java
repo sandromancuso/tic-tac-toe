@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class InvincibleStrategies implements Iterable<Strategy> {
+public class GameStrategies implements Iterable<Strategy> {
 
     private List<Strategy> strategies = new ArrayList<Strategy>();
 
-    public InvincibleStrategies() {
+    public GameStrategies() {
         strategies.add(new WinStrategy());
         strategies.add(new DefenceStrategy());
         strategies.add(new CornerMarkStrategy());

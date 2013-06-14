@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class OpponentShould {
 
-    @Mock private InvincibleStrategies strategies;
+    @Mock private GameStrategies strategies;
     @Mock private Iterator<Strategy> strategiesIterator;
     @Mock private WinStrategy winStrategy;
     @Mock private DefenceStrategy defenceStrategy;

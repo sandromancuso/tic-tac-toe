@@ -1,7 +1,7 @@
 package org.craftedsw.tictactoe.model.game;
 
 import org.craftedsw.tictactoe.model.board.Board;
-import org.craftedsw.tictactoe.model.strategy.InvincibleStrategies;
+import org.craftedsw.tictactoe.model.strategy.GameStrategies;
 import org.craftedsw.tictactoe.view.Console;
 
 import static org.craftedsw.tictactoe.view.BoardDisplay.ASK_FOR_NEXT_MARK;
@@ -62,7 +62,7 @@ public class TicTacToe {
         TicTacToe ticTacToe = new TicTacToe(new Console(), new Board());
 
         ticTacToe.newSinglePlayerGame(
-                new Opponent(PLAYER_ONE, new InvincibleStrategies()));
+                new Opponent(PLAYER_ONE, new GameStrategies()));
     }
 
 }

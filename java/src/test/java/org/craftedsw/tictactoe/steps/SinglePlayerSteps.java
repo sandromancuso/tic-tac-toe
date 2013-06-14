@@ -9,7 +9,7 @@ import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.model.game.Opponent;
 import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.model.game.TicTacToe;
-import org.craftedsw.tictactoe.model.strategy.InvincibleStrategies;
+import org.craftedsw.tictactoe.model.strategy.GameStrategies;
 import org.craftedsw.tictactoe.view.Console;
 
 import java.util.List;
@@ -89,10 +89,10 @@ public class SinglePlayerSteps {
     private class FakeOpponent extends Opponent {
 
         public FakeOpponent() {
-            this(PLAYER_ONE, new InvincibleStrategies());
+            this(PLAYER_ONE, new GameStrategies());
         }
 
-        public FakeOpponent(Player player, InvincibleStrategies strategies) {
+        public FakeOpponent(Player player, GameStrategies strategies) {
             super(player, strategies);
         }
 
