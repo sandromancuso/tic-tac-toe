@@ -43,7 +43,8 @@ public class Line {
     }
 
     public int firstEmptyCell(Marks marks) {
-        for (int cell : cells) {
+        int[] lineCells = new int[] {firstCell, secondCell, thirdCell};
+        for (int cell : lineCells) {
             if (marks.at(cell) == EMPTY_CELL) {
                 return cell;
             }
