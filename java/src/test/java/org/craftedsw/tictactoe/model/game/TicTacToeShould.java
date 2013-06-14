@@ -5,20 +5,15 @@ import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.view.Console;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InOrder;
 
-import static org.craftedsw.tictactoe.model.board.Board.ASK_FOR_NEXT_MARK;
-import static org.craftedsw.tictactoe.view.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.model.game.TicTacToe.CURRENT_BOARD_STATE_MESSAGE;
+import static org.craftedsw.tictactoe.view.BoardDisplay.ASK_FOR_NEXT_MARK;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
 import static org.mockito.Matchers.any;
 
 public class TicTacToeShould {
-
-    private static final int CELL_3 = 3;
 
     private Console console = mock(Console.class);
     private Opponent opponent = mock(Opponent.class);

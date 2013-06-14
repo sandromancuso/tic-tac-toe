@@ -4,7 +4,7 @@ import org.craftedsw.tictactoe.model.board.Board;
 import org.craftedsw.tictactoe.model.strategy.InvincibleStrategies;
 import org.craftedsw.tictactoe.view.Console;
 
-import static org.craftedsw.tictactoe.model.board.Board.ASK_FOR_NEXT_MARK;
+import static org.craftedsw.tictactoe.view.BoardDisplay.ASK_FOR_NEXT_MARK;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 import static org.craftedsw.tictactoe.view.BoardDisplay.CELL_INDEX_INSTRUCTIONS;

@@ -19,6 +19,7 @@ public class BoardDisplay {
                     " %s | %s | %s " + "\n" +
                     "---+---+---"    + "\n" +
                     " %s | %s | %s ";
+    public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
 
     public static String representation(Marks marks) {
         return format(EMPTY_BOARD, marks.asArray());

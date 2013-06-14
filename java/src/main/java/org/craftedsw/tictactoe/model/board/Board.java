@@ -13,9 +13,6 @@ public class Board {
 
     private Player currentPlayer = PLAYER_ONE;
 
-
-    public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
-
     public String representation() {
         return BoardDisplay.representation(marks);
     }
