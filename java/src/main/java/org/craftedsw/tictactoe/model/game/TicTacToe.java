@@ -11,7 +11,6 @@ import static org.craftedsw.tictactoe.view.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
 
 public class TicTacToe {
 
-    public static final String WINNER_IS = "Winner is: ";
     public final static String CURRENT_BOARD_STATE_MESSAGE = "Current state of the game: ";
     public final static String DRAW_MESSAGE = "It was a draw!!!";
     public static final String YOU_WIN = "You win!!!";
