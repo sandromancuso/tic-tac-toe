@@ -54,10 +54,6 @@ public class TicTacToe {
         return console.ask(ASK_FOR_NEXT_MARK) - 1;
     }
 
-    public String boardRepresentation() {
-        return board.representation();
-    }
-
     public static void main(String[] args) {
         TicTacToe ticTacToe = new TicTacToe(new Console(), new Board());
 
