@@ -7,21 +7,10 @@ import java.util.List;
 
 public class BoardLines {
 
-    public static final Line ROW_1 = new Line(BoardStructure.CELL_1, BoardStructure.CELL_2, BoardStructure.CELL_3);
-    public static final Line ROW_2 = new Line(BoardStructure.CELL_4, BoardStructure.CELL_5, BoardStructure.CELL_6);
-    public static final Line ROW_3 = new Line(BoardStructure.CELL_7, BoardStructure.CELL_8, BoardStructure.CELL_9);
-
-    public static final Line COLUMN_1 = new Line(BoardStructure.CELL_1, BoardStructure.CELL_4, BoardStructure.CELL_7);
-    public static final Line COLUMN_2 = new Line(BoardStructure.CELL_2, BoardStructure.CELL_5, BoardStructure.CELL_8);
-    public static final Line COLUMN_3 = new Line(BoardStructure.CELL_3, BoardStructure.CELL_6, BoardStructure.CELL_9);
-
-    public static final Line DIAGONAL_1 = new Line(BoardStructure.CELL_1, BoardStructure.CELL_5, BoardStructure.CELL_9);
-    public static final Line DIAGONAL_2 = new Line(BoardStructure.CELL_3, BoardStructure.CELL_5, BoardStructure.CELL_7);
-
     private List<Line> boardLines = new ArrayList<Line>();
 
     public BoardLines() {
-        add(ROW_1, ROW_2, ROW_3, COLUMN_1, COLUMN_2, COLUMN_3, DIAGONAL_1, DIAGONAL_2);
+        add(BoardStructure.ROW_1, BoardStructure.ROW_2, BoardStructure.ROW_3, BoardStructure.COLUMN_1, BoardStructure.COLUMN_2, BoardStructure.COLUMN_3, BoardStructure.DIAGONAL_1, BoardStructure.DIAGONAL_2);
     }
 
     private void add(Line... lines) {

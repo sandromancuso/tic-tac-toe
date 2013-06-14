@@ -3,7 +3,6 @@ package org.craftedsw.tictactoe.model.board;
 import org.craftedsw.tictactoe.model.game.Player;
 import org.junit.Test;
 
-import static org.craftedsw.tictactoe.model.board.BoardLines.*;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.CoreMatchers.is;
@@ -18,11 +17,11 @@ public class LineShould {
                               .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_4)
                               .build();
 
-        assertThat(ROW_1.isWinningLine(PLAYER_ONE, marks), is(false));
-        assertThat(ROW_2.isWinningLine(PLAYER_ONE, marks), is(false));
-        assertThat(ROW_3.isWinningLine(PLAYER_ONE, marks), is(false));
-        assertThat(COLUMN_1.isWinningLine(PLAYER_ONE, marks), is(false));
-        assertThat(COLUMN_2.isWinningLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.ROW_1.isWinningLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.ROW_2.isWinningLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.ROW_3.isWinningLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.COLUMN_1.isWinningLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.COLUMN_2.isWinningLine(PLAYER_ONE, marks), is(false));
     }
 
     @Test public void
@@ -32,11 +31,11 @@ public class LineShould {
                               .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_4)
                               .build();
 
-        assertThat(ROW_1.isLoosingLine(PLAYER_ONE, marks), is(false));
-        assertThat(ROW_2.isLoosingLine(PLAYER_ONE, marks), is(false));
-        assertThat(ROW_3.isLoosingLine(PLAYER_ONE, marks), is(false));
-        assertThat(COLUMN_1.isLoosingLine(PLAYER_ONE, marks), is(false));
-        assertThat(COLUMN_2.isLoosingLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.ROW_1.isLoosingLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.ROW_2.isLoosingLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.ROW_3.isLoosingLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.COLUMN_1.isLoosingLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.COLUMN_2.isLoosingLine(PLAYER_ONE, marks), is(false));
     }
 
     @Test public void
@@ -46,9 +45,9 @@ public class LineShould {
                             .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_8, BoardStructure.CELL_9)
                             .build();
 
-        assertThat(DIAGONAL_1.isWinningLine(PLAYER_ONE, marks), is(false));
-        assertThat(COLUMN_1.isWinningLine(PLAYER_ONE, marks), is(true));
-        assertThat(ROW_2.isWinningLine(PLAYER_ONE, marks), is(true));
+        assertThat(BoardStructure.DIAGONAL_1.isWinningLine(PLAYER_ONE, marks), is(false));
+        assertThat(BoardStructure.COLUMN_1.isWinningLine(PLAYER_ONE, marks), is(true));
+        assertThat(BoardStructure.ROW_2.isWinningLine(PLAYER_ONE, marks), is(true));
     }
 
     @Test public void
@@ -60,9 +59,9 @@ public class LineShould {
 
         Player opponent = PLAYER_ONE;
 
-        assertThat(DIAGONAL_1.isLoosingLine(opponent, marks), is(false));
-        assertThat(COLUMN_1.isLoosingLine(opponent, marks), is(true));
-        assertThat(ROW_2.isLoosingLine(opponent, marks), is(true));
+        assertThat(BoardStructure.DIAGONAL_1.isLoosingLine(opponent, marks), is(false));
+        assertThat(BoardStructure.COLUMN_1.isLoosingLine(opponent, marks), is(true));
+        assertThat(BoardStructure.ROW_2.isLoosingLine(opponent, marks), is(true));
     }
 
 }

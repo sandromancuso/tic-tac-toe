@@ -4,7 +4,7 @@ import org.craftedsw.tictactoe.model.game.Player;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.craftedsw.tictactoe.model.board.BoardLines.ROW_2;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.ROW_2;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.Matchers.*;
