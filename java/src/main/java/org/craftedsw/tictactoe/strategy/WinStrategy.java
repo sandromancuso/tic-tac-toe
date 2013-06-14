@@ -19,7 +19,6 @@ public class WinStrategy implements Strategy {
         if (winningLine != null) {
             cell =  winningLine.firstEmptyCell(marks.asArray());
         }
-        System.out.println("Win "+ player + " [" + cell + "]");
         return cell;
     }
 }

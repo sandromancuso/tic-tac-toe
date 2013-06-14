@@ -17,7 +17,6 @@ public class AttackStrategy implements Strategy {
         } else if (marks.containsSingleMark() && marks.hasAnyCornerMarked()) {
             cell = marks.emptyOppositeCell(CELL_1);
         }
-        System.out.println("Attack "+ player + " [" + cell + "]");
         return cell;
     }
 }

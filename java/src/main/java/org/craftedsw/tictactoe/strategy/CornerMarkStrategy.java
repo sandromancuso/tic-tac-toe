@@ -1,11 +1,8 @@
 package org.craftedsw.tictactoe.strategy;
 
-import org.craftedsw.tictactoe.Board;
 import org.craftedsw.tictactoe.Marks;
 import org.craftedsw.tictactoe.Player;
 
-import static org.craftedsw.tictactoe.Board.CELL_3;
-import static org.craftedsw.tictactoe.Board.CELL_9;
 import static org.craftedsw.tictactoe.Board.NO_CELL;
 
 public class CornerMarkStrategy implements Strategy {
@@ -20,9 +17,8 @@ public class CornerMarkStrategy implements Strategy {
     }
 
     private int cornerCellFor(Player player, Marks marks) {
-        Integer[] cornerMarks = marks.cornerMarksFor(player);
         int cell;
-        for (int corner : cornerMarks) {
+        for (int corner : marks.cornerMarksFor(player)) {
             if ((cell = marks.emptyOppositeCell(corner)) != NO_CELL) {
                 return cell;
             }
