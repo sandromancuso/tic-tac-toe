@@ -4,10 +4,9 @@ import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 import cucumber.table.DataTable;
-import org.craftedsw.tictactoe.Board;
-import org.craftedsw.tictactoe.Console;
-import org.craftedsw.tictactoe.Player;
-import org.craftedsw.tictactoe.TicTacToe;
+import org.craftedsw.tictactoe.model.board.Board;
+import org.craftedsw.tictactoe.view.Console;
+import org.craftedsw.tictactoe.model.game.TicTacToe;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,8 +14,8 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 import static com.jayway.awaitility.Awaitility.await;
-import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.TicTacToe.WINNER_IS;
+import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
+import static org.craftedsw.tictactoe.model.game.TicTacToe.WINNER_IS;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 

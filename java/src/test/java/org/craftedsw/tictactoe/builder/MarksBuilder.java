@@ -1,9 +1,9 @@
 package org.craftedsw.tictactoe.builder;
 
-import org.craftedsw.tictactoe.Marks;
+import org.craftedsw.tictactoe.model.board.Marks;
 
-import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.Player.PLAYER_TWO;
+import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
+import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 
 public class MarksBuilder {
 

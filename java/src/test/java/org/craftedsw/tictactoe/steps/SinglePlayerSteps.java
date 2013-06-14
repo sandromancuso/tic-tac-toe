@@ -4,17 +4,22 @@ import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 import cucumber.table.DataTable;
-import org.craftedsw.tictactoe.*;
-import org.craftedsw.tictactoe.strategy.InvincibleStrategies;
+import org.craftedsw.tictactoe.model.board.Board;
+import org.craftedsw.tictactoe.model.board.Marks;
+import org.craftedsw.tictactoe.model.game.Opponent;
+import org.craftedsw.tictactoe.model.game.Player;
+import org.craftedsw.tictactoe.model.game.TicTacToe;
+import org.craftedsw.tictactoe.model.strategy.InvincibleStrategies;
+import org.craftedsw.tictactoe.view.Console;
 
 import java.util.List;
 import java.util.concurrent.Callable;
 
 import static com.jayway.awaitility.Awaitility.await;
-import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.TicTacToe.YOU_WIN;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
+import static org.craftedsw.tictactoe.model.game.TicTacToe.YOU_WIN;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 public class SinglePlayerSteps {
 
@@ -84,7 +89,7 @@ public class SinglePlayerSteps {
     private class FakeOpponent extends Opponent {
 
         public FakeOpponent() {
-            this(PLAYER_ONE, new InvincibleStrategies(PLAYER_ONE));
+            this(PLAYER_ONE, new InvincibleStrategies());
         }
 
         public FakeOpponent(Player player, InvincibleStrategies strategies) {
