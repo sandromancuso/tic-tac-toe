@@ -12,7 +12,7 @@ public class DefenceStrategy implements Strategy {
         BoardLines boardLines = new BoardLines();
         Line loosingLine = boardLines.loosingLine(player.opponent(), marks);
         if (loosingLine != null) {
-            cell = loosingLine.firstEmptyCell(marks.asArray());
+            cell = loosingLine.firstEmptyCell(marks);
         }
         System.out.println("Defence "+ player + " [" + cell + "]");
         return cell;

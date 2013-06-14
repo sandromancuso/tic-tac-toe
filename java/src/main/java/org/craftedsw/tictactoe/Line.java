@@ -1,14 +1,11 @@
 package org.craftedsw.tictactoe;
 
-import org.apache.commons.lang3.StringUtils;
-
 import static org.apache.commons.lang3.StringUtils.remove;
 import static org.apache.commons.lang3.StringUtils.repeat;
 import static org.craftedsw.tictactoe.Board.EMPTY_CELL;
 
 public class Line {
 
-    private static final int NONE = -1;
     private final int firstCell;
     private final int secondCell;
     private final int thirdCell;
@@ -45,13 +42,13 @@ public class Line {
                 + marks.at(thirdCell);
     }
 
-    public int firstEmptyCell(String[] marks) {
+    public int firstEmptyCell(Marks marks) {
         for (int cell : cells) {
-            if (marks[cell] == EMPTY_CELL) {
+            if (marks.at(cell) == EMPTY_CELL) {
                 return cell;
             }
         }
-        return NONE;
+        return Board.NO_CELL;
     }
 
 }

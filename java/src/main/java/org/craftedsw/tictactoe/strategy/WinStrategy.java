@@ -17,7 +17,7 @@ public class WinStrategy implements Strategy {
         int cell = NO_CELL;
         Line winningLine = boardLines.winningLine(player, marks);
         if (winningLine != null) {
-            cell =  winningLine.firstEmptyCell(marks.asArray());
+            cell =  winningLine.firstEmptyCell(marks);
         }
         return cell;
     }

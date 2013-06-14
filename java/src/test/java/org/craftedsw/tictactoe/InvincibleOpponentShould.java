@@ -25,12 +25,12 @@ public class InvincibleOpponentShould {
     @Mock private DefenceStrategy defenceStrategy;
     @Mock private AttackStrategy attackStrategy;
 
-    private InvincibleOpponent opponent;
+    private Opponent opponent;
     private Marks marks = marks().build();
 
     @Before
     public void initialise() {
-        opponent = new InvincibleOpponent(PLAYER_ONE, strategies);
+        opponent = new Opponent(PLAYER_ONE, strategies);
         when(strategies.iterator()).thenReturn(strategiesIterator);
         when(strategiesIterator.next()).thenReturn(winStrategy, defenceStrategy, attackStrategy);
         when(strategiesIterator.hasNext()).thenReturn(true, true, true, false);

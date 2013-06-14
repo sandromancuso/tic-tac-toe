@@ -5,11 +5,13 @@ import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 import cucumber.table.DataTable;
 import org.craftedsw.tictactoe.*;
+import org.craftedsw.tictactoe.strategy.InvincibleStrategies;
 
 import java.util.List;
 import java.util.concurrent.Callable;
 
 import static com.jayway.awaitility.Awaitility.await;
+import static org.craftedsw.tictactoe.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.TicTacToe.YOU_WIN;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -79,7 +81,15 @@ public class SinglePlayerSteps {
         };
     }
 
-    private class FakeOpponent implements Opponent {
+    private class FakeOpponent extends Opponent {
+
+        public FakeOpponent() {
+            this(PLAYER_ONE, new InvincibleStrategies(PLAYER_ONE));
+        }
+
+        public FakeOpponent(Player player, InvincibleStrategies strategies) {
+            super(player, strategies);
+        }
 
         int index = 0;
 
