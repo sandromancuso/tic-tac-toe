@@ -40,9 +40,9 @@ public class BoardLines {
     }
 
 
-    public Line winningLine(Player player, String[] marks) {
+    public Line winningLine(Player player, Marks marks) {
         for (Line line : boardLines) {
-            if (line.isWinningLine(player, marks)) {
+            if (line.isWinningLine(player, marks.asArray())) {
                 return line;
             }
         }
@@ -50,9 +50,9 @@ public class BoardLines {
     }
 
 
-    public Line loosingLine(Player opponent, String[] marks) {
+    public Line loosingLine(Player opponent, Marks marks) {
         for (Line line : boardLines) {
-            if (line.isLoosingLine(opponent, marks)) {
+            if (line.isLoosingLine(opponent, marks.asArray())) {
                 return line;
             }
         }

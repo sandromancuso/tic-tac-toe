@@ -10,7 +10,7 @@ public class DefenceStrategy implements Strategy {
     public int nextCell(Player player, Marks marks) {
         int cell = NO_CELL;
         BoardLines boardLines = new BoardLines();
-        Line loosingLine = boardLines.loosingLine(player.opponent(), marks.asArray());
+        Line loosingLine = boardLines.loosingLine(player.opponent(), marks);
         if (loosingLine != null) {
             cell = loosingLine.firstEmptyCell(marks.asArray());
         }

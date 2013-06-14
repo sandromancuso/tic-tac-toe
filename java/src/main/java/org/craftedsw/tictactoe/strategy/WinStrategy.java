@@ -15,7 +15,7 @@ public class WinStrategy implements Strategy {
     @Override
     public int nextCell(Player player, Marks marks) {
         int cell = NO_CELL;
-        Line winningLine = boardLines.winningLine(player, marks.asArray());
+        Line winningLine = boardLines.winningLine(player, marks);
         if (winningLine != null) {
             cell =  winningLine.firstEmptyCell(marks.asArray());
         }
