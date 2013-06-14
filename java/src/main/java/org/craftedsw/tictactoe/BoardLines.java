@@ -42,7 +42,7 @@ public class BoardLines {
 
     public Line winningLine(Player player, Marks marks) {
         for (Line line : boardLines) {
-            if (line.isWinningLine(player, marks.asArray())) {
+            if (line.isWinningLine(player, marks)) {
                 return line;
             }
         }
@@ -52,7 +52,7 @@ public class BoardLines {
 
     public Line loosingLine(Player opponent, Marks marks) {
         for (Line line : boardLines) {
-            if (line.isLoosingLine(opponent, marks.asArray())) {
+            if (line.isLoosingLine(opponent, marks)) {
                 return line;
             }
         }

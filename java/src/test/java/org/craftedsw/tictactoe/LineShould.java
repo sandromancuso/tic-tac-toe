@@ -13,10 +13,10 @@ public class LineShould {
 
     @Test public void
     should_inform_when_a_line_is_not_a_winning_line() {
-        String[] marks = marks()
+        Marks marks = marks()
                               .fromPlayerOneAt(CELL_1, CELL_2)
                               .fromPlayerTwoAt(CELL_3, CELL_4)
-                              .buildAsArray();
+                              .build();
 
         assertThat(ROW_1.isWinningLine(PLAYER_ONE, marks), is(false));
         assertThat(ROW_2.isWinningLine(PLAYER_ONE, marks), is(false));
@@ -27,10 +27,10 @@ public class LineShould {
 
     @Test public void
     should_inform_when_a_line_is_not_a_loosing_line() {
-        String[] marks = marks()
+        Marks marks = marks()
                               .fromPlayerOneAt(CELL_1, CELL_2)
                               .fromPlayerTwoAt(CELL_3, CELL_4)
-                              .buildAsArray();
+                              .build();
 
         assertThat(ROW_1.isLoosingLine(PLAYER_ONE, marks), is(false));
         assertThat(ROW_2.isLoosingLine(PLAYER_ONE, marks), is(false));
@@ -41,10 +41,10 @@ public class LineShould {
 
     @Test public void
     should_inform_when_a_line_is_a_winning_line() {
-        String[] marks = marks()
+        Marks marks = marks()
                             .fromPlayerOneAt(CELL_1, CELL_5, CELL_6, CELL_7)
                             .fromPlayerTwoAt(CELL_3, CELL_8, CELL_9)
-                            .buildAsArray();
+                            .build();
 
         assertThat(DIAGONAL_1.isWinningLine(PLAYER_ONE, marks), is(false));
         assertThat(COLUMN_1.isWinningLine(PLAYER_ONE, marks), is(true));
@@ -53,10 +53,10 @@ public class LineShould {
 
     @Test public void
     should_inform_when_a_line_is_a_loosing_line() {
-        String[] marks = marks()
+        Marks marks = marks()
                             .fromPlayerOneAt(CELL_1, CELL_5, CELL_6, CELL_7)
                             .fromPlayerTwoAt(CELL_3, CELL_8, CELL_9)
-                            .buildAsArray();
+                            .build();
 
         Player opponent = PLAYER_ONE;
 

@@ -31,16 +31,18 @@ public class Line {
              && marks.at(secondCell).equals(marks.at(thirdCell));
     }
 
-    public boolean isWinningLine(Player player, String[] marks) {
+    public boolean isWinningLine(Player player, Marks marks) {
         return remove(lineAsString(marks), EMPTY_CELL).equals(repeat(player.mark(), 2));
     }
 
-    public boolean isLoosingLine(Player opponent, String[] marks) {
+    public boolean isLoosingLine(Player opponent, Marks marks) {
         return isWinningLine(opponent, marks);
     }
 
-    private String lineAsString(String[] marks) {
-        return marks[firstCell] + marks[secondCell] + marks[thirdCell];
+    private String lineAsString(Marks marks) {
+        return marks.at(firstCell)
+                + marks.at(secondCell)
+                + marks.at(thirdCell);
     }
 
     public int firstEmptyCell(String[] marks) {
