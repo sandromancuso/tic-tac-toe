@@ -3,6 +3,7 @@ package org.craftedsw.tictactoe;
 import static org.apache.commons.lang3.StringUtils.remove;
 import static org.apache.commons.lang3.StringUtils.repeat;
 import static org.craftedsw.tictactoe.Board.EMPTY_CELL;
+import static org.craftedsw.tictactoe.Board.NO_CELL;
 
 public class Line {
 
@@ -10,16 +11,10 @@ public class Line {
     private final int secondCell;
     private final int thirdCell;
 
-    private int cells[] = new int[3];
-
     public Line(int firstCell, int secondCell, int thirdCell) {
         this.firstCell = firstCell;
         this.secondCell = secondCell;
         this.thirdCell = thirdCell;
-
-        cells[0] = firstCell;
-        cells[1] = secondCell;
-        cells[2] = thirdCell;
     }
 
     public boolean isWinner(Marks marks) {
@@ -49,7 +44,7 @@ public class Line {
                 return cell;
             }
         }
-        return Board.NO_CELL;
+        return NO_CELL;
     }
 
 }
