@@ -8,7 +8,7 @@ import org.craftedsw.tictactoe.model.board.Board;
 import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.model.game.Opponent;
 import org.craftedsw.tictactoe.model.game.Player;
-import org.craftedsw.tictactoe.model.game.TicTacToe;
+import org.craftedsw.tictactoe.TicTacToe;
 import org.craftedsw.tictactoe.model.strategy.GameStrategies;
 import org.craftedsw.tictactoe.view.Console;
 
@@ -17,7 +17,7 @@ import java.util.concurrent.Callable;
 
 import static com.jayway.awaitility.Awaitility.await;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.model.game.TicTacToe.YOU_WIN;
+import static org.craftedsw.tictactoe.TicTacToe.YOU_WIN;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
