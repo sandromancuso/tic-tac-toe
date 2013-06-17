@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe;
 
 import org.craftedsw.tictactoe.controller.MainController;
+import org.craftedsw.tictactoe.view.ViewRenderer;
 
 public class TicTacToeWeb {
 

@@ -1,9 +1,6 @@
-package org.craftedsw.tictactoe;
+package org.craftedsw.tictactoe.view;
 
 import de.neuland.jade4j.Jade4J;
-import de.neuland.jade4j.JadeConfiguration;
-import de.neuland.jade4j.template.FileTemplateLoader;
-import de.neuland.jade4j.template.JadeTemplate;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
