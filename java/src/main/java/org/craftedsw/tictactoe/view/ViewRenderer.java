@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import static de.neuland.jade4j.Jade4J.getTemplate;
+import static org.apache.commons.io.FileUtils.listFiles;
 
 public class ViewRenderer {
 
@@ -30,10 +31,10 @@ public class ViewRenderer {
         File currentDirectory = new File(".");
         String[] jadeFiles = new String[] {"jade"};
         boolean recursive = true;
-        Collection<File> templates = FileUtils.listFiles(currentDirectory, jadeFiles, recursive);
+        Collection<File> templates = listFiles(currentDirectory, jadeFiles, recursive);
 
-        File indexPage = templates.iterator().next();
-        templateFolder = indexPage.getParent() + "/";
+        File aJadeFile = templates.iterator().next();
+        templateFolder = aJadeFile.getParent() + "/";
     }
 
 }
