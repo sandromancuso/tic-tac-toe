@@ -1,6 +1,8 @@
 package org.craftedsw.tictactoe;
 
 import de.neuland.jade4j.Jade4J;
+import de.neuland.jade4j.JadeConfiguration;
+import de.neuland.jade4j.template.FileTemplateLoader;
 import de.neuland.jade4j.template.JadeTemplate;
 import org.apache.commons.io.FileUtils;
 
@@ -20,14 +22,11 @@ public class ViewRenderer {
     }
 
     public String render(String templateName, Map<String, Object> model) {
-        JadeTemplate template;
         try {
-            template = getTemplate(templateFolder + templateName);
+            return Jade4J.render(getTemplate(templateFolder + templateName), model);
         } catch (IOException e) {
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return Jade4J.render(template, model);
     }
 
     private void findTemplateFolder() {
@@ -36,7 +35,7 @@ public class ViewRenderer {
         boolean recursive = true;
         Collection<File> templates = FileUtils.listFiles(currentDirectory, jadeFiles, recursive);
 
-        File indexPage = (File) templates.toArray()[0];
+        File indexPage = templates.iterator().next();
         templateFolder = indexPage.getParent() + "/";
     }
 
