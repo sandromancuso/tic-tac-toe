@@ -64,23 +64,6 @@ public class Marks {
         return BoardStructure.EMPTY_CELL.equals(marks[cell]);
     }
 
-    private String stringRepresentation() {
-        StringBuilder builder = new StringBuilder();
-        for (String mark : marks) {
-            builder.append(mark);
-        }
-        return builder.toString();
-    }
-
-    private boolean atLeastOneIsMarked(int... cells) {
-        for (int cell : cells) {
-            if (!BoardStructure.EMPTY_CELL.equals(marks[cell])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void placeMarkAt(int cell, String mark) {
         if (!isEmpty(cell)) {
             throw new RuntimeException("Cell already occupied [" + cell + "]");
@@ -100,4 +83,22 @@ public class Marks {
     public String[] asArray() {
         return marks;
     }
+
+    private String stringRepresentation() {
+        StringBuilder builder = new StringBuilder();
+        for (String mark : marks) {
+            builder.append(mark);
+        }
+        return builder.toString();
+    }
+
+    private boolean atLeastOneIsMarked(int... cells) {
+        for (int cell : cells) {
+            if (!BoardStructure.EMPTY_CELL.equals(marks[cell])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
