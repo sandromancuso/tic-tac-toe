@@ -6,6 +6,9 @@
 *.ear
 
 /.idea
+/scala/.idea
+/scala/*.iml
+/scala/target
 /java/target
 /java/.idea
 /java/*.iml
