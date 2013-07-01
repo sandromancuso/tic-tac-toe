@@ -18,7 +18,6 @@ public class BoardLines {
         return false;
     }
 
-
     public Line winningLine(Player player, Marks marks) {
         for (Line line : LINES) {
             if (line.isWinningLine(player, marks)) {
@@ -27,7 +26,6 @@ public class BoardLines {
         }
         return null;
     }
-
 
     public Line loosingLine(Player opponent, Marks marks) {
         for (Line line : LINES) {

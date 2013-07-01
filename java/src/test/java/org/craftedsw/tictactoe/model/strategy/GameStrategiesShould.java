@@ -15,6 +15,7 @@ public class GameStrategiesShould {
     private Class[] strategies = new Class[] {
             WinStrategy.class,
             DefenceStrategy.class,
+            AttackStrategy.class,
             CornerMarkStrategy.class,
             FirstEmptyCellStrategy.class
     };
