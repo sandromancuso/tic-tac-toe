@@ -29,6 +29,11 @@ public interface BoardStructure {
                                COLUMN_1, COLUMN_2, COLUMN_3,
                                DIAGONAL_1, DIAGONAL_2};
 
+    Line[] LINES_WITH_CORNERS = new Line[] {
+                                    DIAGONAL_1, DIAGONAL_2,
+                                    ROW_1, ROW_3,
+                                    COLUMN_1, COLUMN_3};
+
     int[][] OPPOSITE_CORNER_CELLS = new int[][] {
                                         {CELL_1, CELL_9},
                                         {CELL_9, CELL_1},

@@ -49,4 +49,19 @@ public class Line {
         return NO_CELL;
     }
 
+    // NEEDS UNIT TEST... JUST SPIKING TO SEE IF IT MAKES SENSE
+    public boolean hasSingleCornerMarkForPlayer(Player player, Marks marks) {
+        return lineAsString(marks).equals("  " + player.mark())
+                || lineAsString(marks).equals(player.mark() + "  ");
+    }
+
+    // NEEDS UNIT TEST... JUST SPIKING TO SEE IF IT MAKES SENSE
+    public int emptyEdge(Marks marks) {
+        return marks.at(firstCell).trim().isEmpty()
+                    ? firstCell
+                    : marks.at(thirdCell).trim().isEmpty()
+                        ? thirdCell
+                        : NO_CELL;
+
+    }
 }
