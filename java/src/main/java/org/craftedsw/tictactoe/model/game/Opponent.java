@@ -26,7 +26,6 @@ public class Opponent {
                 break;
             }
         }
-        System.out.println("Attack "+ player + " [" + NO_CELL + "]");
         return nextCell;
     }
 

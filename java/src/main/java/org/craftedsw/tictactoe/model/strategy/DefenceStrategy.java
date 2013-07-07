@@ -17,7 +17,6 @@ public class DefenceStrategy implements Strategy {
         if (loosingLine != null) {
             cell = loosingLine.firstEmptyCell(marks);
         }
-        System.out.println("Defence "+ player + " [" + cell + "]");
         return cell;
     }
 }

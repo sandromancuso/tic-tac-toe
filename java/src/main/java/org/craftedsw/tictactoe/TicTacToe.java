@@ -36,6 +36,7 @@ public class TicTacToe {
                 board.place(opponent.nextCell(board.marks()));
             }
             console.print(board.representation());
+            console.print(board.representation());
         }
         displayGameResult();
     }
