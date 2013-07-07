@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
 
+import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.view.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
 import static org.craftedsw.tictactoe.view.BoardDisplay.CURRENT_BOARD_STATE_MESSAGE;
@@ -44,7 +45,7 @@ public class BoardShould {
             "---+---+---" + "\n" +
             "   |   |   ";
 
-        board.placeMarkAt(BoardStructure.CELL_2);
+        board.placeMarkAt(CELL_2);
 
         verify(console).print(BOARD_WITH_X_ON_CELL_2);
     }
@@ -59,41 +60,41 @@ public class BoardShould {
             "---+---+---" + "\n" +
             " X |   | 0 ";
 
-        board.placeMarkAt(BoardStructure.CELL_1);
-        board.placeMarkAt(BoardStructure.CELL_5);
-        board.placeMarkAt(BoardStructure.CELL_2);
-        board.placeMarkAt(BoardStructure.CELL_3);
-        board.placeMarkAt(BoardStructure.CELL_7);
-        board.placeMarkAt(BoardStructure.CELL_9);
+        board.placeMarkAt(CELL_1);
+        board.placeMarkAt(CELL_5);
+        board.placeMarkAt(CELL_2);
+        board.placeMarkAt(CELL_3);
+        board.placeMarkAt(CELL_7);
+        board.placeMarkAt(CELL_9);
 
         verify(console).print(BOARD);
     }
 
     @Test public void
     inform_there_is_no_winner() {
-        board.placeMarkAt(BoardStructure.CELL_1);
+        board.placeMarkAt(CELL_1);
 
         assertThat(board.hasWinner(), is(false));
     }
 
     @Test public void
     inform_there_is_winner_when_same_mark_is_placed_on_top_row() {
-        board.placeMarkAt(BoardStructure.CELL_1); // X
-        board.placeMarkAt(BoardStructure.CELL_4); // 0
-        board.placeMarkAt(BoardStructure.CELL_2); // X
-        board.placeMarkAt(BoardStructure.CELL_5); // 0
-        board.placeMarkAt(BoardStructure.CELL_3); // X
+        board.placeMarkAt(CELL_1); // X
+        board.placeMarkAt(CELL_4); // 0
+        board.placeMarkAt(CELL_2); // X
+        board.placeMarkAt(CELL_5); // 0
+        board.placeMarkAt(CELL_3); // X
 
         assertThat(board.hasWinner(), is(true));
     }
 
     @Test public void
     inform_there_is_winner_when_same_mark_is_placed_on_middle_row() {
-        board.placeMarkAt(BoardStructure.CELL_4); // X
-        board.placeMarkAt(BoardStructure.CELL_1); // 0
-        board.placeMarkAt(BoardStructure.CELL_5); // X
-        board.placeMarkAt(BoardStructure.CELL_2); // 0
-        board.placeMarkAt(BoardStructure.CELL_6); // X
+        board.placeMarkAt(CELL_4); // X
+        board.placeMarkAt(CELL_1); // 0
+        board.placeMarkAt(CELL_5); // X
+        board.placeMarkAt(CELL_2); // 0
+        board.placeMarkAt(CELL_6); // X
 
         assertThat(board.hasWinner(), is(true));
         assertThat(board.winner(), is(PLAYER_ONE));
@@ -101,11 +102,11 @@ public class BoardShould {
 
     @Test public void
     inform_there_is_winner_when_same_mark_is_placed_on_first_column() {
-        board.placeMarkAt(BoardStructure.CELL_1); // X
-        board.placeMarkAt(BoardStructure.CELL_5); // 0
-        board.placeMarkAt(BoardStructure.CELL_4); // X
-        board.placeMarkAt(BoardStructure.CELL_2); // 0
-        board.placeMarkAt(BoardStructure.CELL_7); // X
+        board.placeMarkAt(CELL_1); // X
+        board.placeMarkAt(CELL_5); // 0
+        board.placeMarkAt(CELL_4); // X
+        board.placeMarkAt(CELL_2); // 0
+        board.placeMarkAt(CELL_7); // X
 
         assertThat(board.hasWinner(), is(true));
         assertThat(board.winner(), is(PLAYER_ONE));
@@ -113,13 +114,13 @@ public class BoardShould {
 
     @Test(expected = Exception.class) public void
     throw_exception_when_cell_is_placed_in_an_occupied_position() {
-        board.placeMarkAt(BoardStructure.CELL_1);
-        board.placeMarkAt(BoardStructure.CELL_1);
+        board.placeMarkAt(CELL_1);
+        board.placeMarkAt(CELL_1);
     }
 
     @Test public void
     inform_when_it_is_not_full() {
-        board.placeMarkAt(BoardStructure.CELL_1);
+        board.placeMarkAt(CELL_1);
 
         assertThat(board.isFull(), is(false));
     }
