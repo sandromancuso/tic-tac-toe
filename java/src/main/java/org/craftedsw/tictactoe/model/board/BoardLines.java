@@ -45,4 +45,13 @@ public class BoardLines {
         }
         return linesWithJustOneCornerMarked;
     }
+
+    public Player winner(Marks marks) {
+        for (Line line : LINES) {
+            if (line.isWinner(marks)) {
+                return Player.byMark(marks.at(line.firstCell));
+            }
+        }
+        return null;
+    }
 }

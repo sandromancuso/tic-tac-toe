@@ -53,4 +53,11 @@ public class MachinePlayerShould {
         assertThat(machinePlayer.nextCell(marks), is(CELL_4));
     }
 
+    @Test public void
+    inform_her_mark() {
+        machinePlayer = new MachinePlayer(PLAYER_ONE, strategies);
+
+        assertThat(machinePlayer.mark(), is(PLAYER_ONE.mark()));
+    }
+
 }

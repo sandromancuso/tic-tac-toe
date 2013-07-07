@@ -2,6 +2,7 @@ package org.craftedsw.tictactoe;
 
 import org.craftedsw.tictactoe.model.board.Board;
 import org.craftedsw.tictactoe.model.game.MachinePlayer;
+import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.model.strategy.GameStrategies;
 import org.craftedsw.tictactoe.view.Console;
 
@@ -23,25 +24,22 @@ public class TicTacToe {
         this.board = board;
     }
 
-    public void newSinglePlayerGame(MachinePlayer machinePlayer) {
+    public void newSinglePlayerGame() {
         board.newGame();
-        board.placeMarkAt(machinePlayer.nextCell(board.marks()));
-        while (!board.hasWinner() && !board.isFull()) {
+        while (!board.gameIsOver()) {
             board.placeMarkAt(playerNextCell());
-            if (!board.hasWinner()) {
-                board.placeMarkAt(machinePlayer.nextCell(board.marks()));
-            }
         }
         displayGameResult();
     }
 
     private void displayGameResult() {
-        if (board.hasWinner()) {
-            console.print(board.winner() == PLAYER_TWO
-                                ? YOU_WIN
-                                : YOU_LOSE);
-        } else {
+        Player winner = board.winner();
+        if (winner == null) {
             console.print(DRAW_MESSAGE);
+        } else {
+            console.print(winner == PLAYER_TWO
+                            ? YOU_WIN
+                            : YOU_LOSE);
         }
     }
 
@@ -51,10 +49,11 @@ public class TicTacToe {
 
     public static void main(String[] args) {
         Console console = new Console();
-        TicTacToe ticTacToe = new TicTacToe(console, new Board(console));
+        MachinePlayer machinePlayer = new MachinePlayer(PLAYER_ONE, new GameStrategies());
+        Player humanPlayer = PLAYER_TWO;
+        TicTacToe ticTacToe = new TicTacToe(console, new Board(console, machinePlayer, humanPlayer));
 
-        ticTacToe.newSinglePlayerGame(
-                new MachinePlayer(PLAYER_ONE, new GameStrategies()));
+        ticTacToe.newSinglePlayerGame();
     }
 
 }

@@ -29,4 +29,8 @@ public class MachinePlayer {
         return nextCell;
     }
 
+    public String mark() {
+        return player.mark();
+    }
+
 }

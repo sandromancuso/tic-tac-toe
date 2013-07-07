@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe.model.board;
 
 import org.craftedsw.tictactoe.model.game.Player;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
+import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -68,6 +70,36 @@ public class BoardLinesShould {
         assertThat(lines.size(), is(2));
         assertThat(lines.contains(ROW_1), is(true));
         assertThat(lines.contains(DIAGONAL_2), is(true));
+    }
+
+    @Test public void
+    inform_there_are_no_winners_when_no_player_marked_a_full_line() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_1, CELL_5)
+                            .fromPlayerTwoAt(CELL_2, CELL_3)
+                            .build();
+
+        assertThat(boardLines.winner(marks), is(nullValue()));
+    }
+
+    @Test public void
+    inform_player_one_is_the_winner_when_she_has_a_full_line_marked() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_1, CELL_5, CELL_9)
+                            .fromPlayerTwoAt(CELL_2, CELL_3)
+                            .build();
+
+        assertThat(boardLines.winner(marks), is(PLAYER_ONE));
+    }
+
+    @Test public void
+    inform_player_two_is_the_winner_when_she_has_a_full_line_marked() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_2, CELL_3)
+                            .fromPlayerTwoAt(CELL_1, CELL_5, CELL_9)
+                            .build();
+
+        assertThat(boardLines.winner(marks), is(PLAYER_TWO));
     }
 
 }

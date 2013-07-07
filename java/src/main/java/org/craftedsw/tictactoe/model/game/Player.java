@@ -20,4 +20,11 @@ public enum Player {
                         ? PLAYER_TWO
                         : PLAYER_ONE;
     }
+
+    public static Player byMark(String mark) {
+        for (Player player : Player.values()) {
+            if (player.mark.equals(mark)) return player;
+        }
+        return null;
+    }
 }

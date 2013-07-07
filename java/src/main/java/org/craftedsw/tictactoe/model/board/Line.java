@@ -9,9 +9,9 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class Line {
 
-    private final int firstCell;
-    private final int secondCell;
-    private final int thirdCell;
+    public final int firstCell;
+    public final int secondCell;
+    public final int thirdCell;
 
     public Line(int firstCell, int secondCell, int thirdCell) {
         this.firstCell = firstCell;
