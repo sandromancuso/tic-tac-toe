@@ -7,7 +7,6 @@ import org.craftedsw.tictactoe.model.game.Player;
 
 import java.util.List;
 
-import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_1;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class AttackStrategy implements Strategy {
@@ -18,7 +17,7 @@ public class AttackStrategy implements Strategy {
         int cell = NO_CELL;
         List<Line> lines = boardLines.linesWhereJustOneCornerIsSelectedBy(player, marks);
         if (!lines.isEmpty()) {
-            return lines.get(0).emptyEdge(marks);
+            return lines.get(0).emptyEdgeCell(marks);
         }
         return cell;
     }

@@ -4,12 +4,14 @@ import org.craftedsw.tictactoe.model.game.Player;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.craftedsw.tictactoe.model.board.BoardStructure.ROW_2;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
+import java.util.List;
+
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
+import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class BoardLinesShould {
 
@@ -21,20 +23,20 @@ public class BoardLinesShould {
     }
 
     @Test public void
-    should_return_null_when_there_is_no_winning_line() {
+    return_null_when_there_is_no_winning_line() {
         Marks marks = marks()
-                           .fromPlayerOneAt(BoardStructure.CELL_1, BoardStructure.CELL_5)
-                           .fromPlayerTwoAt(BoardStructure.CELL_4, BoardStructure.CELL_9)
+                           .fromPlayerOneAt(CELL_1, CELL_5)
+                           .fromPlayerTwoAt(CELL_4, CELL_9)
                            .build();
 
         assertThat(boardLines.winningLine(PLAYER_ONE, marks),  is(nullValue()));
     }
 
     @Test public void
-    should_return_a_winning_line() {
+    return_a_winning_line() {
         Marks marks = marks()
-                            .fromPlayerOneAt(BoardStructure.CELL_4, BoardStructure.CELL_6)
-                            .fromPlayerTwoAt(BoardStructure.CELL_1, BoardStructure.CELL_7)
+                            .fromPlayerOneAt(CELL_4, CELL_6)
+                            .fromPlayerTwoAt(CELL_1, CELL_7)
                             .build();
 
         Line winningLine = boardLines.winningLine(PLAYER_ONE, marks);
@@ -43,17 +45,29 @@ public class BoardLinesShould {
     }
 
     @Test public void
-    should_return_a_loosing_line() {
+    return_a_loosing_line() {
         Marks marks = marks()
-                .fromPlayerOneAt(BoardStructure.CELL_4, BoardStructure.CELL_6)
-                .fromPlayerTwoAt(BoardStructure.CELL_1, BoardStructure.CELL_7)
-                .build();
-//        String[] marks = new String[] {"0", " ", " ", "X", " ", "X", "0", " ", " "};
+                            .fromPlayerOneAt(CELL_4, CELL_6)
+                            .fromPlayerTwoAt(CELL_1, CELL_7)
+                            .build();
         Player opponent = PLAYER_ONE;
 
         Line winningLine = boardLines.loosingLine(opponent, marks);
 
         assertThat(winningLine, is(ROW_2));
+    }
+
+    @Test public void
+    return_lines_where_just_one_corner_is_selected() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_3, CELL_6)
+                            .build();
+
+        List<Line> lines = boardLines.linesWhereJustOneCornerIsSelectedBy(PLAYER_ONE, marks);
+
+        assertThat(lines.size(), is(2));
+        assertThat(lines.contains(ROW_1), is(true));
+        assertThat(lines.contains(DIAGONAL_2), is(true));
     }
 
 }

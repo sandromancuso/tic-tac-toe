@@ -36,7 +36,6 @@ public class BoardLines {
         return null;
     }
 
-    // NEEDS UNIT TEST... JUST SPIKING TO SEE IF IT MAKES SENSE
     public List<Line> linesWhereJustOneCornerIsSelectedBy(Player player, Marks marks) {
         List<Line> linesWithJustOneCornerMarked = new ArrayList<Line>();
         for (Line line : LINES_WITH_CORNERS) {
