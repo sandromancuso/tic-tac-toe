@@ -12,7 +12,6 @@ import static org.craftedsw.tictactoe.view.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
 
 public class TicTacToe {
 
-    public final static String CURRENT_BOARD_STATE_MESSAGE = "Current state of the game: ";
     public final static String DRAW_MESSAGE = "It was a draw!!!";
     public static final String YOU_WIN = "You win!!!";
     public static final String YOU_LOSE = "You LOSE!!!";
@@ -26,17 +25,13 @@ public class TicTacToe {
     }
 
     public void newSinglePlayerGame(Opponent opponent) {
-        console.print(CELL_INDEX_INSTRUCTIONS);
-        console.print(CURRENT_BOARD_STATE_MESSAGE);
+        board.newGame();
         board.place(opponent.nextCell(board.marks()));
-        console.print(board.representation());
         while (!board.hasWinner() && !board.isFull()) {
             board.place(playerNextCell());
             if (!board.hasWinner()) {
                 board.place(opponent.nextCell(board.marks()));
             }
-            console.print(board.representation());
-            console.print(board.representation());
         }
         displayGameResult();
     }
@@ -56,7 +51,8 @@ public class TicTacToe {
     }
 
     public static void main(String[] args) {
-        TicTacToe ticTacToe = new TicTacToe(new Console(), new Board());
+        Console console = new Console();
+        TicTacToe ticTacToe = new TicTacToe(console, new Board(console));
 
         ticTacToe.newSinglePlayerGame(
                 new Opponent(PLAYER_ONE, new GameStrategies()));

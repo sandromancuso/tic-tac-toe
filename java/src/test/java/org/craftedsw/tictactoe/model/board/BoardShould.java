@@ -1,35 +1,37 @@
 package org.craftedsw.tictactoe.model.board;
 
+import org.craftedsw.tictactoe.view.Console;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InOrder;
+import org.mockito.Mockito;
 
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.hamcrest.Matchers.*;
+import static org.craftedsw.tictactoe.view.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
+import static org.craftedsw.tictactoe.view.BoardDisplay.CURRENT_BOARD_STATE_MESSAGE;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class BoardShould {
 
     private Board board;
+    private Console console;
 
     @Before
     public void initialise() {
-        board = new Board();
+        console = mock(Console.class);
+        board = new Board(console);
     }
 
     @Test public void
-    display_empty_board_when_no_marks_are_placed() {
-        final String EMPTY_BOARD =
+    display_empty_board_when_new_game_starts() {
+        board.newGame();
 
-            "   |   |   " + "\n" +
-            "---+---+---" + "\n" +
-            "   |   |   " + "\n" +
-            "---+---+---" + "\n" +
-            "   |   |   ";
+        InOrder inOrder = Mockito.inOrder(console);
 
-        String representation = board.representation();
-
-        assertThat(representation, is(equalTo(EMPTY_BOARD)));
+        inOrder.verify(console).print(CELL_INDEX_INSTRUCTIONS);
+        inOrder.verify(console).print(CURRENT_BOARD_STATE_MESSAGE);
     }
 
     @Test public void
@@ -44,7 +46,7 @@ public class BoardShould {
 
         board.place(BoardStructure.CELL_2);
 
-        assertThat(board.representation(), is(equalTo(BOARD_WITH_X_ON_CELL_2)));
+        verify(console).print(BOARD_WITH_X_ON_CELL_2);
     }
 
     @Test public void
@@ -64,18 +66,18 @@ public class BoardShould {
         board.place(BoardStructure.CELL_7);
         board.place(BoardStructure.CELL_9);
 
-        assertThat(board.representation(), is(equalTo(BOARD)));
+        verify(console).print(BOARD);
     }
 
     @Test public void
-    informs_there_is_no_winner() {
+    inform_there_is_no_winner() {
         board.place(BoardStructure.CELL_1);
 
         assertThat(board.hasWinner(), is(false));
     }
 
     @Test public void
-    informs_there_is_winner_when_same_mark_is_placed_on_top_row() {
+    inform_there_is_winner_when_same_mark_is_placed_on_top_row() {
         board.place(BoardStructure.CELL_1); // X
         board.place(BoardStructure.CELL_4); // 0
         board.place(BoardStructure.CELL_2); // X
@@ -86,7 +88,7 @@ public class BoardShould {
     }
 
     @Test public void
-    informs_there_is_winner_when_same_mark_is_placed_on_middle_row() {
+    inform_there_is_winner_when_same_mark_is_placed_on_middle_row() {
         board.place(BoardStructure.CELL_4); // X
         board.place(BoardStructure.CELL_1); // 0
         board.place(BoardStructure.CELL_5); // X
@@ -98,7 +100,7 @@ public class BoardShould {
     }
 
     @Test public void
-    informs_there_is_winner_when_same_mark_is_placed_on_first_column() {
+    inform_there_is_winner_when_same_mark_is_placed_on_first_column() {
         board.place(BoardStructure.CELL_1); // X
         board.place(BoardStructure.CELL_5); // 0
         board.place(BoardStructure.CELL_4); // X
@@ -110,20 +112,20 @@ public class BoardShould {
     }
 
     @Test(expected = Exception.class) public void
-    should_throw_exception_when_cell_is_placed_in_an_occupied_position() {
+    throw_exception_when_cell_is_placed_in_an_occupied_position() {
         board.place(BoardStructure.CELL_1);
         board.place(BoardStructure.CELL_1);
     }
 
     @Test public void
-    should_inform_when_it_is_not_full() {
+    inform_when_it_is_not_full() {
         board.place(BoardStructure.CELL_1);
 
         assertThat(board.isFull(), is(false));
     }
 
     @Test public void
-    should_inform_when_it_is_full() {
+    inform_when_it_is_full() {
         for (int cell : BoardStructure.ALL_CELLS) {
             board.place(cell);
         }

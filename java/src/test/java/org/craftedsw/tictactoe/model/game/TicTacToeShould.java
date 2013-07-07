@@ -18,7 +18,7 @@ public class TicTacToeShould {
 
     private Console console = mock(Console.class);
     private Opponent opponent = mock(Opponent.class);
-    private Board board = spy(new Board());
+    private Board board = spy(new Board(console));
     private TicTacToe ticTacToe;
 
     @Before

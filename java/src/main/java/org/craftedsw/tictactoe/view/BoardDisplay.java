@@ -6,6 +6,8 @@ import static java.lang.String.format;
 
 public class BoardDisplay {
 
+    public final static String CURRENT_BOARD_STATE_MESSAGE = "Current state of the game: ";
+
     public static final String CELL_INDEX_INSTRUCTIONS =
                     " 1 | 2 | 3 " + "\n" +
                     "---+---+---" + "\n" +
