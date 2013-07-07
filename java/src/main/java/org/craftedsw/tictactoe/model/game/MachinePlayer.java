@@ -7,12 +7,12 @@ import java.util.Iterator;
 
 import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
-public class Opponent {
+public class MachinePlayer {
 
     private Player player;
     private GameStrategies strategies;
 
-    public Opponent(Player player, GameStrategies strategies) {
+    public MachinePlayer(Player player, GameStrategies strategies) {
         this.player = player;
         this.strategies = strategies;
     }
