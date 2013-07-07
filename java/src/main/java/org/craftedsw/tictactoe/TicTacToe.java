@@ -8,7 +8,6 @@ import org.craftedsw.tictactoe.view.Console;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 import static org.craftedsw.tictactoe.view.BoardDisplay.ASK_FOR_NEXT_MARK;
-import static org.craftedsw.tictactoe.view.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
 
 public class TicTacToe {
 
@@ -26,11 +25,11 @@ public class TicTacToe {
 
     public void newSinglePlayerGame(Opponent opponent) {
         board.newGame();
-        board.place(opponent.nextCell(board.marks()));
+        board.placeMarkAt(opponent.nextCell(board.marks()));
         while (!board.hasWinner() && !board.isFull()) {
-            board.place(playerNextCell());
+            board.placeMarkAt(playerNextCell());
             if (!board.hasWinner()) {
-                board.place(opponent.nextCell(board.marks()));
+                board.placeMarkAt(opponent.nextCell(board.marks()));
             }
         }
         displayGameResult();

@@ -31,7 +31,7 @@ public class Board {
         console.print(CURRENT_BOARD_STATE_MESSAGE);
     }
 
-    public void place(int cellToBeMarked) {
+    public void placeMarkAt(int cellToBeMarked) {
         marks.placeMarkAt(cellToBeMarked, currentPlayer.mark());
         console.print(representation(marks));
         if (!hasWinner()) {
