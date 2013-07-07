@@ -1,6 +1,6 @@
 package org.craftedsw.tictactoe;
 
-import org.craftedsw.tictactoe.model.board.Game;
+import org.craftedsw.tictactoe.model.game.Game;
 import org.craftedsw.tictactoe.model.game.MachinePlayer;
 import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.model.strategy.GameStrategies;

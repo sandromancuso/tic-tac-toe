@@ -1,5 +1,7 @@
-package org.craftedsw.tictactoe.model.board;
+package org.craftedsw.tictactoe.model.game;
 
+import org.craftedsw.tictactoe.model.board.Marks;
+import org.craftedsw.tictactoe.model.game.Game;
 import org.craftedsw.tictactoe.model.game.MachinePlayer;
 import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.view.BoardDisplay;
