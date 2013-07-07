@@ -2,7 +2,7 @@ package org.craftedsw.tictactoe.model.board;
 
 import org.craftedsw.tictactoe.model.game.MachinePlayer;
 import org.craftedsw.tictactoe.model.game.Player;
-import org.craftedsw.tictactoe.view.Console;
+import org.craftedsw.tictactoe.view.BoardDisplay;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +15,6 @@ import static java.util.Arrays.copyOfRange;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
-import static org.craftedsw.tictactoe.view.BoardDisplay.CELL_INDEX_INSTRUCTIONS;
-import static org.craftedsw.tictactoe.view.BoardDisplay.CURRENT_BOARD_STATE_MESSAGE;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -25,14 +23,14 @@ import static org.mockito.Mockito.*;
 public class BoardShould {
 
     private Board board;
-    @Mock private Console console;
+    @Mock private BoardDisplay boardDisplay;
     @Mock private MachinePlayer machinePlayer;
     private Player humanPlayer = PLAYER_TWO;
 
 
     @Before
     public void initialise() {
-        board = new Board(console, machinePlayer, humanPlayer);
+        board = new Board(boardDisplay, machinePlayer, humanPlayer);
         when(machinePlayer.mark()).thenReturn(PLAYER_ONE.mark());
     }
 
@@ -40,11 +38,11 @@ public class BoardShould {
     display_board_with_the_machine_player_mark_when_new_game_starts() {
         board.newGame();
 
-        InOrder inOrder = Mockito.inOrder(console, machinePlayer);
+        InOrder inOrder = Mockito.inOrder(boardDisplay, machinePlayer);
 
         inOrder.verify(machinePlayer).nextCell(any(Marks.class));
-        inOrder.verify(console).print(CELL_INDEX_INSTRUCTIONS);
-        inOrder.verify(console).print(CURRENT_BOARD_STATE_MESSAGE);
+        inOrder.verify(boardDisplay).displayGameInstructions();
+        inOrder.verify(boardDisplay).displayBoard(any(Marks.class));
     }
 
     @Test public void

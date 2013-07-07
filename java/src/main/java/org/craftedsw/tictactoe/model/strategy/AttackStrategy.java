@@ -14,11 +14,10 @@ public class AttackStrategy implements Strategy {
     @Override
     public int nextCell(Player player, Marks marks) {
         BoardLines boardLines = new BoardLines();
-        int cell = NO_CELL;
         List<Line> lines = boardLines.linesWhereJustOneCornerIsSelectedBy(player, marks);
         if (!lines.isEmpty()) {
             return lines.get(0).emptyEdgeCell(marks);
         }
-        return cell;
+        return NO_CELL;
     }
 }

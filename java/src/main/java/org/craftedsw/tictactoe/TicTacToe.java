@@ -4,6 +4,7 @@ import org.craftedsw.tictactoe.model.board.Board;
 import org.craftedsw.tictactoe.model.game.MachinePlayer;
 import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.model.strategy.GameStrategies;
+import org.craftedsw.tictactoe.view.BoardDisplay;
 import org.craftedsw.tictactoe.view.Console;
 
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
@@ -49,9 +50,11 @@ public class TicTacToe {
 
     public static void main(String[] args) {
         Console console = new Console();
+        BoardDisplay boardDisplay = new BoardDisplay(console);
         MachinePlayer machinePlayer = new MachinePlayer(PLAYER_ONE, new GameStrategies());
         Player humanPlayer = PLAYER_TWO;
-        TicTacToe ticTacToe = new TicTacToe(console, new Board(console, machinePlayer, humanPlayer));
+        Board board = new Board(boardDisplay, machinePlayer, humanPlayer);
+        TicTacToe ticTacToe = new TicTacToe(console, board);
 
         ticTacToe.newSinglePlayerGame();
     }

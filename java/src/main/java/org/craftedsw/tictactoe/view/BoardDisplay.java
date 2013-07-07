@@ -15,16 +15,31 @@ public class BoardDisplay {
                     "---+---+---" + "\n" +
                     " 7 | 8 | 9 ";
 
-    public static final String EMPTY_BOARD =
+    private static final String EMPTY_BOARD =
                     " %s | %s | %s " + "\n" +
                     "---+---+---"    + "\n" +
                     " %s | %s | %s " + "\n" +
                     "---+---+---"    + "\n" +
                     " %s | %s | %s ";
+
     public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
 
-    public static String representation(Marks marks) {
+    private final Console console;
+
+    public BoardDisplay(Console console) {
+        this.console = console;
+    }
+
+    public String representation(Marks marks) {
         return format(EMPTY_BOARD, marks.asArray());
     }
 
+    public void displayBoard(Marks marks) {
+
+    }
+
+    public void displayGameInstructions() {
+        console.print(CELL_INDEX_INSTRUCTIONS);
+        console.print(CURRENT_BOARD_STATE_MESSAGE);
+    }
 }
