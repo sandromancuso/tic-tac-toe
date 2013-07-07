@@ -16,7 +16,6 @@ public class GameStrategiesShould {
             WinStrategy.class,
             DefenceStrategy.class,
             AttackStrategy.class,
-//            CornerMarkStrategy.class,
             FirstEmptyCellStrategy.class
     };
 
