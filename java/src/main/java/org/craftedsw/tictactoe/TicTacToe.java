@@ -13,10 +13,6 @@ import static org.craftedsw.tictactoe.view.BoardDisplay.ASK_FOR_NEXT_MARK;
 
 public class TicTacToe {
 
-    public final static String DRAW_MESSAGE = "It was a draw!!!";
-    public static final String YOU_WIN = "You win!!!";
-    public static final String YOU_LOSE = "You LOSE!!!";
-
     private final Console console;
     private final Board board;
 
@@ -30,18 +26,7 @@ public class TicTacToe {
         while (!board.gameIsOver()) {
             board.placeMarkAt(playerNextCell());
         }
-        displayGameResult();
-    }
-
-    private void displayGameResult() {
-        Player winner = board.winner();
-        if (winner == null) {
-            console.print(DRAW_MESSAGE);
-        } else {
-            console.print(winner == PLAYER_TWO
-                            ? YOU_WIN
-                            : YOU_LOSE);
-        }
+        board.displayGameResult();
     }
 
     private int playerNextCell() {

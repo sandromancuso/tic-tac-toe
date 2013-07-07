@@ -1,10 +1,16 @@
 package org.craftedsw.tictactoe.view;
 
 import org.craftedsw.tictactoe.model.board.Marks;
+import org.craftedsw.tictactoe.model.game.Player;
 
 import static java.lang.String.format;
+import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 
 public class BoardDisplay {
+
+    public final static String DRAW_MESSAGE = "It was a draw!!!";
+    public static final String YOU_WIN = "You win!!!";
+    public static final String YOU_LOSE = "You LOSE!!!";
 
     public final static String CURRENT_BOARD_STATE_MESSAGE = "Current state of the game: ";
 
@@ -37,5 +43,15 @@ public class BoardDisplay {
     public void displayGameInstructions() {
         console.print(CELL_INDEX_INSTRUCTIONS);
         console.print(CURRENT_BOARD_STATE_MESSAGE);
+    }
+
+    public void displayGameResult(Player winner, Player humanPlayer) {
+        if (winner == null) {
+            console.print(DRAW_MESSAGE);
+        } else {
+            console.print(winner.equals(humanPlayer)
+                        ? YOU_WIN
+                        : YOU_LOSE);
+        }
     }
 }

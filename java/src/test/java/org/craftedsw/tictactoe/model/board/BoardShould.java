@@ -55,43 +55,6 @@ public class BoardShould {
         assertThat(board.gameIsOver(), is(false));
     }
 
-    @Test public void
-    inform_there_is_winner_when_top_row_is_fully_marked_by_player_one() {
-        machinePlayerWillMark(CELL_1, CELL_2, CELL_3);
-
-        board.newGame();
-        board.placeMarkAt(CELL_4);
-        board.placeMarkAt(CELL_5);
-
-        assertThat(board.winner(), is(PLAYER_ONE));
-    }
-
-    @Test public void
-    inform_there_is_winner_when_middle_row_is_fully_marked_by_player_one() {
-        machinePlayerWillMark(CELL_4, CELL_5, CELL_6);
-
-        board.newGame();
-
-        board.placeMarkAt(CELL_1);
-        board.placeMarkAt(CELL_3);
-        board.placeMarkAt(CELL_9);
-
-        assertThat(board.winner(), is(PLAYER_ONE));
-    }
-
-    @Test public void
-    inform_there_is_winner_when_first_column_is_fully_marked_by_player_two() {
-        machinePlayerWillMark(CELL_5, CELL_2, CELL_8);
-
-        board.newGame();
-
-        board.placeMarkAt(CELL_1);
-        board.placeMarkAt(CELL_4);
-        board.placeMarkAt(CELL_7);
-
-        assertThat(board.winner(), is(PLAYER_TWO));
-    }
-
     @Test(expected = Exception.class) public void
     throw_exception_when_cell_is_placed_in_an_occupied_position() {
         board.placeMarkAt(CELL_1);
@@ -111,6 +74,22 @@ public class BoardShould {
         board.placeMarkAt(CELL_9);
 
         assertThat(board.gameIsOver(), is(true));
+    }
+
+    @Test public void
+    display_the_game_result() {
+        Player WINNER = PLAYER_ONE;
+        Player HUMAN_PLAYER = PLAYER_TWO;
+        machinePlayerWillMark(CELL_1, CELL_2, CELL_3);
+
+        board.newGame();
+        board.placeMarkAt(CELL_4);
+        board.placeMarkAt(CELL_5);
+
+        board.displayGameResult();
+
+        verify(boardDisplay).displayGameResult(WINNER, HUMAN_PLAYER);
+
     }
 
     private void machinePlayerWillMark(Integer... cells){

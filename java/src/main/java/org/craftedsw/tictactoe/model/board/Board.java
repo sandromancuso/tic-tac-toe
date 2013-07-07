@@ -36,16 +36,17 @@ public class Board {
         boardDisplay.displayBoard(marks);
     }
 
-    private void placeMarkForMachinePlayer() {
-        marks.placeMarkAt(machinePlayer.nextCell(marks), machinePlayer.mark());
-    }
-
     public boolean gameIsOver() {
         return hasWinner() || isFull();
     }
 
-    public Player winner() {
-        return boardLines.winner(marks);
+    public void displayGameResult() {
+        Player winner = boardLines.winner(marks);
+        boardDisplay.displayGameResult(winner, humanPlayer);
+    }
+
+    private void placeMarkForMachinePlayer() {
+        marks.placeMarkAt(machinePlayer.nextCell(marks), machinePlayer.mark());
     }
 
     private boolean hasWinner() {
@@ -55,4 +56,5 @@ public class Board {
     private boolean isFull() {
         return marks.isFull();
     }
+
 }
