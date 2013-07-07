@@ -30,12 +30,8 @@ public class BoardDisplay {
         this.console = console;
     }
 
-    public String representation(Marks marks) {
-        return format(EMPTY_BOARD, marks.asArray());
-    }
-
     public void displayBoard(Marks marks) {
-
+        console.print(format(EMPTY_BOARD, marks.asArray()));
     }
 
     public void displayGameInstructions() {
