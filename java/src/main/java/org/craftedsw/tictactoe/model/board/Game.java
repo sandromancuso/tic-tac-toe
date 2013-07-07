@@ -7,7 +7,7 @@ import org.craftedsw.tictactoe.view.BoardDisplay;
 import static java.util.Arrays.copyOf;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.EMPTY_BOARD;
 
-public class Board {
+public class Game {
 
     private final BoardDisplay boardDisplay;
     private Marks marks = new Marks(copyOf(EMPTY_BOARD, EMPTY_BOARD.length));
@@ -16,7 +16,7 @@ public class Board {
     private Player humanPlayer;
     private MachinePlayer machinePlayer;
 
-    public Board(BoardDisplay boardDisplay, MachinePlayer machinePlayer, Player humanPlayer) {
+    public Game(BoardDisplay boardDisplay, MachinePlayer machinePlayer, Player humanPlayer) {
         this.boardDisplay = boardDisplay;
         this.machinePlayer = machinePlayer;
         this.humanPlayer = humanPlayer;
@@ -30,13 +30,13 @@ public class Board {
 
     public void placeMarkAt(int cellToBeMarked) {
         marks.placeMarkAt(cellToBeMarked, humanPlayer.mark());
-        if (!gameIsOver()) {
+        if (!isOver()) {
             placeMarkForMachinePlayer();
         }
         boardDisplay.displayBoard(marks);
     }
 
-    public boolean gameIsOver() {
+    public boolean isOver() {
         return hasWinner() || isFull();
     }
 

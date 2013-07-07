@@ -20,9 +20,9 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class BoardShould {
+public class GameShould {
 
-    private Board board;
+    private Game game;
     @Mock private BoardDisplay boardDisplay;
     @Mock private MachinePlayer machinePlayer;
     private Player humanPlayer = PLAYER_TWO;
@@ -30,13 +30,13 @@ public class BoardShould {
 
     @Before
     public void initialise() {
-        board = new Board(boardDisplay, machinePlayer, humanPlayer);
+        game = new Game(boardDisplay, machinePlayer, humanPlayer);
         when(machinePlayer.mark()).thenReturn(PLAYER_ONE.mark());
     }
 
     @Test public void
     display_board_with_the_machine_player_mark_when_new_game_starts() {
-        board.newGame();
+        game.newGame();
 
         InOrder inOrder = Mockito.inOrder(boardDisplay, machinePlayer);
 
@@ -49,16 +49,16 @@ public class BoardShould {
     inform_game_is_not_over_when_there_is_no_winner_and_board_is_not_full() {
         machinePlayerWillMark(CELL_1, CELL_3);
 
-        board.newGame();
-        board.placeMarkAt(CELL_2);
+        game.newGame();
+        game.placeMarkAt(CELL_2);
 
-        assertThat(board.gameIsOver(), is(false));
+        assertThat(game.isOver(), is(false));
     }
 
     @Test(expected = Exception.class) public void
     throw_exception_when_cell_is_placed_in_an_occupied_position() {
-        board.placeMarkAt(CELL_1);
-        board.placeMarkAt(CELL_1);
+        game.placeMarkAt(CELL_1);
+        game.placeMarkAt(CELL_1);
     }
 
 
@@ -66,14 +66,14 @@ public class BoardShould {
     inform_that_game_is_over_when_all_cells_are_marked() {
         machinePlayerWillMark(CELL_1, CELL_2, CELL_5, CELL_6, CELL_7);
 
-        board.newGame();
+        game.newGame();
 
-        board.placeMarkAt(CELL_3);
-        board.placeMarkAt(CELL_4);
-        board.placeMarkAt(CELL_8);
-        board.placeMarkAt(CELL_9);
+        game.placeMarkAt(CELL_3);
+        game.placeMarkAt(CELL_4);
+        game.placeMarkAt(CELL_8);
+        game.placeMarkAt(CELL_9);
 
-        assertThat(board.gameIsOver(), is(true));
+        assertThat(game.isOver(), is(true));
     }
 
     @Test public void
@@ -82,11 +82,11 @@ public class BoardShould {
         Player HUMAN_PLAYER = PLAYER_TWO;
         machinePlayerWillMark(CELL_1, CELL_2, CELL_3);
 
-        board.newGame();
-        board.placeMarkAt(CELL_4);
-        board.placeMarkAt(CELL_5);
+        game.newGame();
+        game.placeMarkAt(CELL_4);
+        game.placeMarkAt(CELL_5);
 
-        board.displayGameResult();
+        game.displayGameResult();
 
         verify(boardDisplay).displayGameResult(WINNER, HUMAN_PLAYER);
 
