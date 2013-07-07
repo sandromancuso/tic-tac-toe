@@ -127,7 +127,7 @@ public class BoardShould {
 
     @Test public void
     inform_when_it_is_full() {
-        for (int cell : BoardStructure.ALL_CELLS) {
+        for (int cell : ALL_CELLS) {
             board.placeMarkAt(cell);
         }
 
