@@ -29,7 +29,7 @@ public class Game {
         boardDisplay.displayBoard(marks);
     }
 
-    public void placeMarkAt() {
+    public void nextMove() {
         humanPlayer.placeMark(marks);
         if (!isOver()) {
             machinePlayer.placeMark(marks);

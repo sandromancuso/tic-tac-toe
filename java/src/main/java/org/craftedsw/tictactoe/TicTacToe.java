@@ -3,14 +3,12 @@ package org.craftedsw.tictactoe;
 import org.craftedsw.tictactoe.model.game.Game;
 import org.craftedsw.tictactoe.model.game.HumanPlayer;
 import org.craftedsw.tictactoe.model.game.MachinePlayer;
-import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.model.strategy.GameStrategies;
 import org.craftedsw.tictactoe.view.BoardDisplay;
 import org.craftedsw.tictactoe.view.Console;
 
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
-import static org.craftedsw.tictactoe.view.BoardDisplay.ASK_FOR_NEXT_MARK;
 
 public class TicTacToe {
 
@@ -25,7 +23,7 @@ public class TicTacToe {
     public void newSinglePlayerGame() {
         game.newGame();
         while (!game.isOver()) {
-            game.placeMarkAt();
+            game.nextMove();
         }
         game.displayGameResult();
     }
