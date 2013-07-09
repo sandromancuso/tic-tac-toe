@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe.view;
 
 import org.craftedsw.tictactoe.model.board.Marks;
+import org.craftedsw.tictactoe.model.game.HumanPlayer;
 import org.craftedsw.tictactoe.model.game.Player;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,10 +20,11 @@ import static org.mockito.Mockito.*;
 public class BoardDisplayShould {
 
     private static final Player NO_WINNER = null;
-    private static final Player HUMAN_PLAYER = PLAYER_TWO;
     private static final Player MACHINE_PLAYER = PLAYER_ONE;
+    private static final Player HUMAN_PLAYER = PLAYER_TWO;
 
     @Mock private Console console;
+    private final HumanPlayer humanPlayer = new HumanPlayer(console, PLAYER_TWO);
 
     private BoardDisplay boardDisplay;
 
@@ -59,27 +61,18 @@ public class BoardDisplayShould {
 
     @Test public void
     inform_it_was_a_draw() {
-        boardDisplay.displayGameResult(NO_WINNER, HUMAN_PLAYER);
+        boardDisplay.displayGameResult(NO_WINNER);
 
         verify(console).print(DRAW_MESSAGE);
     }
 
     @Test public void
     inform_that_human_player_has_won() {
-        Player WINNER = HUMAN_PLAYER;
+        Player WINNER = PLAYER_TWO;
 
-        boardDisplay.displayGameResult(WINNER, HUMAN_PLAYER);
+        boardDisplay.displayGameResult(WINNER);
 
-        verify(console).print(YOU_WIN);
-    }
-
-    @Test public void
-    inform_that_human_player_has_lost() {
-        Player WINNER = MACHINE_PLAYER;
-
-        boardDisplay.displayGameResult(WINNER, HUMAN_PLAYER);
-
-        verify(console).print(YOU_LOSE);
+        verify(console).print("PLAYER_TWO wins!!!");
     }
 
 }

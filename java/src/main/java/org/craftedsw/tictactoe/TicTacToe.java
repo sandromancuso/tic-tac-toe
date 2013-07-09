@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe;
 
 import org.craftedsw.tictactoe.model.game.Game;
+import org.craftedsw.tictactoe.model.game.HumanPlayer;
 import org.craftedsw.tictactoe.model.game.MachinePlayer;
 import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.model.strategy.GameStrategies;
@@ -24,20 +25,16 @@ public class TicTacToe {
     public void newSinglePlayerGame() {
         game.newGame();
         while (!game.isOver()) {
-            game.placeMarkAt(playerNextCell());
+            game.placeMarkAt();
         }
         game.displayGameResult();
-    }
-
-    private int playerNextCell() {
-        return console.ask(ASK_FOR_NEXT_MARK) - 1;
     }
 
     public static void main(String[] args) {
         Console console = new Console();
         BoardDisplay boardDisplay = new BoardDisplay(console);
         MachinePlayer machinePlayer = new MachinePlayer(PLAYER_ONE, new GameStrategies());
-        Player humanPlayer = PLAYER_TWO;
+        HumanPlayer humanPlayer = new HumanPlayer(console, PLAYER_TWO);
         Game game = new Game(boardDisplay, machinePlayer, humanPlayer);
 
         TicTacToe ticTacToe = new TicTacToe(console, game);

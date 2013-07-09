@@ -10,7 +10,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Iterator;
 
-import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
 import static org.hamcrest.CoreMatchers.is;
@@ -25,9 +24,9 @@ public class MachinePlayerShould {
     @Mock private WinStrategy winStrategy;
     @Mock private DefenceStrategy defenceStrategy;
     @Mock private AttackStrategy attackStrategy;
+    @Mock private Marks marks;
 
     private MachinePlayer machinePlayer;
-    private Marks marks = marks().build();
 
     @Before
     public void initialise() {
@@ -38,10 +37,12 @@ public class MachinePlayerShould {
     }
 
     @Test public void
-    return_same_cell_returned_by_first_strategy_if_different_from_no_cell() {
+    place_a_mark_returned_by_first_strategy_when_different_from_no_cell() {
         when(winStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(CELL_3);
 
-        assertThat(machinePlayer.nextCell(marks), is(CELL_3));
+        machinePlayer.placeMark(marks);
+
+        verify(marks).placeMarkAt(CELL_3, PLAYER_ONE.mark());
     }
 
     @Test public void
@@ -50,7 +51,9 @@ public class MachinePlayerShould {
         when(defenceStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(NO_CELL);
         when(attackStrategy.nextCell(PLAYER_ONE, marks)).thenReturn(CELL_4);
 
-        assertThat(machinePlayer.nextCell(marks), is(CELL_4));
+        machinePlayer.placeMark(marks);
+
+        verify(marks).placeMarkAt(CELL_4, PLAYER_ONE.mark());
     }
 
     @Test public void

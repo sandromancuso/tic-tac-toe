@@ -17,16 +17,16 @@ public class MachinePlayer {
         this.strategies = strategies;
     }
 
-    public int nextCell(Marks marks) {
-        int nextCell = NO_CELL;
+    public void placeMark(Marks marks) {
+        int cell = NO_CELL;
         Iterator<Strategy> iterator = strategies.iterator();
         while (iterator.hasNext()) {
-            nextCell = iterator.next().nextCell(player, marks);
-            if (nextCell != NO_CELL) {
+            cell = iterator.next().nextCell(player, marks);
+            if (cell != NO_CELL) {
                 break;
             }
         }
-        return nextCell;
+        marks.placeMarkAt(cell, player.mark());
     }
 
     public String mark() {

@@ -10,28 +10,29 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.EMPTY_BOARD;
 public class Game {
 
     private final BoardDisplay boardDisplay;
-    private Marks marks = new Marks(copyOf(EMPTY_BOARD, EMPTY_BOARD.length));
-    private BoardLines boardLines = new BoardLines();
+    private Marks marks = initialiseMarks();
 
-    private Player humanPlayer;
+    private BoardLines boardLines = newBoardLines();
+
+    private HumanPlayer humanPlayer;
     private MachinePlayer machinePlayer;
 
-    public Game(BoardDisplay boardDisplay, MachinePlayer machinePlayer, Player humanPlayer) {
+    public Game(BoardDisplay boardDisplay, MachinePlayer machinePlayer, HumanPlayer humanPlayer) {
         this.boardDisplay = boardDisplay;
         this.machinePlayer = machinePlayer;
         this.humanPlayer = humanPlayer;
     }
 
     public void newGame() {
-        placeMarkForMachinePlayer();
+        machinePlayer.placeMark(marks);
         boardDisplay.displayGameInstructions();
         boardDisplay.displayBoard(marks);
     }
 
-    public void placeMarkAt(int cellToBeMarked) {
-        marks.placeMarkAt(cellToBeMarked, humanPlayer.mark());
+    public void placeMarkAt() {
+        humanPlayer.placeMark(marks);
         if (!isOver()) {
-            placeMarkForMachinePlayer();
+            machinePlayer.placeMark(marks);
         }
         boardDisplay.displayBoard(marks);
     }
@@ -42,11 +43,7 @@ public class Game {
 
     public void displayGameResult() {
         Player winner = boardLines.winner(marks);
-        boardDisplay.displayGameResult(winner, humanPlayer);
-    }
-
-    private void placeMarkForMachinePlayer() {
-        marks.placeMarkAt(machinePlayer.nextCell(marks), machinePlayer.mark());
+        boardDisplay.displayGameResult(winner);
     }
 
     private boolean hasWinner() {
@@ -55,6 +52,14 @@ public class Game {
 
     private boolean isFull() {
         return marks.isFull();
+    }
+
+    protected Marks initialiseMarks() {
+        return new Marks(copyOf(EMPTY_BOARD, EMPTY_BOARD.length));
+    }
+
+    protected BoardLines newBoardLines() {
+        return new BoardLines();
     }
 
 }

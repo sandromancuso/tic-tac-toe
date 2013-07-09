@@ -1,7 +1,9 @@
 package org.craftedsw.tictactoe.model.game;
 
+import org.craftedsw.tictactoe.model.board.BoardLines;
 import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.view.BoardDisplay;
+import org.craftedsw.tictactoe.view.Console;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,10 +12,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static java.util.Arrays.copyOfRange;
-import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
+import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -22,14 +22,18 @@ import static org.mockito.Mockito.*;
 public class GameShould {
 
     private Game game;
+    @Mock private Console console;
     @Mock private BoardDisplay boardDisplay;
     @Mock private MachinePlayer machinePlayer;
-    private Player humanPlayer = PLAYER_TWO;
+    @Mock private HumanPlayer humanPlayer;
+    @Mock private BoardLines boardLines;
+    private Marks marks;
 
 
     @Before
     public void initialise() {
-        game = new Game(boardDisplay, machinePlayer, humanPlayer);
+        marks = spy(marks().build());
+        game = new TestableGame(boardDisplay, machinePlayer, humanPlayer);
         when(machinePlayer.mark()).thenReturn(PLAYER_ONE.mark());
     }
 
@@ -39,62 +43,50 @@ public class GameShould {
 
         InOrder inOrder = Mockito.inOrder(boardDisplay, machinePlayer);
 
-        inOrder.verify(machinePlayer).nextCell(any(Marks.class));
+        inOrder.verify(machinePlayer).placeMark(any(Marks.class));
         inOrder.verify(boardDisplay).displayGameInstructions();
         inOrder.verify(boardDisplay).displayBoard(any(Marks.class));
     }
 
     @Test public void
     inform_game_is_not_over_when_there_is_no_winner_and_board_is_not_full() {
-        machinePlayerWillMark(CELL_1, CELL_3);
-
-        game.newGame();
-        game.placeMarkAt(CELL_2);
+        when(boardLines.hasWinnerLine(marks)).thenReturn(false);
+        when(marks.isFull()).thenReturn(false);
 
         assertThat(game.isOver(), is(false));
     }
 
-    @Test(expected = Exception.class) public void
-    throw_exception_when_cell_is_placed_in_an_occupied_position() {
-        game.placeMarkAt(CELL_1);
-        game.placeMarkAt(CELL_1);
-    }
-
-
     @Test public void
-    inform_that_game_is_over_when_all_cells_are_marked() {
-        machinePlayerWillMark(CELL_1, CELL_2, CELL_5, CELL_6, CELL_7);
-
-        game.newGame();
-
-        game.placeMarkAt(CELL_3);
-        game.placeMarkAt(CELL_4);
-        game.placeMarkAt(CELL_8);
-        game.placeMarkAt(CELL_9);
+    terminate_when_all_cells_have_marks() {
+        when(marks.isFull()).thenReturn(true);
 
         assertThat(game.isOver(), is(true));
     }
 
     @Test public void
     display_the_game_result() {
-        Player WINNER = PLAYER_ONE;
-        Player HUMAN_PLAYER = PLAYER_TWO;
-        machinePlayerWillMark(CELL_1, CELL_2, CELL_3);
-
-        game.newGame();
-        game.placeMarkAt(CELL_4);
-        game.placeMarkAt(CELL_5);
+        when(boardLines.winner(marks)).thenReturn(PLAYER_ONE);
 
         game.displayGameResult();
 
-        verify(boardDisplay).displayGameResult(WINNER, HUMAN_PLAYER);
+        verify(boardDisplay).displayGameResult(PLAYER_ONE);
 
     }
 
-    private void machinePlayerWillMark(Integer... cells){
-        when(machinePlayer.nextCell(any(Marks.class)))
-                .thenReturn(cells[0], copyOfRange(cells, 1, cells.length));
-    }
+    private class TestableGame extends Game {
+        public TestableGame(BoardDisplay boardDisplay, MachinePlayer machinePlayer, HumanPlayer humanPlayer) {
+            super(boardDisplay, machinePlayer, humanPlayer);
+        }
 
+        @Override
+        protected Marks initialiseMarks() {
+            return marks;
+        }
+
+        @Override
+        protected BoardLines newBoardLines() {
+            return boardLines;
+        }
+    }
 
 }
