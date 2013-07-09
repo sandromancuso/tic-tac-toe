@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
-public class MachinePlayer {
+public class MachinePlayer implements Player {
 
     private PlayerMark playerMark;
     private GameStrategies strategies;

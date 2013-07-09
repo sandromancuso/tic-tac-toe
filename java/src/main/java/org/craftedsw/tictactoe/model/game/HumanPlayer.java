@@ -3,7 +3,7 @@ package org.craftedsw.tictactoe.model.game;
 import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.view.Console;
 
-public class HumanPlayer {
+public class HumanPlayer implements Player {
 
     public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
 
@@ -15,6 +15,7 @@ public class HumanPlayer {
         this.playerMark = playerMark;
     }
 
+    @Override
     public void placeMark(Marks marks) {
         int cell = console.ask(ASK_FOR_NEXT_MARK);
         marks.placeMarkAt(cell - 1, playerMark.mark());
