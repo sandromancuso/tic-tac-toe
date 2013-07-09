@@ -1,6 +1,6 @@
 package org.craftedsw.tictactoe.model.board;
 
-import org.craftedsw.tictactoe.model.game.Player;
+import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 import static org.apache.commons.lang3.StringUtils.remove;
 import static org.apache.commons.lang3.StringUtils.repeat;
@@ -25,11 +25,11 @@ public class Line {
              && marks.at(secondCell).equals(marks.at(thirdCell));
     }
 
-    public boolean isWinningLine(Player player, Marks marks) {
-        return remove(lineAsString(marks), EMPTY_CELL).equals(repeat(player.mark(), 2));
+    public boolean isWinningLine(PlayerMark playerMark, Marks marks) {
+        return remove(lineAsString(marks), EMPTY_CELL).equals(repeat(playerMark.mark(), 2));
     }
 
-    public boolean isLoosingLine(Player opponent, Marks marks) {
+    public boolean isLoosingLine(PlayerMark opponent, Marks marks) {
         return isWinningLine(opponent, marks);
     }
 
@@ -49,9 +49,9 @@ public class Line {
         return NO_CELL;
     }
 
-    public boolean hasSingleCornerMarkForPlayer(Player player, Marks marks) {
-        return lineAsString(marks).equals("  " + player.mark())
-                || lineAsString(marks).equals(player.mark() + "  ");
+    public boolean hasSingleCornerMarkForPlayer(PlayerMark playerMark, Marks marks) {
+        return lineAsString(marks).equals("  " + playerMark.mark())
+                || lineAsString(marks).equals(playerMark.mark() + "  ");
     }
 
     public int emptyEdgeCell(Marks marks) {

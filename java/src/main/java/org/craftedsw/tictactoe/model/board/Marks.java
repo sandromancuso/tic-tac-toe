@@ -1,6 +1,6 @@
 package org.craftedsw.tictactoe.model.board;
 
-import org.craftedsw.tictactoe.model.game.Player;
+import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +46,10 @@ public class Marks {
         return asList(marks).indexOf(BoardStructure.EMPTY_CELL);
     }
 
-    public Integer[] cornerMarksFor(Player player) {
+    public Integer[] cornerMarksFor(PlayerMark playerMark) {
         List<Integer> cornerMarks = new ArrayList<Integer>();
         for (int cornerCell : BoardStructure.CORNER_CELLS) {
-            if (player.mark().equals(marks[cornerCell])) {
+            if (playerMark.mark().equals(marks[cornerCell])) {
                 cornerMarks.add(cornerCell);
             }
         }

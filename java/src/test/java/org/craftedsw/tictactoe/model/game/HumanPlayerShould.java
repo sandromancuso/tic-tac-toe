@@ -9,7 +9,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_3;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -20,12 +20,12 @@ public class HumanPlayerShould {
 
     @Test public void
     place_a_mark() {
-        HumanPlayer player = new HumanPlayer(console, PLAYER_TWO);
+        HumanPlayer player = new HumanPlayer(console, NOUGHT);
         when(console.ask(BoardDisplay.ASK_FOR_NEXT_MARK)).thenReturn(3);
 
         player.placeMark(marks);
 
-        verify(marks).placeMarkAt(CELL_3, PLAYER_TWO.mark());
+        verify(marks).placeMarkAt(CELL_3, NOUGHT.mark());
     }
 
 }

@@ -6,8 +6,8 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.Is.is;
@@ -117,9 +117,9 @@ public class MarksShould {
                             .fromPlayerTwoAt(BoardStructure.CELL_3, BoardStructure.CELL_9)
                             .build();
 
-        assertThat(marks.cornerMarksFor(PLAYER_ONE),
+        assertThat(marks.cornerMarksFor(CROSS),
                                             is(equalTo(new Integer[]{BoardStructure.CELL_1, BoardStructure.CELL_7})));;
-        assertThat(marks.cornerMarksFor(PLAYER_TWO),
+        assertThat(marks.cornerMarksFor(NOUGHT),
                                             is(equalTo(new Integer[]{BoardStructure.CELL_3, BoardStructure.CELL_9})));;
 
     }
@@ -128,22 +128,22 @@ public class MarksShould {
     should_place_mark_at_a_specified_position() {
         Marks marks = marks().build();
 
-        marks.placeMarkAt(BoardStructure.CELL_3, PLAYER_ONE.mark());
+        marks.placeMarkAt(BoardStructure.CELL_3, CROSS.mark());
 
-        assertThat(marks.containsMarkAt(BoardStructure.CELL_3, PLAYER_ONE.mark()), is(true));
+        assertThat(marks.containsMarkAt(BoardStructure.CELL_3, CROSS.mark()), is(true));
     }
 
     @Test(expected = RuntimeException.class) public void
     should_throw_exception_when_mark_is_placed_on_a_marked_cell() {
         Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_2).build();
 
-        marks.placeMarkAt(BoardStructure.CELL_2, PLAYER_ONE.mark());
+        marks.placeMarkAt(BoardStructure.CELL_2, CROSS.mark());
     }
 
     @Test public void
     should_return_a_mark_at_specified_position() {
         Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_3).build();
 
-        assertThat(marks.at(BoardStructure.CELL_3), is(PLAYER_ONE.mark()));
+        assertThat(marks.at(BoardStructure.CELL_3), is(CROSS.mark()));
     }
 }

@@ -42,7 +42,7 @@ public class Game {
     }
 
     public void displayGameResult() {
-        Player winner = boardLines.winner(marks);
+        PlayerMark winner = boardLines.winner(marks);
         boardDisplay.displayGameResult(winner);
     }
 

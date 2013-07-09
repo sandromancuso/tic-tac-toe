@@ -2,8 +2,8 @@ package org.craftedsw.tictactoe.builder;
 
 import org.craftedsw.tictactoe.model.board.Marks;
 
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 
 public class MarksBuilder {
 
@@ -36,11 +36,11 @@ public class MarksBuilder {
     }
 
     private void addPlayerOneMarks(String[] marks) {
-        addMarks(playerOneCells, PLAYER_ONE.mark(), marks);
+        addMarks(playerOneCells, CROSS.mark(), marks);
     }
 
     private void addPlayerTwoMarks(String[] marks) {
-        addMarks(playerTwoCells, PLAYER_TWO.mark(), marks);
+        addMarks(playerTwoCells, NOUGHT.mark(), marks);
     }
 
     private void addMarks(int[] playerCells, String mark, String[] marks) {

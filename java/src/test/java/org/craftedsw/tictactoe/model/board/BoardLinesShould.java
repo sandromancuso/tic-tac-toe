@@ -1,7 +1,6 @@
 package org.craftedsw.tictactoe.model.board;
 
-import org.craftedsw.tictactoe.model.game.Player;
-import org.hamcrest.Matchers;
+import org.craftedsw.tictactoe.model.game.PlayerMark;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,8 +8,8 @@ import java.util.List;
 
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -31,7 +30,7 @@ public class BoardLinesShould {
                            .fromPlayerTwoAt(CELL_4, CELL_9)
                            .build();
 
-        assertThat(boardLines.winningLine(PLAYER_ONE, marks),  is(nullValue()));
+        assertThat(boardLines.winningLine(CROSS, marks),  is(nullValue()));
     }
 
     @Test public void
@@ -41,7 +40,7 @@ public class BoardLinesShould {
                             .fromPlayerTwoAt(CELL_1, CELL_7)
                             .build();
 
-        Line winningLine = boardLines.winningLine(PLAYER_ONE, marks);
+        Line winningLine = boardLines.winningLine(CROSS, marks);
 
         assertThat(winningLine, is(ROW_2));
     }
@@ -52,7 +51,7 @@ public class BoardLinesShould {
                             .fromPlayerOneAt(CELL_4, CELL_6)
                             .fromPlayerTwoAt(CELL_1, CELL_7)
                             .build();
-        Player opponent = PLAYER_ONE;
+        PlayerMark opponent = CROSS;
 
         Line winningLine = boardLines.loosingLine(opponent, marks);
 
@@ -65,7 +64,7 @@ public class BoardLinesShould {
                             .fromPlayerOneAt(CELL_3, CELL_6)
                             .build();
 
-        List<Line> lines = boardLines.linesWhereJustOneCornerIsSelectedBy(PLAYER_ONE, marks);
+        List<Line> lines = boardLines.linesWhereJustOneCornerIsSelectedBy(CROSS, marks);
 
         assertThat(lines.size(), is(2));
         assertThat(lines.contains(ROW_1), is(true));
@@ -89,7 +88,7 @@ public class BoardLinesShould {
                             .fromPlayerTwoAt(CELL_2, CELL_3)
                             .build();
 
-        assertThat(boardLines.winner(marks), is(PLAYER_ONE));
+        assertThat(boardLines.winner(marks), is(CROSS));
     }
 
     @Test public void
@@ -99,7 +98,7 @@ public class BoardLinesShould {
                             .fromPlayerTwoAt(CELL_1, CELL_5, CELL_9)
                             .build();
 
-        assertThat(boardLines.winner(marks), is(PLAYER_TWO));
+        assertThat(boardLines.winner(marks), is(NOUGHT));
     }
 
 }

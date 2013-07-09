@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_1;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_2;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_3;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -19,7 +19,7 @@ public class FirstEmptyCellStrategyShould {
 
         FirstEmptyCellStrategy strategy = new FirstEmptyCellStrategy();
 
-        assertThat(strategy.nextCell(PLAYER_ONE, marks), is(CELL_1));
+        assertThat(strategy.nextCell(CROSS, marks), is(CELL_1));
     }
 
     @Test public void
@@ -30,7 +30,7 @@ public class FirstEmptyCellStrategyShould {
 
         FirstEmptyCellStrategy strategy = new FirstEmptyCellStrategy();
 
-        assertThat(strategy.nextCell(PLAYER_ONE, marks), is(CELL_2));
+        assertThat(strategy.nextCell(CROSS, marks), is(CELL_2));
     }
 
 }

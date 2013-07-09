@@ -2,7 +2,7 @@ package org.craftedsw.tictactoe.view;
 
 import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.model.game.HumanPlayer;
-import org.craftedsw.tictactoe.model.game.Player;
+import org.craftedsw.tictactoe.model.game.PlayerMark;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,20 +11,20 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.craftedsw.tictactoe.view.BoardDisplay.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BoardDisplayShould {
 
-    private static final Player NO_WINNER = null;
-    private static final Player MACHINE_PLAYER = PLAYER_ONE;
-    private static final Player HUMAN_PLAYER = PLAYER_TWO;
+    private static final PlayerMark NO_WINNER = null;
+    private static final PlayerMark MACHINE_PLAYER_MARK = CROSS;
+    private static final PlayerMark HUMAN_PLAYER_MARK = NOUGHT;
 
     @Mock private Console console;
-    private final HumanPlayer humanPlayer = new HumanPlayer(console, PLAYER_TWO);
+    private final HumanPlayer humanPlayer = new HumanPlayer(console, NOUGHT);
 
     private BoardDisplay boardDisplay;
 
@@ -68,11 +68,11 @@ public class BoardDisplayShould {
 
     @Test public void
     inform_that_human_player_has_won() {
-        Player WINNER = PLAYER_TWO;
+        PlayerMark WINNER = NOUGHT;
 
         boardDisplay.displayGameResult(WINNER);
 
-        verify(console).print("PLAYER_TWO wins!!!");
+        verify(console).print("NOUGHT wins!!!");
     }
 
 }

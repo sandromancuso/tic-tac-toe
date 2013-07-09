@@ -13,7 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -34,7 +34,7 @@ public class GameShould {
     public void initialise() {
         marks = spy(marks().build());
         game = new TestableGame(boardDisplay, machinePlayer, humanPlayer);
-        when(machinePlayer.mark()).thenReturn(PLAYER_ONE.mark());
+        when(machinePlayer.mark()).thenReturn(CROSS.mark());
     }
 
     @Test public void
@@ -65,11 +65,11 @@ public class GameShould {
 
     @Test public void
     display_the_game_result() {
-        when(boardLines.winner(marks)).thenReturn(PLAYER_ONE);
+        when(boardLines.winner(marks)).thenReturn(CROSS);
 
         game.displayGameResult();
 
-        verify(boardDisplay).displayGameResult(PLAYER_ONE);
+        verify(boardDisplay).displayGameResult(CROSS);
 
     }
 

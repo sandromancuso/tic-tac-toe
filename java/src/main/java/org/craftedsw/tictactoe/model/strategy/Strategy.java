@@ -1,10 +1,10 @@
 package org.craftedsw.tictactoe.model.strategy;
 
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.craftedsw.tictactoe.model.game.Player;
+import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 public interface Strategy {
 
-    int nextCell(Player player, Marks marks);
+    int nextCell(PlayerMark playerMark, Marks marks);
 
 }

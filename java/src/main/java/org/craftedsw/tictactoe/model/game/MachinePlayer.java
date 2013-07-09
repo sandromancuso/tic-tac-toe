@@ -9,11 +9,11 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class MachinePlayer {
 
-    private Player player;
+    private PlayerMark playerMark;
     private GameStrategies strategies;
 
-    public MachinePlayer(Player player, GameStrategies strategies) {
-        this.player = player;
+    public MachinePlayer(PlayerMark playerMark, GameStrategies strategies) {
+        this.playerMark = playerMark;
         this.strategies = strategies;
     }
 
@@ -21,16 +21,16 @@ public class MachinePlayer {
         int cell = NO_CELL;
         Iterator<Strategy> iterator = strategies.iterator();
         while (iterator.hasNext()) {
-            cell = iterator.next().nextCell(player, marks);
+            cell = iterator.next().nextCell(playerMark, marks);
             if (cell != NO_CELL) {
                 break;
             }
         }
-        marks.placeMarkAt(cell, player.mark());
+        marks.placeMarkAt(cell, playerMark.mark());
     }
 
     public String mark() {
-        return player.mark();
+        return playerMark.mark();
     }
 
 }

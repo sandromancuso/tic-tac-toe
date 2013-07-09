@@ -1,6 +1,6 @@
 package org.craftedsw.tictactoe.model.board;
 
-import org.craftedsw.tictactoe.model.game.Player;
+import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +18,16 @@ public class BoardLines {
         return false;
     }
 
-    public Line winningLine(Player player, Marks marks) {
+    public Line winningLine(PlayerMark playerMark, Marks marks) {
         for (Line line : LINES) {
-            if (line.isWinningLine(player, marks)) {
+            if (line.isWinningLine(playerMark, marks)) {
                 return line;
             }
         }
         return null;
     }
 
-    public Line loosingLine(Player opponent, Marks marks) {
+    public Line loosingLine(PlayerMark opponent, Marks marks) {
         for (Line line : LINES) {
             if (line.isLoosingLine(opponent, marks)) {
                 return line;
@@ -36,20 +36,20 @@ public class BoardLines {
         return null;
     }
 
-    public List<Line> linesWhereJustOneCornerIsSelectedBy(Player player, Marks marks) {
+    public List<Line> linesWhereJustOneCornerIsSelectedBy(PlayerMark playerMark, Marks marks) {
         List<Line> linesWithJustOneCornerMarked = new ArrayList<Line>();
         for (Line line : LINES_WITH_CORNERS) {
-            if (line.hasSingleCornerMarkForPlayer(player, marks)) {
+            if (line.hasSingleCornerMarkForPlayer(playerMark, marks)) {
                 linesWithJustOneCornerMarked.add(line);
             }
         }
         return linesWithJustOneCornerMarked;
     }
 
-    public Player winner(Marks marks) {
+    public PlayerMark winner(Marks marks) {
         for (Line line : LINES) {
             if (line.isWinner(marks)) {
-                return Player.byMark(marks.at(line.firstCell));
+                return PlayerMark.byMark(marks.at(line.firstCell));
             }
         }
         return null;

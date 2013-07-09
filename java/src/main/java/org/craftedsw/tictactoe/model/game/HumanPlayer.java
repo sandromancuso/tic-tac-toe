@@ -8,15 +8,15 @@ public class HumanPlayer {
     public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
 
     private Console console;
-    private Player player;
+    private PlayerMark playerMark;
 
-    public HumanPlayer(Console console, Player player) {
+    public HumanPlayer(Console console, PlayerMark playerMark) {
         this.console = console;
-        this.player = player;
+        this.playerMark = playerMark;
     }
 
     public void placeMark(Marks marks) {
         int cell = console.ask(ASK_FOR_NEXT_MARK);
-        marks.placeMarkAt(cell - 1, player.mark());
+        marks.placeMarkAt(cell - 1, playerMark.mark());
     }
 }

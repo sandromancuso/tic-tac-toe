@@ -7,8 +7,8 @@ import org.craftedsw.tictactoe.model.strategy.GameStrategies;
 import org.craftedsw.tictactoe.view.BoardDisplay;
 import org.craftedsw.tictactoe.view.Console;
 
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_ONE;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 
 public class TicTacToe {
 
@@ -31,8 +31,8 @@ public class TicTacToe {
     public static void main(String[] args) {
         Console console = new Console();
         BoardDisplay boardDisplay = new BoardDisplay(console);
-        MachinePlayer machinePlayer = new MachinePlayer(PLAYER_ONE, new GameStrategies());
-        HumanPlayer humanPlayer = new HumanPlayer(console, PLAYER_TWO);
+        MachinePlayer machinePlayer = new MachinePlayer(CROSS, new GameStrategies());
+        HumanPlayer humanPlayer = new HumanPlayer(console, NOUGHT);
         Game game = new Game(boardDisplay, machinePlayer, humanPlayer);
 
         TicTacToe ticTacToe = new TicTacToe(console, game);

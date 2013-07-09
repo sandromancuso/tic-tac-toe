@@ -1,11 +1,9 @@
 package org.craftedsw.tictactoe.view;
 
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.craftedsw.tictactoe.model.game.HumanPlayer;
-import org.craftedsw.tictactoe.model.game.Player;
+import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 import static java.lang.String.format;
-import static org.craftedsw.tictactoe.model.game.Player.PLAYER_TWO;
 
 public class BoardDisplay {
 
@@ -45,7 +43,7 @@ public class BoardDisplay {
         console.print(CURRENT_BOARD_STATE_MESSAGE);
     }
 
-    public void displayGameResult(Player winner) {
+    public void displayGameResult(PlayerMark winner) {
         if (winner == null) {
             console.print(DRAW_MESSAGE);
         } else {
