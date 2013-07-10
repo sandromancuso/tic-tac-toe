@@ -14,15 +14,15 @@ public class Game {
 
     private BoardLines boardLines = newBoardLines();
 
-    private Player crossPlayer;
-    private Player noughtPlayer;
+    private Player crossesPlayer;
+    private Player noughtsPlayer;
     private Player currentPlayer;
 
-    public Game(BoardDisplay boardDisplay, Player noughtPlayer, Player crossPlayer) {
+    public Game(BoardDisplay boardDisplay, Player noughtsPlayer, Player crossesPlayer) {
         this.boardDisplay = boardDisplay;
-        this.noughtPlayer = noughtPlayer;
-        this.crossPlayer = crossPlayer;
-        this.currentPlayer = noughtPlayer;
+        this.noughtsPlayer = noughtsPlayer;
+        this.crossesPlayer = crossesPlayer;
+        this.currentPlayer = noughtsPlayer;
     }
 
     public void startNewGame() {
@@ -40,9 +40,9 @@ public class Game {
     }
 
     private void switchCurrentPlayer() {
-        currentPlayer = currentPlayer.equals(noughtPlayer)
-                                ? crossPlayer
-                                : noughtPlayer;
+        currentPlayer = currentPlayer.equals(noughtsPlayer)
+                                ? crossesPlayer
+                                : noughtsPlayer;
     }
 
     private boolean isOver() {

@@ -8,13 +8,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -22,8 +20,8 @@ public class GameShould {
 
     private Game game;
     @Mock private BoardDisplay boardDisplay;
-    @Mock private Player noughtPlayer;
-    @Mock private Player crossPlayer;
+    @Mock private Player noughtsPlayer;
+    @Mock private Player crossesPlayer;
     @Mock private BoardLines boardLines;
     private Marks marks;
 
@@ -31,8 +29,8 @@ public class GameShould {
     @Before
     public void initialise() {
         marks = spy(marks().build());
-        game = new TestableGame(boardDisplay, noughtPlayer, crossPlayer);
-        when(noughtPlayer.mark()).thenReturn(CROSS);
+        game = new TestableGame(boardDisplay, noughtsPlayer, crossesPlayer);
+        when(noughtsPlayer.mark()).thenReturn(CROSS);
     }
 
     @Test public void
@@ -69,8 +67,8 @@ public class GameShould {
         game.startNewGame();
 
         verify(boardLines, times(2)).hasWinnerLine(marks);
-        verify(noughtPlayer, times(1)).placeMark(marks);
-        verify(crossPlayer, never()).placeMark(marks);
+        verify(noughtsPlayer, times(1)).placeMark(marks);
+        verify(crossesPlayer, never()).placeMark(marks);
     }
 
     @Test public void
@@ -79,12 +77,12 @@ public class GameShould {
 
         game.startNewGame();
 
-        InOrder inOrder = inOrder(noughtPlayer, crossPlayer);
-        inOrder.verify(noughtPlayer).placeMark(marks);
-        inOrder.verify(crossPlayer).placeMark(marks);
-        inOrder.verify(noughtPlayer).placeMark(marks);
-        inOrder.verify(crossPlayer).placeMark(marks);
-        inOrder.verify(noughtPlayer).placeMark(marks);
+        InOrder inOrder = inOrder(noughtsPlayer, crossesPlayer);
+        inOrder.verify(noughtsPlayer).placeMark(marks);
+        inOrder.verify(crossesPlayer).placeMark(marks);
+        inOrder.verify(noughtsPlayer).placeMark(marks);
+        inOrder.verify(crossesPlayer).placeMark(marks);
+        inOrder.verify(noughtsPlayer).placeMark(marks);
     }
 
     @Test public void
