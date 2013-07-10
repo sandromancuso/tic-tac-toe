@@ -60,7 +60,7 @@ public class MachinePlayerShould {
     inform_her_mark() {
         machinePlayer = new MachinePlayer(CROSS, strategies);
 
-        assertThat(machinePlayer.mark(), is(CROSS.mark()));
+        assertThat(machinePlayer.mark(), is(CROSS));
     }
 
 }

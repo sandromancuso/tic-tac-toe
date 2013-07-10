@@ -17,6 +17,7 @@ public class MachinePlayer implements Player {
         this.strategies = strategies;
     }
 
+    @Override
     public void placeMark(Marks marks) {
         int cell = NO_CELL;
         Iterator<Strategy> iterator = strategies.iterator();
@@ -29,8 +30,9 @@ public class MachinePlayer implements Player {
         marks.placeMarkAt(cell, playerMark.mark());
     }
 
-    public String mark() {
-        return playerMark.mark();
+    @Override
+    public PlayerMark mark() {
+        return playerMark;
     }
 
 }

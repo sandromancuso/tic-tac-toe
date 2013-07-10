@@ -20,4 +20,9 @@ public class HumanPlayer implements Player {
         int cell = console.ask(ASK_FOR_NEXT_MARK);
         marks.placeMarkAt(cell - 1, playerMark.mark());
     }
+
+    @Override
+    public PlayerMark mark() {
+        return playerMark;
+    }
 }

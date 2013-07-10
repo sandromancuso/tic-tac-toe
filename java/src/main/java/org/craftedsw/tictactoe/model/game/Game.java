@@ -14,16 +14,16 @@ public class Game {
 
     private BoardLines boardLines = newBoardLines();
 
-    private HumanPlayer humanPlayer;
-    private MachinePlayer machinePlayer;
+    private Player humanPlayer;
+    private Player machinePlayer;
 
-    public Game(BoardDisplay boardDisplay, MachinePlayer machinePlayer, HumanPlayer humanPlayer) {
+    public Game(BoardDisplay boardDisplay, Player machinePlayer, Player humanPlayer) {
         this.boardDisplay = boardDisplay;
         this.machinePlayer = machinePlayer;
         this.humanPlayer = humanPlayer;
     }
 
-    public void newGame() {
+    public void startNewGame() {
         machinePlayer.placeMark(marks);
         boardDisplay.displayGameInstructions();
         boardDisplay.displayBoard(marks);

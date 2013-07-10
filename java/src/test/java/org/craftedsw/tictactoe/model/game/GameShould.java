@@ -3,7 +3,6 @@ package org.craftedsw.tictactoe.model.game;
 import org.craftedsw.tictactoe.model.board.BoardLines;
 import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.view.BoardDisplay;
-import org.craftedsw.tictactoe.view.Console;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,10 +21,9 @@ import static org.mockito.Mockito.*;
 public class GameShould {
 
     private Game game;
-    @Mock private Console console;
     @Mock private BoardDisplay boardDisplay;
-    @Mock private MachinePlayer machinePlayer;
-    @Mock private HumanPlayer humanPlayer;
+    @Mock private Player machinePlayer;
+    @Mock private Player humanPlayer;
     @Mock private BoardLines boardLines;
     private Marks marks;
 
@@ -34,12 +32,12 @@ public class GameShould {
     public void initialise() {
         marks = spy(marks().build());
         game = new TestableGame(boardDisplay, machinePlayer, humanPlayer);
-        when(machinePlayer.mark()).thenReturn(CROSS.mark());
+        when(machinePlayer.mark()).thenReturn(CROSS);
     }
 
     @Test public void
     display_board_with_the_machine_player_mark_when_new_game_starts() {
-        game.newGame();
+        game.startNewGame();
 
         InOrder inOrder = Mockito.inOrder(boardDisplay, machinePlayer);
 
@@ -74,7 +72,7 @@ public class GameShould {
     }
 
     private class TestableGame extends Game {
-        public TestableGame(BoardDisplay boardDisplay, MachinePlayer machinePlayer, HumanPlayer humanPlayer) {
+        public TestableGame(BoardDisplay boardDisplay, Player machinePlayer, Player humanPlayer) {
             super(boardDisplay, machinePlayer, humanPlayer);
         }
 

@@ -21,7 +21,7 @@ public class TicTacToe {
     }
 
     public void newSinglePlayerGame() {
-        game.newGame();
+        game.startNewGame();
         while (!game.isOver()) {
             game.nextMove();
         }
