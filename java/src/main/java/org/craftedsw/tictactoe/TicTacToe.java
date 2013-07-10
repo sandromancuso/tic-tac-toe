@@ -12,15 +12,13 @@ import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 
 public class TicTacToe {
 
-    private final Console console;
     private final Game game;
 
-    public TicTacToe(Console console, Game game) {
-        this.console = console;
+    public TicTacToe(Game game) {
         this.game = game;
     }
 
-    public void newSinglePlayerGame() {
+    public void newGame() {
         game.startNewGame();
         while (!game.isOver()) {
             game.nextMove();
@@ -35,8 +33,8 @@ public class TicTacToe {
         HumanPlayer humanPlayer = new HumanPlayer(console, NOUGHT);
         Game game = new Game(boardDisplay, machinePlayer, humanPlayer);
 
-        TicTacToe ticTacToe = new TicTacToe(console, game);
-        ticTacToe.newSinglePlayerGame();
+        TicTacToe ticTacToe = new TicTacToe(game);
+        ticTacToe.newGame();
     }
 
 }
