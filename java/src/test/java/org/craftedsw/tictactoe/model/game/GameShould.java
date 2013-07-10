@@ -22,8 +22,8 @@ public class GameShould {
 
     private Game game;
     @Mock private BoardDisplay boardDisplay;
-    @Mock private Player machinePlayer;
-    @Mock private Player humanPlayer;
+    @Mock private Player noughtPlayer;
+    @Mock private Player crossPlayer;
     @Mock private BoardLines boardLines;
     private Marks marks;
 
@@ -31,34 +31,60 @@ public class GameShould {
     @Before
     public void initialise() {
         marks = spy(marks().build());
-        game = new TestableGame(boardDisplay, machinePlayer, humanPlayer);
-        when(machinePlayer.mark()).thenReturn(CROSS);
+        game = new TestableGame(boardDisplay, noughtPlayer, crossPlayer);
+        when(noughtPlayer.mark()).thenReturn(CROSS);
     }
 
     @Test public void
-    display_board_with_the_machine_player_mark_when_new_game_starts() {
+    terminate_when_there_is_a_winner() {
+        when(boardLines.hasWinnerLine(marks)).thenReturn(true);
+
         game.startNewGame();
 
-        InOrder inOrder = Mockito.inOrder(boardDisplay, machinePlayer);
-
-        inOrder.verify(machinePlayer).placeMark(any(Marks.class));
-        inOrder.verify(boardDisplay).displayGameInstructions();
-        inOrder.verify(boardDisplay).displayBoard(any(Marks.class));
+        verify(boardLines, times(1)).hasWinnerLine(marks);
     }
 
     @Test public void
-    inform_game_is_not_over_when_there_is_no_winner_and_board_is_not_full() {
-        when(boardLines.hasWinnerLine(marks)).thenReturn(false);
-        when(marks.isFull()).thenReturn(false);
-
-        assertThat(game.isOver(), is(false));
-    }
-
-    @Test public void
-    terminate_when_all_cells_have_marks() {
+    terminate_when_board_is_full() {
         when(marks.isFull()).thenReturn(true);
 
-        assertThat(game.isOver(), is(true));
+        game.startNewGame();
+
+        verify(marks, times(1)).isFull();
+    }
+
+    @Test public void
+    display_game_instructions_when_new_game_starts() {
+        when(boardLines.hasWinnerLine(marks)).thenReturn(true);
+
+        game.startNewGame();
+
+        verify(boardDisplay).displayGameInstructions(marks);
+    }
+
+    @Test public void
+    ask_first_player_to_place_a_mark() {
+        when(boardLines.hasWinnerLine(marks)).thenReturn(false, true);
+
+        game.startNewGame();
+
+        verify(boardLines, times(2)).hasWinnerLine(marks);
+        verify(noughtPlayer, times(1)).placeMark(marks);
+        verify(crossPlayer, never()).placeMark(marks);
+    }
+
+    @Test public void
+    ask_players_in_turn_to_place_marks() {
+        when(boardLines.hasWinnerLine(marks)).thenReturn(false, false, false, false, false, true);
+
+        game.startNewGame();
+
+        InOrder inOrder = inOrder(noughtPlayer, crossPlayer);
+        inOrder.verify(noughtPlayer).placeMark(marks);
+        inOrder.verify(crossPlayer).placeMark(marks);
+        inOrder.verify(noughtPlayer).placeMark(marks);
+        inOrder.verify(crossPlayer).placeMark(marks);
+        inOrder.verify(noughtPlayer).placeMark(marks);
     }
 
     @Test public void

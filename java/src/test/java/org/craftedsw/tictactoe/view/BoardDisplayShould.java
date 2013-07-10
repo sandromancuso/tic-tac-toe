@@ -1,7 +1,6 @@
 package org.craftedsw.tictactoe.view;
 
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.craftedsw.tictactoe.model.game.HumanPlayer;
 import org.craftedsw.tictactoe.model.game.PlayerMark;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +10,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
-import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.craftedsw.tictactoe.view.BoardDisplay.*;
 import static org.mockito.Mockito.*;
@@ -20,11 +18,8 @@ import static org.mockito.Mockito.*;
 public class BoardDisplayShould {
 
     private static final PlayerMark NO_WINNER = null;
-    private static final PlayerMark MACHINE_PLAYER_MARK = CROSS;
-    private static final PlayerMark HUMAN_PLAYER_MARK = NOUGHT;
 
     @Mock private Console console;
-    private final HumanPlayer humanPlayer = new HumanPlayer(console, NOUGHT);
 
     private BoardDisplay boardDisplay;
 
@@ -35,10 +30,18 @@ public class BoardDisplayShould {
 
     @Test public void
     display_instructions() {
-        boardDisplay.displayGameInstructions();
+        String emptyBoard =
+                "   |   |   " + '\n' +
+                "---+---+---" + '\n' +
+                "   |   |   " + '\n' +
+                "---+---+---" + '\n' +
+                "   |   |   ";
+
+        boardDisplay.displayGameInstructions(marks().build());
 
         verify(console).print(CELL_INDEX_INSTRUCTIONS);
         verify(console).print(CURRENT_BOARD_STATE_MESSAGE);
+        verify(console).print(emptyBoard);
     }
 
     @Test public void

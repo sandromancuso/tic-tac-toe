@@ -20,9 +20,6 @@ public class TicTacToe {
 
     public void newGame() {
         game.startNewGame();
-        while (!game.isOver()) {
-            game.nextMove();
-        }
         game.displayGameResult();
     }
 

@@ -27,6 +27,7 @@ public class BoardDisplay {
                     " %s | %s | %s ";
 
     public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
+    private static final String EMPTY_LINE = "";
 
     private final Console console;
 
@@ -35,12 +36,14 @@ public class BoardDisplay {
     }
 
     public void displayBoard(Marks marks) {
+        console.print(EMPTY_LINE);
         console.print(format(EMPTY_BOARD, marks.asArray()));
     }
 
-    public void displayGameInstructions() {
+    public void displayGameInstructions(Marks marks) {
         console.print(CELL_INDEX_INSTRUCTIONS);
         console.print(CURRENT_BOARD_STATE_MESSAGE);
+        displayBoard(marks);
     }
 
     public void displayGameResult(PlayerMark winner) {

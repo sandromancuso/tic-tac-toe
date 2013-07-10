@@ -14,31 +14,24 @@ public class Game {
 
     private BoardLines boardLines = newBoardLines();
 
-    private Player humanPlayer;
-    private Player machinePlayer;
+    private Player crossPlayer;
+    private Player noughtPlayer;
+    private Player currentPlayer;
 
-    public Game(BoardDisplay boardDisplay, Player machinePlayer, Player humanPlayer) {
+    public Game(BoardDisplay boardDisplay, Player noughtPlayer, Player crossPlayer) {
         this.boardDisplay = boardDisplay;
-        this.machinePlayer = machinePlayer;
-        this.humanPlayer = humanPlayer;
+        this.noughtPlayer = noughtPlayer;
+        this.crossPlayer = crossPlayer;
+        this.currentPlayer = noughtPlayer;
     }
 
     public void startNewGame() {
-        machinePlayer.placeMark(marks);
-        boardDisplay.displayGameInstructions();
-        boardDisplay.displayBoard(marks);
-    }
-
-    public void nextMove() {
-        humanPlayer.placeMark(marks);
-        if (!isOver()) {
-            machinePlayer.placeMark(marks);
+        boardDisplay.displayGameInstructions(marks);
+        while (!isOver()) {
+            currentPlayer.placeMark(marks);
+            boardDisplay.displayBoard(marks);
+            switchCurrentPlayer();
         }
-        boardDisplay.displayBoard(marks);
-    }
-
-    public boolean isOver() {
-        return hasWinner() || isFull();
     }
 
     public void displayGameResult() {
@@ -46,12 +39,18 @@ public class Game {
         boardDisplay.displayGameResult(winner);
     }
 
-    private boolean hasWinner() {
-        return boardLines.hasWinnerLine(marks);
+    private void switchCurrentPlayer() {
+        currentPlayer = currentPlayer.equals(noughtPlayer)
+                                ? crossPlayer
+                                : noughtPlayer;
     }
 
-    private boolean isFull() {
-        return marks.isFull();
+    private boolean isOver() {
+        return hasWinner() || marks.isFull();
+    }
+
+    private boolean hasWinner() {
+        return boardLines.hasWinnerLine(marks);
     }
 
     protected Marks initialiseMarks() {
