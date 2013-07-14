@@ -18,7 +18,7 @@ public class MachinePlayer implements Player {
     }
 
     @Override
-    public void placeMark(Marks marks) {
+    public void placeMarkOn(Marks marks) {
         int cell = NO_CELL;
         Iterator<Strategy> iterator = strategies.iterator();
         while (iterator.hasNext()) {

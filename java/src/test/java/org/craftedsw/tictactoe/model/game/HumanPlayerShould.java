@@ -23,7 +23,7 @@ public class HumanPlayerShould {
         HumanPlayer player = new HumanPlayer(NOUGHT, console);
         when(console.ask(BoardDisplay.ASK_FOR_NEXT_MARK)).thenReturn(3);
 
-        player.placeMark(marks);
+        player.placeMarkOn(marks);
 
         verify(marks).placeMarkAt(CELL_3, NOUGHT.mark());
     }

@@ -9,27 +9,28 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.EMPTY_BOARD;
 
 public class Game {
 
+    private final Marks marks = initialiseMarks();
+    private final BoardLines boardLines = newBoardLines();
+
     private final BoardDisplay boardDisplay;
-    private Marks marks = initialiseMarks();
+    private final Player crossesPlayer;
+    private final Player noughtsPlayer;
 
-    private BoardLines boardLines = newBoardLines();
-
-    private Player crossesPlayer;
-    private Player noughtsPlayer;
     private Player currentPlayer;
 
     public Game(BoardDisplay boardDisplay, Player noughtsPlayer, Player crossesPlayer) {
         this.boardDisplay = boardDisplay;
         this.noughtsPlayer = noughtsPlayer;
         this.crossesPlayer = crossesPlayer;
+
         this.currentPlayer = noughtsPlayer;
     }
 
     public void startNewGame() {
         boardDisplay.displayGameInstructions(marks);
         while (!isOver()) {
-            currentPlayer.placeMark(marks);
-            boardDisplay.displayBoard(marks);
+            currentPlayer.placeMarkOn(marks);
+            boardDisplay.displayBoardWith(marks);
             switchCurrentPlayer();
         }
     }

@@ -66,8 +66,8 @@ public class GameShould {
         game.startNewGame();
 
         verify(boardLines, times(2)).hasWinnerLine(marks);
-        verify(noughtsPlayer, times(1)).placeMark(marks);
-        verify(crossesPlayer, never()).placeMark(marks);
+        verify(noughtsPlayer, times(1)).placeMarkOn(marks);
+        verify(crossesPlayer, never()).placeMarkOn(marks);
     }
 
     @Test public void
@@ -77,11 +77,11 @@ public class GameShould {
         game.startNewGame();
 
         InOrder inOrder = inOrder(noughtsPlayer, crossesPlayer);
-        inOrder.verify(noughtsPlayer).placeMark(marks);
-        inOrder.verify(crossesPlayer).placeMark(marks);
-        inOrder.verify(noughtsPlayer).placeMark(marks);
-        inOrder.verify(crossesPlayer).placeMark(marks);
-        inOrder.verify(noughtsPlayer).placeMark(marks);
+        inOrder.verify(noughtsPlayer).placeMarkOn(marks);
+        inOrder.verify(crossesPlayer).placeMarkOn(marks);
+        inOrder.verify(noughtsPlayer).placeMarkOn(marks);
+        inOrder.verify(crossesPlayer).placeMarkOn(marks);
+        inOrder.verify(noughtsPlayer).placeMarkOn(marks);
     }
 
     @Test public void

@@ -35,7 +35,7 @@ public class BoardDisplay {
         this.console = console;
     }
 
-    public void displayBoard(Marks marks) {
+    public void displayBoardWith(Marks marks) {
         console.print(EMPTY_LINE);
         console.print(format(EMPTY_BOARD, marks.asArray()));
     }
@@ -43,7 +43,7 @@ public class BoardDisplay {
     public void displayGameInstructions(Marks marks) {
         console.print(CELL_INDEX_INSTRUCTIONS);
         console.print(CURRENT_BOARD_STATE_MESSAGE);
-        displayBoard(marks);
+        displayBoardWith(marks);
     }
 
     public void displayGameResult(PlayerMark winner) {

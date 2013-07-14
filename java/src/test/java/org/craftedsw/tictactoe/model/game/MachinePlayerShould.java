@@ -40,7 +40,7 @@ public class MachinePlayerShould {
     place_a_mark_returned_by_first_strategy_when_different_from_no_cell() {
         when(winStrategy.nextCell(CROSS, marks)).thenReturn(CELL_3);
 
-        machinePlayer.placeMark(marks);
+        machinePlayer.placeMarkOn(marks);
 
         verify(marks).placeMarkAt(CELL_3, CROSS.mark());
     }
@@ -51,7 +51,7 @@ public class MachinePlayerShould {
         when(defenceStrategy.nextCell(CROSS, marks)).thenReturn(NO_CELL);
         when(attackStrategy.nextCell(CROSS, marks)).thenReturn(CELL_4);
 
-        machinePlayer.placeMark(marks);
+        machinePlayer.placeMarkOn(marks);
 
         verify(marks).placeMarkAt(CELL_4, CROSS.mark());
     }

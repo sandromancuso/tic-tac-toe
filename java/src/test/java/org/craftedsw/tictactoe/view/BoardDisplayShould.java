@@ -51,7 +51,7 @@ public class BoardDisplayShould {
                         .fromPlayerTwoAt(CELL_2, CELL_9)
                         .build();
 
-        boardDisplay.displayBoard(marks);
+        boardDisplay.displayBoardWith(marks);
 
         verify(console).print(
                 " X | 0 | X " + '\n' +
