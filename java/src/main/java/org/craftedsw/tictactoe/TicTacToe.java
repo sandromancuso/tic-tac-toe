@@ -13,10 +13,10 @@ import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 public class TicTacToe {
 
     public static void main(String[] args) {
-        start(newGame());
+        play(newGame());
     }
 
-    private static void start(Game game) {
+    private static void play(Game game) {
         game.startNewGame();
         game.displayGameResult();
     }
