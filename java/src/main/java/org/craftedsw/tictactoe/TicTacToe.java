@@ -27,7 +27,7 @@ public class TicTacToe {
         Console console = new Console();
         BoardDisplay boardDisplay = new BoardDisplay(console);
         MachinePlayer machinePlayer = new MachinePlayer(CROSS, new GameStrategies());
-        HumanPlayer humanPlayer = new HumanPlayer(console, NOUGHT);
+        HumanPlayer humanPlayer = new HumanPlayer(NOUGHT, console);
         Game game = new Game(boardDisplay, machinePlayer, humanPlayer);
 
         TicTacToe ticTacToe = new TicTacToe(game);

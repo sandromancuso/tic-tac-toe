@@ -10,7 +10,7 @@ public class HumanPlayer implements Player {
     private Console console;
     private PlayerMark playerMark;
 
-    public HumanPlayer(Console console, PlayerMark playerMark) {
+    public HumanPlayer(PlayerMark playerMark, Console console) {
         this.console = console;
         this.playerMark = playerMark;
     }

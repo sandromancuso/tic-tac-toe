@@ -20,7 +20,7 @@ public class HumanPlayerShould {
 
     @Test public void
     place_a_mark() {
-        HumanPlayer player = new HumanPlayer(console, NOUGHT);
+        HumanPlayer player = new HumanPlayer(NOUGHT, console);
         when(console.ask(BoardDisplay.ASK_FOR_NEXT_MARK)).thenReturn(3);
 
         player.placeMark(marks);

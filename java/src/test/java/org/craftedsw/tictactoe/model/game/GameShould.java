@@ -12,19 +12,18 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
-import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GameShould {
 
-    private Game game;
     @Mock private BoardDisplay boardDisplay;
     @Mock private Player noughtsPlayer;
     @Mock private Player crossesPlayer;
     @Mock private BoardLines boardLines;
-    private Marks marks;
 
+    private Game game;
+    private Marks marks;
 
     @Before
     public void initialise() {
