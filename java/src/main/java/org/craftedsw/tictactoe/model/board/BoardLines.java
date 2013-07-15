@@ -46,7 +46,7 @@ public class BoardLines {
         return linesWithJustOneCornerMarked;
     }
 
-    public PlayerMark winner(Marks marks) {
+    public PlayerMark winnerMark(Marks marks) {
         for (Line line : LINES) {
             if (line.isWinner(marks)) {
                 return PlayerMark.byMark(marks.at(line.firstCell));

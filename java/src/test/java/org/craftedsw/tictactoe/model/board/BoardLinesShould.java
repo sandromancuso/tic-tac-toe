@@ -78,7 +78,7 @@ public class BoardLinesShould {
                             .fromPlayerTwoAt(CELL_2, CELL_3)
                             .build();
 
-        assertThat(boardLines.winner(marks), is(nullValue()));
+        assertThat(boardLines.winnerMark(marks), is(nullValue()));
     }
 
     @Test public void
@@ -88,7 +88,7 @@ public class BoardLinesShould {
                             .fromPlayerTwoAt(CELL_2, CELL_3)
                             .build();
 
-        assertThat(boardLines.winner(marks), is(CROSS));
+        assertThat(boardLines.winnerMark(marks), is(CROSS));
     }
 
     @Test public void
@@ -98,7 +98,7 @@ public class BoardLinesShould {
                             .fromPlayerTwoAt(CELL_1, CELL_5, CELL_9)
                             .build();
 
-        assertThat(boardLines.winner(marks), is(NOUGHT));
+        assertThat(boardLines.winnerMark(marks), is(NOUGHT));
     }
 
 }

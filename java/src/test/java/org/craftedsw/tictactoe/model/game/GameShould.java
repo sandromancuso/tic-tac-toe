@@ -10,6 +10,8 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static java.util.Arrays.copyOfRange;
+import static java.util.Arrays.fill;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.mockito.Mockito.*;
@@ -29,7 +31,6 @@ public class GameShould {
     public void initialise() {
         marks = spy(marks().build());
         game = new TestableGame(boardDisplay, noughtsPlayer, crossesPlayer);
-        when(noughtsPlayer.mark()).thenReturn(CROSS);
     }
 
     @Test public void
@@ -52,7 +53,7 @@ public class GameShould {
 
     @Test public void
     display_game_instructions_when_new_game_starts() {
-        when(boardLines.hasWinnerLine(marks)).thenReturn(true);
+        configureGameToFinishAfter(ZERO_ITERATIONS);
 
         game.startNewGame();
 
@@ -61,7 +62,7 @@ public class GameShould {
 
     @Test public void
     ask_first_player_to_place_a_mark() {
-        when(boardLines.hasWinnerLine(marks)).thenReturn(false, true);
+        configureGameToFinishAfter(ONE_ITERATION);
 
         game.startNewGame();
 
@@ -72,7 +73,7 @@ public class GameShould {
 
     @Test public void
     ask_players_in_turn_to_place_marks() {
-        when(boardLines.hasWinnerLine(marks)).thenReturn(false, false, false, false, false, true);
+        configureGameToFinishAfter(FIVE_ITERATIONS);
 
         game.startNewGame();
 
@@ -86,7 +87,7 @@ public class GameShould {
 
     @Test public void
     display_the_game_result() {
-        when(boardLines.winner(marks)).thenReturn(CROSS);
+        when(boardLines.winnerMark(marks)).thenReturn(CROSS);
 
         game.displayGameResult();
 
@@ -108,6 +109,18 @@ public class GameShould {
         protected BoardLines newBoardLines() {
             return boardLines;
         }
+    }
+
+    private static int ZERO_ITERATIONS = 0;
+    private static int ONE_ITERATION   = 1;
+    private static int FIVE_ITERATIONS = 5;
+
+    private void configureGameToFinishAfter(int iterations) {
+        Boolean[] hasWinner = new Boolean[iterations + 1];
+        fill(hasWinner, false);
+        hasWinner[iterations] = true;
+
+        when(boardLines.hasWinnerLine(marks)).thenReturn(hasWinner[0], copyOfRange(hasWinner, 1, hasWinner.length));
     }
 
 }

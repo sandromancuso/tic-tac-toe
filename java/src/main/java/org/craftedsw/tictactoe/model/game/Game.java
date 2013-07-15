@@ -31,16 +31,16 @@ public class Game {
         while (!isOver()) {
             currentPlayer.placeMarkOn(marks);
             boardDisplay.displayBoardWith(marks);
-            switchCurrentPlayer();
+            switchCurrentPlayerToNextPlayer();
         }
     }
 
     public void displayGameResult() {
-        PlayerMark winner = boardLines.winner(marks);
+        PlayerMark winner = boardLines.winnerMark(marks);
         boardDisplay.displayGameResult(winner);
     }
 
-    private void switchCurrentPlayer() {
+    private void switchCurrentPlayerToNextPlayer() {
         currentPlayer = currentPlayer.equals(noughtsPlayer)
                                 ? crossesPlayer
                                 : noughtsPlayer;
