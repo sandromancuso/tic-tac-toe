@@ -37,13 +37,6 @@ public class MarksShould {
     }
 
     @Test public void
-    should_return_no_empty_opposite_cell_when_already_marked() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_3, CELL_7, CELL_9).build();
-
-        assertThat(marks.emptyOppositeCell(CELL_1), is(BoardStructure.NO_CELL));
-    }
-
-    @Test public void
     should_inform_which_is_the_first_empty_cell() {
         Marks marks = marks().fromPlayerOneAt(CELL_1, BoardStructure.CELL_2, CELL_7, CELL_9).build();
 

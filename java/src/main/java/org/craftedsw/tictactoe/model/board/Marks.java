@@ -8,20 +8,12 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.ALL_CELLS;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.EMPTY_CELL;
-import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class Marks {
     private final String[] marks;
 
     public Marks(String[] marksArray) {
         this.marks = marksArray;
-    }
-
-    public int emptyOppositeCell(int cell) {
-        int oppositeCell = oppositeCornerOf(cell);
-        return (isEmptyAt(oppositeCell))
-                    ? oppositeCell
-                    : NO_CELL;
     }
 
     public int firstEmptyCell() {
@@ -35,7 +27,7 @@ public class Marks {
                 cornerMarks.add(cornerCell);
             }
         }
-        return cornerMarks.toArray(new Integer[] {});
+        return cornerMarks.toArray(new Integer[]{});
     }
 
     public boolean isFull() {
@@ -64,15 +56,6 @@ public class Marks {
 
     public String[] asArray() {
         return marks;
-    }
-
-    private int oppositeCornerOf(int cell) {
-        for (int[] oppositeCells : BoardStructure.OPPOSITE_CORNER_CELLS) {
-            if (cell == oppositeCells[0]) {
-                return oppositeCells[1];
-            }
-        }
-        return NO_CELL;
     }
 
     private String stringRepresentation() {
