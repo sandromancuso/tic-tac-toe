@@ -9,6 +9,10 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 
 public class BoardLines {
 
+    Line[] LINES = new Line[] {ROW_1, ROW_2, ROW_3,
+                                COLUMN_1, COLUMN_2, COLUMN_3,
+                                DIAGONAL_1, DIAGONAL_2};
+
     public boolean hasWinnerLine(Marks marks) {
         for (Line line : LINES) {
             if (line.isWinner(marks)) {
