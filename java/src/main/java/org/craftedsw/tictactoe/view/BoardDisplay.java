@@ -7,10 +7,12 @@ import static java.lang.String.format;
 
 public class BoardDisplay {
 
+    private static final String NEW_GAME_MESSAGE = "Please select cells according to the following numbers:";
+    private static final String NEW_LINE = "";
+
+
     public final static String DRAW_MESSAGE = "It was a draw!!!";
     public final static String WIN_MESSAGE = "%s wins!!!";
-
-    public final static String CURRENT_BOARD_STATE_MESSAGE = "Current state of the game: ";
 
     public static final String CELL_INDEX_INSTRUCTIONS =
                     " 1 | 2 | 3 " + "\n" +
@@ -18,6 +20,8 @@ public class BoardDisplay {
                     " 4 | 5 | 6 " + "\n" +
                     "---+---+---" + "\n" +
                     " 7 | 8 | 9 ";
+
+    public final static String CURRENT_BOARD_STATE_MESSAGE = "Current state of the game: ";
 
     private static final String EMPTY_BOARD =
                     " %s | %s | %s " + "\n" +
@@ -41,7 +45,11 @@ public class BoardDisplay {
     }
 
     public void displayGameInstructions(Marks marks) {
+        console.print(NEW_LINE);
+        console.print(NEW_GAME_MESSAGE);
+        console.print(NEW_LINE);
         console.print(CELL_INDEX_INSTRUCTIONS);
+        console.print(NEW_LINE);
         console.print(CURRENT_BOARD_STATE_MESSAGE);
         displayBoardWith(marks);
     }
@@ -52,5 +60,6 @@ public class BoardDisplay {
         } else {
             console.print(format(WIN_MESSAGE, winner.name()));
         }
+        console.print(NEW_LINE);
     }
 }
