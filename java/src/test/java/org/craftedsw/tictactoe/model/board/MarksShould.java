@@ -36,20 +36,6 @@ public class MarksShould {
         assertThat(marks.isFull(), is(true));
     }
 
-    @Test public void
-    should_inform_when_no_corners_are_marked() {
-        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_2).build();
-
-        assertThat(marks.hasAnyCornerMarked(), is(false));
-    }
-
-    @Test public void
-    should_inform_when_at_least_one_corner_is_marked() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_3, CELL_7, CELL_9).build();
-
-        assertThat(marks.hasAnyCornerMarked(), is(true));
-    }
-
     @DataPoints
     public static int[][] oppositeCorners() {
         return new int[][] {

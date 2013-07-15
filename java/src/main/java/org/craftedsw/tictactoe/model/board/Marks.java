@@ -17,10 +17,6 @@ public class Marks {
         this.marks = marksArray;
     }
 
-    public boolean hasAnyCornerMarked() {
-        return atLeastOneIsMarked(BoardStructure.CELL_1, BoardStructure.CELL_3, BoardStructure.CELL_7, BoardStructure.CELL_9);
-    }
-
     public int oppositeCornerOf(int cell) {
         for (int[] oppositeCells : BoardStructure.OPPOSITE_CORNER_CELLS) {
             if (cell == oppositeCells[0]) {
