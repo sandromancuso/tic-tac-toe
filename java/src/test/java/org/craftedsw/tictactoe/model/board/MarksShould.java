@@ -148,4 +148,5 @@ public class MarksShould {
 
         assertThat(marks.at(CELL_3), is(CROSS.mark()));
     }
+
 }

@@ -5,7 +5,7 @@ import org.craftedsw.tictactoe.view.Console;
 
 public class HumanPlayer implements Player {
 
-    public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
+    public static final String ASK_FOR_NEXT_MARK = "Choose an empty cell between 1 and 9  >>> ";
 
     private Console console;
     private PlayerMark playerMark;
@@ -17,8 +17,12 @@ public class HumanPlayer implements Player {
 
     @Override
     public void placeMarkOn(Marks marks) {
-        int cell = console.ask(ASK_FOR_NEXT_MARK);
-        marks.placeMarkAt(cell - 1, playerMark.mark());
+        try {
+            int cell = console.ask(ASK_FOR_NEXT_MARK);
+            marks.placeMarkAt(cell - 1, playerMark.mark());
+        } catch (Exception e) {
+            placeMarkOn(marks);
+        }
     }
 
     @Override

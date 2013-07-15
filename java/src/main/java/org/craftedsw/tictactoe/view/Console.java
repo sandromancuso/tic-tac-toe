@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class Console {
 
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
+
+    public Console() {
+        initialiseScanner();
+    }
 
     public void print(String text) {
         System.out.println(text);
@@ -12,6 +16,17 @@ public class Console {
 
     public int ask(String question) {
         System.out.print(question);
-        return scanner.nextInt();
+        try {
+            return scanner.nextInt();
+        } catch (Exception e) {
+            initialiseScanner();
+            System.out.println("Invalid input!!!");
+            return ask(question);
+        }
     }
+
+    private void initialiseScanner() {
+        scanner = new Scanner(System.in);
+    }
+
 }

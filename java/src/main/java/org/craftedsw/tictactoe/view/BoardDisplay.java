@@ -31,7 +31,6 @@ public class BoardDisplay {
                     "---+---+---"    + "\n" +
                     " %s | %s | %s ";
 
-    public static final String ASK_FOR_NEXT_MARK = "Cell number for your next mark  >>> ";
     private static final String EMPTY_LINE = "";
 
     private final Console console;
