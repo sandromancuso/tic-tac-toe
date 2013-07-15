@@ -17,15 +17,6 @@ public class Marks {
         this.marks = marksArray;
     }
 
-    public int oppositeCornerOf(int cell) {
-        for (int[] oppositeCells : BoardStructure.OPPOSITE_CORNER_CELLS) {
-            if (cell == oppositeCells[0]) {
-                return oppositeCells[1];
-            }
-        }
-        return NO_CELL;
-    }
-
     public int emptyOppositeCell(int cell) {
         int oppositeCell = oppositeCornerOf(cell);
         return (isEmptyAt(oppositeCell))
@@ -75,21 +66,21 @@ public class Marks {
         return marks;
     }
 
+    private int oppositeCornerOf(int cell) {
+        for (int[] oppositeCells : BoardStructure.OPPOSITE_CORNER_CELLS) {
+            if (cell == oppositeCells[0]) {
+                return oppositeCells[1];
+            }
+        }
+        return NO_CELL;
+    }
+
     private String stringRepresentation() {
         StringBuilder builder = new StringBuilder();
         for (String mark : marks) {
             builder.append(mark);
         }
         return builder.toString();
-    }
-
-    private boolean atLeastOneIsMarked(int... cells) {
-        for (int cell : cells) {
-            if (!EMPTY_CELL.equals(marks[cell])) {
-                return true;
-            }
-        }
-        return false;
     }
 
 }

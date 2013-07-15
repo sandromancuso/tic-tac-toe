@@ -36,26 +36,6 @@ public class MarksShould {
         assertThat(marks.isFull(), is(true));
     }
 
-    @DataPoints
-    public static int[][] oppositeCorners() {
-        return new int[][] {
-                {CELL_1, CELL_9},
-                {CELL_9, CELL_1},
-                {CELL_3, CELL_7},
-                {CELL_7, CELL_3},
-                {CELL_4, NO_CELL}
-        };
-    }
-
-    @Theory public void
-    corner_cell_has_opposite_corner_cell(int[] oppositeCells) {
-        Marks marks = marks().build();
-        int cell = oppositeCells[0];
-        int oppositeCell = oppositeCells[1];
-
-        assertThat(marks.oppositeCornerOf(cell), is(oppositeCell));
-    }
-
     @Test public void
     should_return_no_empty_opposite_cell_when_already_marked() {
         Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_3, CELL_7, CELL_9).build();
