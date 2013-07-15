@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.EMPTY_CELL;
 
 public class Marks {
     private final String[] marks;
@@ -37,13 +38,13 @@ public class Marks {
 
     public int emptyOppositeCell(int cell) {
         int oppositeCell = oppositeCornerOf(cell);
-        return (isEmpty(oppositeCell))
+        return (isEmptyAt(oppositeCell))
                     ? oppositeCell
                     : BoardStructure.NO_CELL;
     }
 
     public int firstEmptyCell() {
-        return asList(marks).indexOf(BoardStructure.EMPTY_CELL);
+        return asList(marks).indexOf(EMPTY_CELL);
     }
 
     public Integer[] cornerMarksFor(PlayerMark playerMark) {
@@ -60,12 +61,12 @@ public class Marks {
         return stringRepresentation().replace(" ", "").trim().length() == BoardStructure.ALL_CELLS.length;
     }
 
-    public boolean isEmpty(int cell) {
-        return BoardStructure.EMPTY_CELL.equals(marks[cell]);
+    public boolean isEmptyAt(int cell) {
+        return EMPTY_CELL.equals(marks[cell]);
     }
 
     public void placeMarkAt(int cell, String mark) {
-        if (!isEmpty(cell)) {
+        if (!isEmptyAt(cell)) {
             throw new RuntimeException("Cell already occupied [" + cell + "]");
         }
 
@@ -94,7 +95,7 @@ public class Marks {
 
     private boolean atLeastOneIsMarked(int... cells) {
         for (int cell : cells) {
-            if (!BoardStructure.EMPTY_CELL.equals(marks[cell])) {
+            if (!EMPTY_CELL.equals(marks[cell])) {
                 return true;
             }
         }
