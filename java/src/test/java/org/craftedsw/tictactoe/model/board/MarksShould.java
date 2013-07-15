@@ -44,20 +44,6 @@ public class MarksShould {
     }
 
     @Test public void
-    should_return_corner_cells_marked_by_player() {
-        Marks marks = marks()
-                            .fromPlayerOneAt(CELL_1, CELL_2, CELL_7)
-                            .fromPlayerTwoAt(CELL_3, CELL_9)
-                            .build();
-
-        assertThat(marks.cornerMarksFor(CROSS),
-                                            is(equalTo(new Integer[]{CELL_1, CELL_7})));;
-        assertThat(marks.cornerMarksFor(NOUGHT),
-                                            is(equalTo(new Integer[]{CELL_3, CELL_9})));;
-
-    }
-
-    @Test public void
     should_place_mark_at_a_specified_position() {
         Marks marks = marks().build();
 
