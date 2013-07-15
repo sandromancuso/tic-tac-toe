@@ -115,7 +115,7 @@ public class MarksShould {
     @Test public void
     should_return_corner_cells_marked_by_player() {
         Marks marks = marks()
-                            .fromPlayerOneAt(CELL_1, BoardStructure.CELL_2, CELL_7)
+                            .fromPlayerOneAt(CELL_1, CELL_2, CELL_7)
                             .fromPlayerTwoAt(CELL_3, CELL_9)
                             .build();
 
