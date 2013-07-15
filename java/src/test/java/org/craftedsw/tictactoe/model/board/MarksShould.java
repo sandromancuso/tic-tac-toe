@@ -18,20 +18,6 @@ import static org.junit.Assert.*;
 public class MarksShould {
 
     @Test public void
-    should_inform_when_it_is_empty() {
-        Marks marks = marks().build();
-
-        assertThat(marks.isEmpty(), is(true));
-    }
-
-    @Test public void
-    should_inform_when_it_is_not_empty() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1).build();
-
-        assertThat(marks.isEmpty(), is(false));
-    }
-
-    @Test public void
     should_inform_when_it_is_not_full() {
         Marks marks = marks()
                         .fromPlayerOneAt(CELL_1)

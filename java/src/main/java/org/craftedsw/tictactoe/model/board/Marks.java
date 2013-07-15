@@ -17,10 +17,6 @@ public class Marks {
         this.marks = marksArray;
     }
 
-    public boolean isEmpty() {
-        return stringRepresentation().trim().isEmpty();
-    }
-
     public boolean containsSingleMark() {
         return stringRepresentation().trim().length() == 1;
     }
