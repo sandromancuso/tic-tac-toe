@@ -26,7 +26,8 @@ public class AttackStrategyShould {
                 {new String[]{"0", " ", "X", " ", " ", " ", " ", " ", " "}, CELL_7},
                 {new String[]{"X", " ", " ", " ", " ", " ", " ", " ", "0"}, CELL_3},
                 {new String[]{" ", " ", "X", " ", " ", " ", "0", " ", " "}, CELL_1},
-                {new String[]{"X", "0", "0", " ", " ", "X", " ", " ", "0"}, CELL_7}
+                {new String[]{"X", "0", "0", " ", " ", "X", " ", " ", "0"}, CELL_7},
+                {new String[]{"X", "0", "0", " ", " ", "X", "0", " ", "0"}, NO_CELL}
         });
     }
 

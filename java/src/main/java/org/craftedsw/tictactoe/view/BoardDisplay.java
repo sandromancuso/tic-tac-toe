@@ -1,7 +1,6 @@
 package org.craftedsw.tictactoe.view;
 
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 import static java.lang.String.format;

@@ -46,6 +46,19 @@ public class BoardLinesShould {
     }
 
     @Test public void
+    return_null_when_there_is_no_loosing_line() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_4)
+                            .fromPlayerTwoAt(CELL_1)
+                            .build();
+        PlayerMark opponent = CROSS;
+
+        Line winningLine = boardLines.loosingLine(opponent, marks);
+
+        assertThat(winningLine, is(nullValue()));
+    }
+
+    @Test public void
     return_a_loosing_line() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_4, CELL_6)

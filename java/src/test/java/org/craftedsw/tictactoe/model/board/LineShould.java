@@ -93,4 +93,23 @@ public class LineShould {
         assertThat(COLUMN_3.emptyEdgeCell(marks), is(CELL_3));
     }
 
+    @Test public void
+    inform_the_first_empty_cell() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_1)
+                            .build();
+
+        assertThat(ROW_1.firstEmptyCell(marks), is(CELL_2));
+    }
+
+    @Test public void
+    inform_when_there_is_no_empty_cell() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_1, CELL_3)
+                            .fromPlayerTwoAt(CELL_2)
+                            .build();
+
+        assertThat(ROW_1.firstEmptyCell(marks), is(NO_CELL));
+    }
+
 }
