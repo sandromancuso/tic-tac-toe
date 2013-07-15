@@ -37,20 +37,6 @@ public class MarksShould {
     }
 
     @Test public void
-    should_inform_when_it_contains_more_than_one_mark() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1, BoardStructure.CELL_2).build();
-
-        assertThat(marks.containsSingleMark(), is(false));
-    }
-
-    @Test public void
-    should_inform_when_it_contains_a_single_mark() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1).build();
-
-        assertThat(marks.containsSingleMark(), is(true));
-    }
-
-    @Test public void
     should_inform_when_no_corners_are_marked() {
         Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_2).build();
 
