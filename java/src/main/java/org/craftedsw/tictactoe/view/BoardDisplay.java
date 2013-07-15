@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe.view;
 
 import org.craftedsw.tictactoe.model.board.Marks;
+import org.craftedsw.tictactoe.model.game.Player;
 import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 import static java.lang.String.format;
@@ -9,6 +10,7 @@ public class BoardDisplay {
 
     private static final String NEW_GAME_MESSAGE = "Please select cells according to the following numbers:";
     private static final String NEW_LINE = "";
+    public  static final String NEXT_PLAYER_IS = "Next player is ";
 
 
     public final static String DRAW_MESSAGE = "It was a draw!!!";
@@ -61,5 +63,10 @@ public class BoardDisplay {
             console.print(format(WIN_MESSAGE, winner.name()));
         }
         console.print(NEW_LINE);
+    }
+
+    public void nextPlayerIs(PlayerMark playerMark) {
+        console.print(NEW_LINE);
+        console.print(NEXT_PLAYER_IS + playerMark);
     }
 }

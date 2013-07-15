@@ -29,6 +29,7 @@ public class Game {
     public void startNewGame() {
         boardDisplay.displayGameInstructions(marks);
         while (!isOver()) {
+            boardDisplay.nextPlayerIs(currentPlayer.mark());
             currentPlayer.placeMarkOn(marks);
             boardDisplay.displayBoardWith(marks);
             switchCurrentPlayerToNextPlayer();

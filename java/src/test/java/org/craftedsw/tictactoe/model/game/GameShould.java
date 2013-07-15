@@ -14,6 +14,7 @@ import static java.util.Arrays.copyOfRange;
 import static java.util.Arrays.fill;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,6 +32,7 @@ public class GameShould {
     public void initialise() {
         marks = spy(marks().build());
         game = new TestableGame(boardDisplay, noughtsPlayer, crossesPlayer);
+        when(noughtsPlayer.mark()).thenReturn(NOUGHT);
     }
 
     @Test public void
@@ -58,6 +60,17 @@ public class GameShould {
         game.startNewGame();
 
         verify(boardDisplay).displayGameInstructions(marks);
+    }
+
+    @Test public void
+    display_that_it_is_a_players_turn_before_asking_her_to_place_a_mark() {
+        configureGameToFinishAfter(ONE_ITERATION);
+
+        game.startNewGame();
+
+        InOrder inOrder = inOrder(boardDisplay, noughtsPlayer);
+        inOrder.verify(boardDisplay).nextPlayerIs(noughtsPlayer.mark());
+        inOrder.verify(noughtsPlayer).placeMarkOn(marks);
     }
 
     @Test public void

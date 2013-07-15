@@ -10,6 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.craftedsw.tictactoe.view.BoardDisplay.*;
 import static org.mockito.Mockito.*;
@@ -60,6 +61,13 @@ public class BoardDisplayShould {
                 "---+---+---" + '\n' +
                 "   |   | 0 "
         );
+    }
+
+    @Test public void
+    display_a_players_turn() {
+        boardDisplay.nextPlayerIs(CROSS);
+
+        verify(console).print(NEXT_PLAYER_IS + CROSS);
     }
 
     @Test public void
