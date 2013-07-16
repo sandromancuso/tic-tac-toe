@@ -31,7 +31,7 @@ public class Marks {
         this.marks[cell] = mark;
     }
 
-    public String at(int cell) {
+    public String markAt(int cell) {
         return marks[cell];
     }
 

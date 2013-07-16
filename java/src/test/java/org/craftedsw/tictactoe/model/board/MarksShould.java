@@ -1,16 +1,12 @@
 package org.craftedsw.tictactoe.model.board;
 
 import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
-import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -54,7 +50,7 @@ public class MarksShould {
     should_return_a_mark_at_specified_position() {
         Marks marks = marks().fromPlayerOneAt(CELL_3).build();
 
-        assertThat(marks.at(CELL_3), is(CROSS.mark()));
+        assertThat(marks.markAt(CELL_3), is(CROSS.mark()));
     }
 
 }

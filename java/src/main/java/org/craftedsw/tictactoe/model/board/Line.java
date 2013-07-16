@@ -20,9 +20,9 @@ public class Line {
     }
 
     public boolean isWinner(Marks marks) {
-        return (marks.at(firstCell) != EMPTY_CELL)
-             && marks.at(firstCell).equals(marks.at(secondCell))
-             && marks.at(secondCell).equals(marks.at(thirdCell));
+        return (marks.markAt(firstCell) != EMPTY_CELL)
+             && marks.markAt(firstCell).equals(marks.markAt(secondCell))
+             && marks.markAt(secondCell).equals(marks.markAt(thirdCell));
     }
 
     public boolean isWinningLine(PlayerMark playerMark, Marks marks) {
@@ -34,15 +34,15 @@ public class Line {
     }
 
     private String lineAsString(Marks marks) {
-        return marks.at(firstCell)
-                + marks.at(secondCell)
-                + marks.at(thirdCell);
+        return marks.markAt(firstCell)
+                + marks.markAt(secondCell)
+                + marks.markAt(thirdCell);
     }
 
     public int firstEmptyCell(Marks marks) {
         int[] lineCells = new int[] {firstCell, secondCell, thirdCell};
         for (int cell : lineCells) {
-            if (marks.at(cell) == EMPTY_CELL) {
+            if (marks.markAt(cell) == EMPTY_CELL) {
                 return cell;
             }
         }
@@ -55,9 +55,9 @@ public class Line {
     }
 
     public int emptyEdgeCell(Marks marks) {
-        return marks.at(firstCell).trim().isEmpty()
+        return marks.markAt(firstCell).trim().isEmpty()
                     ? firstCell
-                    : marks.at(thirdCell).trim().isEmpty()
+                    : marks.markAt(thirdCell).trim().isEmpty()
                         ? thirdCell
                         : NO_CELL;
 

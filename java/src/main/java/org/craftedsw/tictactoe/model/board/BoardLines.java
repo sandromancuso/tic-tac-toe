@@ -53,7 +53,7 @@ public class BoardLines {
     public PlayerMark winnerMark(Marks marks) {
         for (Line line : LINES) {
             if (line.isWinner(marks)) {
-                return PlayerMark.byMark(marks.at(line.firstCell));
+                return PlayerMark.byMark(marks.markAt(line.firstCell));
             }
         }
         return null;
