@@ -32,7 +32,8 @@ public class PlayerChoice {
     }
 
     private Player createMachinePlayer() {
-        return new MachinePlayer(humanPlayerMark.opponent(), new GameStrategies());
+        PlayerMark machineMark = humanPlayerMark.opponent();
+        return new MachinePlayer(machineMark, new GameStrategies(machineMark));
     }
 
     private Player createHumanPlayer() {

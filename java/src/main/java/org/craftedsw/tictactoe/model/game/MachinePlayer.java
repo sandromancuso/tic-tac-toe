@@ -10,19 +10,19 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 public class MachinePlayer implements Player {
 
     private PlayerMark playerMark;
-    private GameStrategies strategies;
+    private GameStrategies gameStrategies;
 
-    public MachinePlayer(PlayerMark playerMark, GameStrategies strategies) {
+    public MachinePlayer(PlayerMark playerMark, GameStrategies gameStrategies) {
         this.playerMark = playerMark;
-        this.strategies = strategies;
+        this.gameStrategies = gameStrategies;
     }
 
     @Override
     public void placeMarkOn(Marks marks) {
         int cell = NO_CELL;
-        Iterator<Strategy> iterator = strategies.iterator();
-        while (iterator.hasNext()) {
-            cell = iterator.next().nextCell(playerMark, marks);
+        Iterator<Strategy> strategies = gameStrategies.iterator();
+        while (strategies.hasNext()) {
+            cell = strategies.next().nextCell(playerMark, marks);
             if (cell != NO_CELL) {
                 break;
             }
