@@ -26,6 +26,8 @@ public class Console {
     }
 
     public String getStringAnswerFor(String question) {
+        System.out.println();
+        System.out.print(question);
         return scanner.next();
     }
 
