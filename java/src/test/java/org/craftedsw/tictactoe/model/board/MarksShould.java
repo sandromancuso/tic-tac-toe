@@ -25,8 +25,8 @@ public class MarksShould {
     @Test public void
     should_inform_when_it_is_full() {
         Marks marks = marks()
-                            .fromPlayerOneAt(CELL_1, BoardStructure.CELL_2, CELL_3, BoardStructure.CELL_4, BoardStructure.CELL_5)
-                            .fromPlayerTwoAt(BoardStructure.CELL_6, CELL_7, BoardStructure.CELL_8, CELL_9)
+                            .fromPlayerOneAt(CELL_1, CELL_2, CELL_3, CELL_4, CELL_5)
+                            .fromPlayerTwoAt(CELL_6, CELL_7, CELL_8, CELL_9)
                             .build();
 
         assertThat(marks.isFull(), is(true));
@@ -34,16 +34,16 @@ public class MarksShould {
 
     @Test public void
     should_inform_which_is_the_first_empty_cell() {
-        Marks marks = marks().fromPlayerOneAt(CELL_1, BoardStructure.CELL_2, CELL_7, CELL_9).build();
+        Marks marks = marks().fromPlayerOneAt(CELL_1, CELL_2, CELL_7, CELL_9).build();
 
         assertThat(marks.firstEmptyCell(), is(CELL_3));
     }
 
     @Test(expected = RuntimeException.class) public void
     should_throw_exception_when_mark_is_placed_on_a_marked_cell() {
-        Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_2).build();
+        Marks marks = marks().fromPlayerOneAt(CELL_2).build();
 
-        marks.placeMarkAt(BoardStructure.CELL_2, CROSS.mark());
+        marks.placeMarkAt(CELL_2, CROSS.mark());
     }
 
     @Test public void
