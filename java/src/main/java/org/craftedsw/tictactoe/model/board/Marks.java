@@ -31,10 +31,6 @@ public class Marks {
         this.marks[cell] = mark;
     }
 
-    public boolean containsMarkAt(int cell, String mark) {
-        return marks[cell].equals(mark);
-    }
-
     public String at(int cell) {
         return marks[cell];
     }

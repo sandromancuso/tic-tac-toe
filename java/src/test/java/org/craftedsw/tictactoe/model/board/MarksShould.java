@@ -43,15 +43,6 @@ public class MarksShould {
         assertThat(marks.firstEmptyCell(), is(CELL_3));
     }
 
-    @Test public void
-    should_place_mark_at_a_specified_position() {
-        Marks marks = marks().build();
-
-        marks.placeMarkAt(CELL_3, CROSS.mark());
-
-        assertThat(marks.containsMarkAt(CELL_3, CROSS.mark()), is(true));
-    }
-
     @Test(expected = RuntimeException.class) public void
     should_throw_exception_when_mark_is_placed_on_a_marked_cell() {
         Marks marks = marks().fromPlayerOneAt(BoardStructure.CELL_2).build();
