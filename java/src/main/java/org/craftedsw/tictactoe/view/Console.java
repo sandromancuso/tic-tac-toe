@@ -14,19 +14,22 @@ public class Console {
         System.out.println(text);
     }
 
-    public int ask(String question) {
+    public int getIntAnswerFor(String question) {
         System.out.print(question);
         try {
             return scanner.nextInt();
         } catch (Exception e) {
             initialiseScanner();
             System.out.println("Invalid input!!!");
-            return ask(question);
+            return getIntAnswerFor(question);
         }
+    }
+
+    public String getStringAnswerFor(String question) {
+        return scanner.next();
     }
 
     private void initialiseScanner() {
         scanner = new Scanner(System.in);
     }
-
 }

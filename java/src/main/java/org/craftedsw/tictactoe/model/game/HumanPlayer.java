@@ -18,7 +18,7 @@ public class HumanPlayer implements Player {
     @Override
     public void placeMarkOn(Marks marks) {
         try {
-            int cell = console.ask(ASK_FOR_NEXT_MARK);
+            int cell = console.getIntAnswerFor(ASK_FOR_NEXT_MARK);
             marks.placeMarkAt(cell - 1, playerMark.mark());
         } catch (Exception e) {
             placeMarkOn(marks);

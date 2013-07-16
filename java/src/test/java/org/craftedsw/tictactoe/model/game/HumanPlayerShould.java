@@ -30,7 +30,7 @@ public class HumanPlayerShould {
 
     @Test public void
     place_a_mark() {
-        when(console.ask(ASK_FOR_NEXT_MARK)).thenReturn(3);
+        when(console.getIntAnswerFor(ASK_FOR_NEXT_MARK)).thenReturn(3);
 
         player.placeMarkOn(marks);
 
@@ -39,12 +39,12 @@ public class HumanPlayerShould {
 
     @Test public void
     ask_player_for_a_new_mark_when_player_tries_to_place_mark_on_a_occupied_cell() {
-        when(console.ask(ASK_FOR_NEXT_MARK)).thenReturn(3, 4);
+        when(console.getIntAnswerFor(ASK_FOR_NEXT_MARK)).thenReturn(3, 4);
         doThrow(RuntimeException.class).when(marks).placeMarkAt(CELL_3, NOUGHT.mark());
 
         player.placeMarkOn(marks);
 
-        verify(console, times(2)).ask(ASK_FOR_NEXT_MARK);
+        verify(console, times(2)).getIntAnswerFor(ASK_FOR_NEXT_MARK);
         verify(marks, times(1)).placeMarkAt(CELL_3, NOUGHT.mark());
         verify(marks, times(1)).placeMarkAt(CELL_4, NOUGHT.mark());
     }
