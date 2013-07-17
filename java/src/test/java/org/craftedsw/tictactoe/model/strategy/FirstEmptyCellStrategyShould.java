@@ -3,11 +3,10 @@ package org.craftedsw.tictactoe.model.strategy;
 import org.craftedsw.tictactoe.model.board.Marks;
 import org.junit.Test;
 
-import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_1;
-import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_2;
-import static org.craftedsw.tictactoe.model.board.BoardStructure.CELL_3;
-import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.craftedsw.tictactoe.builder.MarksBuilder.emptyMarks;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -15,7 +14,7 @@ public class FirstEmptyCellStrategyShould {
 
     @Test public void
     should_return_first_cell_when_there_are_no_marks() {
-        Marks marks = marks().build();
+        Marks marks = emptyMarks();
 
         FirstEmptyCellStrategy strategy = new FirstEmptyCellStrategy();
 

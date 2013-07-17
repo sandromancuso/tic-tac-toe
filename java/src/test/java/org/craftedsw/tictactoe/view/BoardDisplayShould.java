@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.craftedsw.tictactoe.builder.MarksBuilder.emptyMarks;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
@@ -38,7 +39,7 @@ public class BoardDisplayShould {
                 "---+---+---" + '\n' +
                 "   |   |   ";
 
-        boardDisplay.displayGameInstructions(marks().build());
+        boardDisplay.displayGameInstructions(emptyMarks());
 
         verify(console).print(CELL_INDEX_INSTRUCTIONS);
         verify(console).print(CURRENT_BOARD_STATE_MESSAGE);

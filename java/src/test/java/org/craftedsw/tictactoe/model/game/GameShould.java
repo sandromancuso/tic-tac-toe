@@ -12,7 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static java.util.Arrays.copyOfRange;
 import static java.util.Arrays.fill;
-import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
+import static org.craftedsw.tictactoe.builder.MarksBuilder.emptyMarks;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.mockito.Mockito.*;
@@ -30,7 +30,7 @@ public class GameShould {
 
     @Before
     public void initialise() {
-        marks = spy(marks().build());
+        marks = spy(emptyMarks());
         game = new TestableGame(boardDisplay, noughtsPlayer, crossesPlayer);
         when(noughtsPlayer.mark()).thenReturn(NOUGHT);
     }

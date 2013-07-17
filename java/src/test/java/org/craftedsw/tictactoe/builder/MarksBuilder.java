@@ -14,6 +14,10 @@ public class MarksBuilder {
         return new MarksBuilder();
     }
 
+    public static Marks emptyMarks() {
+        return marks().build();
+    }
+
     public MarksBuilder fromPlayerOneAt(int... cells) {
         this.playerOneCells = cells;
         return this;
