@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 
 public class GameStrategies implements Iterable<Strategy> {
 
@@ -26,11 +26,25 @@ public class GameStrategies implements Iterable<Strategy> {
     }
 
     private void createListOfStrategiesFor(PlayerMark playerMark) {
-        if (NOUGHT.equals(playerMark)) {
-            strategies.add(new CentralCellStrategy());
+        if (CROSS.equals(playerMark)) {
+            prepareCrossStrategies();
+        } else {
+            prepareNoughtStrategies();
         }
+    }
+
+    private void prepareCrossStrategies() {
         strategies.add(new WinStrategy());
         strategies.add(new StraightDefenceStrategy());
+        strategies.add(new CornerAttackStrategy());
+        strategies.add(new FirstEmptyCellStrategy());
+    }
+
+    private void prepareNoughtStrategies() {
+        strategies.add(new CentralCellStrategy());
+        strategies.add(new WinStrategy());
+        strategies.add(new StraightDefenceStrategy());
+        strategies.add(new BlockingForkStrategy());
         strategies.add(new CornerAttackStrategy());
         strategies.add(new FirstEmptyCellStrategy());
     }

@@ -30,14 +30,6 @@ public interface BoardStructure {
                                     ROW_1, ROW_3,
                                     COLUMN_1, COLUMN_3};
 
-    int[][] OPPOSITE_CORNER_CELLS = new int[][] {
-                                        {CELL_1, CELL_9},
-                                        {CELL_9, CELL_1},
-                                        {CELL_3, CELL_7},
-                                        {CELL_7, CELL_3}};
-
-    int[] CORNER_CELLS = new int[] {CELL_1, CELL_3, CELL_7, CELL_9};
-
     int[] SIDE_CELLS = new int[] {CELL_2, CELL_4, CELL_6, CELL_8};
 
     int[] ALL_CELLS = new int[] {

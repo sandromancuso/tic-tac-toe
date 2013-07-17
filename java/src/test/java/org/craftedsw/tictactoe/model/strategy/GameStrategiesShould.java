@@ -15,15 +15,21 @@ import static org.hamcrest.core.Is.is;
 
 public class GameStrategiesShould {
 
-    private Class[] commonStrategies = new Class[] {
-                                            WinStrategy.class,
-                                            StraightDefenceStrategy.class,
-                                            CornerAttackStrategy.class,
-                                            FirstEmptyCellStrategy.class};
+    private List<Class> expectedCrossStrategies = new ArrayList<Class>(
+                                asList(
+                                        WinStrategy.class,
+                                        StraightDefenceStrategy.class,
+                                        CornerAttackStrategy.class,
+                                        FirstEmptyCellStrategy.class));
 
-    private List<Class> expectedCrossStrategies = expectedCrossStrategies();
-
-    private List<Class> expectedNoughtStrategies = expectedNoughtStrategies();
+    private List<Class> expectedNoughtStrategies = new ArrayList<Class>(
+                                asList(
+                                        CentralCellStrategy.class,
+                                        WinStrategy.class,
+                                        StraightDefenceStrategy.class,
+                                        BlockingForkStrategy.class,
+                                        CornerAttackStrategy.class,
+                                        FirstEmptyCellStrategy.class));
 
     @Test public void
     contain_strategies_in_a_specific_order_for_CROSS_player() {
@@ -50,17 +56,5 @@ public class GameStrategiesShould {
     private GameStrategies crossPlayerStrategies() {
         return new GameStrategies(CROSS);
     }
-
-    private List<Class> expectedCrossStrategies() {
-        return new ArrayList<Class>(asList(commonStrategies));
-    }
-
-    private List<Class> expectedNoughtStrategies() {
-        List<Class> strategies = new ArrayList<Class>(expectedCrossStrategies);
-        strategies.add(0, CentralCellStrategy.class);
-        return strategies;
-    }
-
-
 
 }
