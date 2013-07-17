@@ -1,7 +1,6 @@
 package org.craftedsw.tictactoe.model.strategy;
 
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +10,7 @@ import java.util.Arrays;
 
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
@@ -48,6 +48,6 @@ public class CornerAttackStrategyShould {
 
     @Test public void
     should_choose_opposite_corner_if_there_is_only_one_mark_in_a_corner() {
-        assertThat(cornerAttackStrategy.nextCell(CROSS, marks), Is.is(cellToBeMarked));
+        assertThat(cornerAttackStrategy.nextCell(CROSS, marks), is(cellToBeMarked));
     }
 }

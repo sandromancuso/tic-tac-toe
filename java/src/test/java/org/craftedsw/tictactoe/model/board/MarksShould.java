@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe.model.board;
 
 import org.junit.Test;
+import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.runner.RunWith;
 
@@ -10,7 +11,6 @@ import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-@RunWith(Theories.class)
 public class MarksShould {
 
     @Test public void
@@ -51,6 +51,16 @@ public class MarksShould {
         Marks marks = marks().fromPlayerOneAt(CELL_3).build();
 
         assertThat(marks.markAt(CELL_3), is(CROSS.mark()));
+    }
+
+    @Test public void
+    return_the_first_empty_side_cell() {
+        Marks marks = marks()
+                        .fromPlayerOneAt(CELL_1, CELL_3)
+                        .fromPlayerTwoAt(CELL_2, CELL_4)
+                        .build();
+
+        assertThat(marks.firstEmptySideCell(), is(CELL_6));
     }
 
 }

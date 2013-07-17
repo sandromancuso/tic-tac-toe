@@ -38,6 +38,8 @@ public interface BoardStructure {
 
     int[] CORNER_CELLS = new int[] {CELL_1, CELL_3, CELL_7, CELL_9};
 
+    int[] SIDE_CELLS = new int[] {CELL_2, CELL_4, CELL_6, CELL_8};
+
     int[] ALL_CELLS = new int[] {
             CELL_1, CELL_2, CELL_3,
             CELL_4, CELL_5, CELL_6,

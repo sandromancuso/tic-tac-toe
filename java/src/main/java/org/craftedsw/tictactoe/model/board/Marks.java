@@ -1,8 +1,7 @@
 package org.craftedsw.tictactoe.model.board;
 
 import static java.util.Arrays.asList;
-import static org.craftedsw.tictactoe.model.board.BoardStructure.ALL_CELLS;
-import static org.craftedsw.tictactoe.model.board.BoardStructure.EMPTY_CELL;
+import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 
 public class Marks {
     private final String[] marks;
@@ -47,4 +46,12 @@ public class Marks {
         return builder.toString();
     }
 
+    public int firstEmptySideCell() {
+        for (int cell : SIDE_CELLS) {
+            if (isEmptyAt(cell)) {
+                return cell;
+            }
+        }
+        return NO_CELL;
+    }
 }
