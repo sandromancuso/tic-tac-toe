@@ -14,7 +14,7 @@ import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class AttackStrategyShould {
+public class CornerAttackStrategyShould {
 
     @Parameterized.Parameters(name = "{index}: Corner mark should be {1}")
     public static Iterable<Object[]> marks() {
@@ -31,23 +31,23 @@ public class AttackStrategyShould {
         });
     }
 
-    private AttackStrategy attackStrategy;
+    private CornerAttackStrategy cornerAttackStrategy;
 
     @Before
     public void initialise() {
-        attackStrategy = new AttackStrategy();
+        cornerAttackStrategy = new CornerAttackStrategy();
     }
 
     private final int cellToBeMarked;
     private final Marks marks;
 
-    public AttackStrategyShould(String[] marks, int cellToBeMarked) {
+    public CornerAttackStrategyShould(String[] marks, int cellToBeMarked) {
         this.marks = new Marks(marks);
         this.cellToBeMarked = cellToBeMarked;
     }
 
     @Test public void
     should_choose_opposite_corner_if_there_is_only_one_mark_in_a_corner() {
-        assertThat(attackStrategy.nextCell(CROSS, marks), Is.is(cellToBeMarked));
+        assertThat(cornerAttackStrategy.nextCell(CROSS, marks), Is.is(cellToBeMarked));
     }
 }

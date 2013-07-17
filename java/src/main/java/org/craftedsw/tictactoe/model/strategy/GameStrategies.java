@@ -31,7 +31,7 @@ public class GameStrategies implements Iterable<Strategy> {
         }
         strategies.add(new WinStrategy());
         strategies.add(new StraightDefenceStrategy());
-        strategies.add(new AttackStrategy());
+        strategies.add(new CornerAttackStrategy());
         strategies.add(new FirstEmptyCellStrategy());
     }
 

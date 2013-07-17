@@ -18,7 +18,7 @@ public class GameStrategiesShould {
     private Class[] commonStrategies = new Class[] {
                                             WinStrategy.class,
                                             StraightDefenceStrategy.class,
-                                            AttackStrategy.class,
+                                            CornerAttackStrategy.class,
                                             FirstEmptyCellStrategy.class};
 
     private List<Class> expectedCrossStrategies = expectedCrossStrategies();

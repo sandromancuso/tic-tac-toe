@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
-public class AttackStrategy implements Strategy {
+public class CornerAttackStrategy implements Strategy {
 
     @Override
     public int nextCell(PlayerMark playerMark, Marks marks) {
