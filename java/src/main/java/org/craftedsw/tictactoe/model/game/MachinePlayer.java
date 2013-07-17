@@ -19,15 +19,21 @@ public class MachinePlayer implements Player {
 
     @Override
     public void placeMarkOn(Marks marks) {
+        int cell = cellToBeMarked(marks);
+        marks.placeMarkAt(cell, playerMark.mark());
+    }
+
+    private int cellToBeMarked(Marks marks) {
         int cell = NO_CELL;
         Iterator<Strategy> strategies = gameStrategies.iterator();
+
         while (strategies.hasNext()) {
             cell = strategies.next().nextCell(playerMark, marks);
             if (cell != NO_CELL) {
                 break;
             }
         }
-        marks.placeMarkAt(cell, playerMark.mark());
+        return cell;
     }
 
     @Override
