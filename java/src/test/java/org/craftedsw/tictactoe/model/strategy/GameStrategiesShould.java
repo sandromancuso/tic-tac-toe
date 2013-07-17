@@ -17,7 +17,7 @@ public class GameStrategiesShould {
 
     private Class[] commonStrategies = new Class[] {
                                             WinStrategy.class,
-                                            DefenceStrategy.class,
+                                            StraightDefenceStrategy.class,
                                             AttackStrategy.class,
                                             FirstEmptyCellStrategy.class};
 
