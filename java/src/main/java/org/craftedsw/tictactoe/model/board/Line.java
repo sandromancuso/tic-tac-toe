@@ -30,10 +30,6 @@ public class Line {
         return remove(lineAsString(marks), EMPTY_CELL).equals(repeat(playerMark.mark(), 2));
     }
 
-    public boolean isLoosingLine(PlayerMark opponent, Marks marks) {
-        return isWinningLine(opponent, marks);
-    }
-
     public int firstEmptyCell(Marks marks) {
       int[] lineCells = new int[] {firstCell, secondCell, thirdCell};
         for (int cell : lineCells) {

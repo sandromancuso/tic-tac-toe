@@ -1,14 +1,13 @@
 package org.craftedsw.tictactoe.model.board;
 
-import org.craftedsw.tictactoe.model.game.PlayerMark;
 import org.junit.Test;
 
+import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
-import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class LineShould {
 
@@ -27,20 +26,6 @@ public class LineShould {
     }
 
     @Test public void
-    inform_when_a_line_is_not_a_loosing_line() {
-        Marks marks = marks()
-                              .fromPlayerOneAt(CELL_1, CELL_2)
-                              .fromPlayerTwoAt(CELL_3, CELL_4)
-                              .build();
-
-        assertThat(ROW_1.isLoosingLine(CROSS, marks), is(false));
-        assertThat(ROW_2.isLoosingLine(CROSS, marks), is(false));
-        assertThat(ROW_3.isLoosingLine(CROSS, marks), is(false));
-        assertThat(COLUMN_1.isLoosingLine(CROSS, marks), is(false));
-        assertThat(COLUMN_2.isLoosingLine(CROSS, marks), is(false));
-    }
-
-    @Test public void
     inform_when_a_line_is_a_winning_line() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_1, CELL_5, CELL_6, CELL_7)
@@ -50,20 +35,6 @@ public class LineShould {
         assertThat(DIAGONAL_1.isWinningLine(CROSS, marks), is(false));
         assertThat(COLUMN_1.isWinningLine(CROSS, marks), is(true));
         assertThat(ROW_2.isWinningLine(CROSS, marks), is(true));
-    }
-
-    @Test public void
-    inform_when_a_line_is_a_loosing_line() {
-        Marks marks = marks()
-                            .fromPlayerOneAt(CELL_1, CELL_5, CELL_6, CELL_7)
-                            .fromPlayerTwoAt(CELL_3, CELL_8, CELL_9)
-                            .build();
-
-        PlayerMark opponent = CROSS;
-
-        assertThat(DIAGONAL_1.isLoosingLine(opponent, marks), is(false));
-        assertThat(COLUMN_1.isLoosingLine(opponent, marks), is(true));
-        assertThat(ROW_2.isLoosingLine(opponent, marks), is(true));
     }
 
     @Test public void
