@@ -13,11 +13,14 @@ public class CornerAttackStrategy implements Strategy {
 
     @Override
     public int nextCell(PlayerMark playerMark, Marks marks) {
-        BoardLines boardLines = new BoardLines();
-        List<Line> lines = boardLines.linesWhereJustOneCornerIsSelectedBy(playerMark, marks);
+        List<Line> lines = linesWithJustOneCornerSelectedFor(playerMark, marks);
         if (!lines.isEmpty()) {
             return lines.get(0).emptyEdgeCell(marks);
         }
         return NO_CELL;
+    }
+
+    private List<Line> linesWithJustOneCornerSelectedFor(PlayerMark playerMark, Marks marks) {
+        return new BoardLines().linesWhereJustOneCornerIsSelectedBy(playerMark, marks);
     }
 }

@@ -9,9 +9,11 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class ForkStrategy implements Strategy {
 
+    private static final int TWO_CELLS = 2;
+
     @Override
     public int nextCell(PlayerMark playerMark, Marks marks) {
-        if (marks.count() == 2) {
+        if (marks.count() == TWO_CELLS) {
             for (Line diagonal : DIAGONALS) {
                 if (isCandidateForAFork(marks, diagonal)) {
                     return diagonal.emptyEdgeCell(marks);

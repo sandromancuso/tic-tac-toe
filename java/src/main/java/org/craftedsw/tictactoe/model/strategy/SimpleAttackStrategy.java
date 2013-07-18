@@ -13,11 +13,14 @@ public class SimpleAttackStrategy implements Strategy {
 
     @Override
     public int nextCell(PlayerMark playerMark, Marks marks) {
-        BoardLines boardLines = new BoardLines();
-        List<Line> lines = boardLines.withSingleMark(playerMark, marks);
+        List<Line> lines = linesWithSingleMarkFor(playerMark, marks);
         return (lines.size() > 0)
                     ? lines.get(0).emptyEdgeCell(marks)
                     : NO_CELL;
+    }
+
+    private List<Line> linesWithSingleMarkFor(PlayerMark playerMark, Marks marks) {
+        return new BoardLines().withSingleMark(playerMark, marks);
     }
 
 }

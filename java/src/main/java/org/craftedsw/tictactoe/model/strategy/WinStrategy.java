@@ -9,19 +9,16 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class WinStrategy implements Strategy {
 
-    private final BoardLines boardLines;
-
-    public WinStrategy() {
-        this.boardLines = new BoardLines();
-    }
-
     @Override
     public int nextCell(PlayerMark playerMark, Marks marks) {
-        int cell = NO_CELL;
-        Line winningLine = boardLines.winningLine(playerMark, marks);
+        Line winningLine = winningLineFor(playerMark, marks);
         if (winningLine != null) {
-            cell =  winningLine.firstEmptyCell(marks);
+            return  winningLine.firstEmptyCell(marks);
         }
-        return cell;
+        return NO_CELL;
+    }
+
+    private Line winningLineFor(PlayerMark playerMark, Marks marks) {
+        return new BoardLines().winningLine(playerMark, marks);
     }
 }

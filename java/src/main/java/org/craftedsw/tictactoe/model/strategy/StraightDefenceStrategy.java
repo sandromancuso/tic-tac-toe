@@ -11,12 +11,14 @@ public class StraightDefenceStrategy implements Strategy {
 
     @Override
     public int nextCell(PlayerMark playerMark, Marks marks) {
-        int cell = NO_CELL;
-        BoardLines boardLines = new BoardLines();
-        Line loosingLine = boardLines.loosingLine(playerMark, marks);
+        Line loosingLine = loosingLineFor(playerMark, marks);
         if (loosingLine != null) {
-            cell = loosingLine.firstEmptyCell(marks);
+            return loosingLine.firstEmptyCell(marks);
         }
-        return cell;
+        return NO_CELL;
+    }
+
+    private Line loosingLineFor(PlayerMark playerMark, Marks marks) {
+        return new BoardLines().loosingLine(playerMark, marks);
     }
 }
