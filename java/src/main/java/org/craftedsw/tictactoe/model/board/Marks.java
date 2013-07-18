@@ -49,7 +49,7 @@ public class Marks {
     }
 
     public int count() {
-        return stringRepresentation().replace(" ", "").trim().length();
+        return stringRepresentation().replace(" ", "").length();
     }
 
     private String stringRepresentation() {
