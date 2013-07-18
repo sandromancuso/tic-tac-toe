@@ -58,4 +58,14 @@ public class BoardLines {
         }
         return null;
     }
+
+    public List<Line> withSingleMark(PlayerMark playerMark, Marks marks) {
+        List<Line> lines = new ArrayList<Line>();
+        for (Line line : ALL_LINES) {
+            if (line.hasSingleMark(playerMark, marks)) {
+                lines.add(line);
+            }
+        }
+        return lines;
+    }
 }

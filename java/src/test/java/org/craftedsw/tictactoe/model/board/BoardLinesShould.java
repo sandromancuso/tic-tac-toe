@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe.model.board;
 
 import org.craftedsw.tictactoe.model.game.PlayerMark;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -112,6 +113,18 @@ public class BoardLinesShould {
                             .build();
 
         assertThat(boardLines.winnerMark(marks), is(NOUGHT));
+    }
+
+    @Test public void
+    return_a_list_of_lines_with_a_single_matching_mark() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_1, CELL_8)
+                            .fromPlayerTwoAt(CELL_5)
+                            .build();
+
+        List<Line> lines = boardLines.withSingleMark(NOUGHT, marks);
+
+        assertThat(lines, Matchers.hasItems(DIAGONAL_2, ROW_2));
     }
 
 }

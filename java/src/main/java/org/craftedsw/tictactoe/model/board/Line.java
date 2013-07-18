@@ -9,6 +9,7 @@ import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
 public class Line {
 
+    public static final String DOUBLE_EMPTY_CELLS = "  ";
     public final int firstCell;
     public final int secondCell;
     public final int thirdCell;
@@ -33,14 +34,8 @@ public class Line {
         return isWinningLine(opponent, marks);
     }
 
-    private String lineAsString(Marks marks) {
-        return marks.markAt(firstCell)
-                + marks.markAt(secondCell)
-                + marks.markAt(thirdCell);
-    }
-
     public int firstEmptyCell(Marks marks) {
-        int[] lineCells = new int[] {firstCell, secondCell, thirdCell};
+      int[] lineCells = new int[] {firstCell, secondCell, thirdCell};
         for (int cell : lineCells) {
             if (marks.markAt(cell) == EMPTY_CELL) {
                 return cell;
@@ -50,8 +45,8 @@ public class Line {
     }
 
     public boolean hasSingleCornerMarkForPlayer(PlayerMark playerMark, Marks marks) {
-        return lineAsString(marks).equals("  " + playerMark.mark())
-                || lineAsString(marks).equals(playerMark.mark() + "  ");
+        return lineAsString(marks).equals(DOUBLE_EMPTY_CELLS + playerMark.mark())
+                || lineAsString(marks).equals(playerMark.mark() + DOUBLE_EMPTY_CELLS);
     }
 
     public int emptyEdgeCell(Marks marks) {
@@ -61,5 +56,15 @@ public class Line {
                         ? thirdCell
                         : NO_CELL;
 
+    }
+
+    public boolean hasSingleMark(PlayerMark playerMark, Marks marks) {
+        return playerMark.mark().equals(lineAsString(marks).trim());
+    }
+
+    private String lineAsString(Marks marks) {
+        return marks.markAt(firstCell)
+                + marks.markAt(secondCell)
+                + marks.markAt(thirdCell);
     }
 }

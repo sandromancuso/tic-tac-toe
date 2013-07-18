@@ -22,7 +22,8 @@ public class BlockingForkStrategyShould {
         return Arrays.asList(new Object[][]{
                 {new String[]{"X", " ", " ", " ", "0", " ", " ", " ", "X"}, CELL_2},
                 {new String[]{" ", " ", "X", " ", "0", " ", "X", " ", " "}, CELL_2},
-                {new String[]{" ", "X", " ", " ", " ", "0", "X", " ", " "}, NO_CELL}
+                {new String[]{" ", "X", " ", " ", " ", "0", "X", " ", " "}, NO_CELL},
+                {new String[]{"X", " ", " ", " ", "0", " ", " ", "X", " "}, NO_CELL}
         });
     }
 

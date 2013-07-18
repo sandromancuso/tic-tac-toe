@@ -112,4 +112,30 @@ public class LineShould {
         assertThat(ROW_1.firstEmptyCell(marks), is(NO_CELL));
     }
 
+    @Test public void
+    inform_when_line_does_not_have_a_single_matching_mark() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_2, CELL_3)
+                            .fromPlayerTwoAt(CELL_5)
+                            .build();
+
+        assertThat(ROW_1.hasSingleMark(CROSS, marks), is(false));
+        assertThat(ROW_2.hasSingleMark(CROSS, marks), is(false));
+        assertThat(COLUMN_2.hasSingleMark(CROSS, marks), is(false));
+        assertThat(COLUMN_3.hasSingleMark(NOUGHT, marks), is(false));
+        assertThat(DIAGONAL_1.hasSingleMark(CROSS, marks), is(false));
+    }
+
+    @Test public void
+    inform_when_line_has_a_single_matching_mark() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_2, CELL_3)
+                            .fromPlayerTwoAt(CELL_5)
+                            .build();
+
+        assertThat(ROW_2.hasSingleMark(NOUGHT, marks), is(true));
+        assertThat(COLUMN_3.hasSingleMark(CROSS, marks), is(true));
+        assertThat(DIAGONAL_1.hasSingleMark(NOUGHT, marks), is(true));
+    }
+
 }

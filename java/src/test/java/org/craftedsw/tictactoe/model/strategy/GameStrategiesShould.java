@@ -20,6 +20,7 @@ public class GameStrategiesShould {
                                         WinStrategy.class,
                                         StraightDefenceStrategy.class,
                                         CornerAttackStrategy.class,
+                                        SimpleAttackStrategy.class,
                                         FirstEmptyCellStrategy.class));
 
     private List<Class> expectedNoughtStrategies = new ArrayList<Class>(
@@ -29,6 +30,7 @@ public class GameStrategiesShould {
                                         StraightDefenceStrategy.class,
                                         BlockingForkStrategy.class,
                                         CornerAttackStrategy.class,
+                                        SimpleAttackStrategy.class,
                                         FirstEmptyCellStrategy.class));
 
     @Test public void

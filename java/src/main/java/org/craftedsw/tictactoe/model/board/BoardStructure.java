@@ -30,6 +30,12 @@ public interface BoardStructure {
                                     ROW_1, ROW_3,
                                     COLUMN_1, COLUMN_3};
 
+    Line[] ALL_LINES = new Line[] {
+                                DIAGONAL_1, DIAGONAL_2,
+                                ROW_1, ROW_2, ROW_3,
+                                COLUMN_1, COLUMN_2, COLUMN_3
+    };
+
     int[] SIDE_CELLS = new int[] {CELL_2, CELL_4, CELL_6, CELL_8};
 
     int[] ALL_CELLS = new int[] {
