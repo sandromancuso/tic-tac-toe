@@ -58,13 +58,14 @@ public class Line {
         return playerMark.mark().equals(lineAsString(marks).trim());
     }
 
+    public int numberOfMarkedCells(Marks marks) {
+        return lineAsString(marks).replace(" ", "").length();
+    }
+
     private String lineAsString(Marks marks) {
         return marks.markAt(firstCell)
                 + marks.markAt(secondCell)
                 + marks.markAt(thirdCell);
     }
 
-    public int numberOfMakedCells(Marks marks) {
-        return lineAsString(marks).replace(" ", "").length();
-    }
 }

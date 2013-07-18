@@ -116,9 +116,9 @@ public class LineShould {
                             .fromPlayerTwoAt(CELL_5)
                             .build();
 
-        assertThat(ROW_1.numberOfMakedCells(marks), is(2));
-        assertThat(COLUMN_3.numberOfMakedCells(marks), is(1));
-        assertThat(DIAGONAL_2.numberOfMakedCells(marks), is(2));
+        assertThat(ROW_1.numberOfMarkedCells(marks), is(2));
+        assertThat(COLUMN_3.numberOfMarkedCells(marks), is(1));
+        assertThat(DIAGONAL_2.numberOfMarkedCells(marks), is(2));
     }
 
 }

@@ -22,7 +22,7 @@ public class ForkStrategy implements Strategy {
     }
 
     private boolean isCandidateForAFork(Marks marks, Line diagonal) {
-        return diagonal.numberOfMakedCells(marks) == 2 && diagonal.emptyEdgeCell(marks) != NO_CELL;
+        return diagonal.numberOfMarkedCells(marks) == 2 && diagonal.emptyEdgeCell(marks) != NO_CELL;
     }
 
 }
