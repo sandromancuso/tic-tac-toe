@@ -16,7 +16,7 @@ public class SimpleAttackStrategy implements Strategy {
         BoardLines boardLines = new BoardLines();
         List<Line> lines = boardLines.withSingleMark(playerMark, marks);
         return (lines.size() > 0)
-                    ? lines.get(0).firstEmptyCell(marks)
+                    ? lines.get(0).emptyEdgeCell(marks)
                     : NO_CELL;
     }
 

@@ -1,6 +1,7 @@
 package org.craftedsw.tictactoe.model.board;
 
 import static java.util.Arrays.asList;
+import static java.util.Arrays.copyOf;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 
 public class Marks {
@@ -15,7 +16,7 @@ public class Marks {
     }
 
     public boolean isFull() {
-        return stringRepresentation().replace(" ", "").trim().length() == ALL_CELLS.length;
+        return count() == ALL_CELLS.length;
     }
 
     public boolean isEmptyAt(int cell) {
@@ -35,15 +36,7 @@ public class Marks {
     }
 
     public String[] asArray() {
-        return marks;
-    }
-
-    private String stringRepresentation() {
-        StringBuilder builder = new StringBuilder();
-        for (String mark : marks) {
-            builder.append(mark);
-        }
-        return builder.toString();
+        return copyOf(marks, marks.length);
     }
 
     public int firstEmptySideCell() {
@@ -53,5 +46,17 @@ public class Marks {
             }
         }
         return NO_CELL;
+    }
+
+    public int count() {
+        return stringRepresentation().replace(" ", "").trim().length();
+    }
+
+    private String stringRepresentation() {
+        StringBuilder builder = new StringBuilder();
+        for (String mark : marks) {
+            builder.append(mark);
+        }
+        return builder.toString();
     }
 }

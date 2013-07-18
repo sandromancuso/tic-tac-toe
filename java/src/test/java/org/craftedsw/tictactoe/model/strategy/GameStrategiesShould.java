@@ -19,6 +19,7 @@ public class GameStrategiesShould {
                                 asList(
                                         WinStrategy.class,
                                         StraightDefenceStrategy.class,
+                                        ForkStrategy.class,
                                         CornerAttackStrategy.class,
                                         SimpleAttackStrategy.class,
                                         FirstEmptyCellStrategy.class));
@@ -29,6 +30,7 @@ public class GameStrategiesShould {
                                         WinStrategy.class,
                                         StraightDefenceStrategy.class,
                                         BlockingForkStrategy.class,
+                                        ForkStrategy.class,
                                         CornerAttackStrategy.class,
                                         SimpleAttackStrategy.class,
                                         FirstEmptyCellStrategy.class));

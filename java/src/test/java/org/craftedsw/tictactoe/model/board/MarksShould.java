@@ -83,4 +83,13 @@ public class MarksShould {
         assertThat(marks.firstEmptySideCell(), is(NO_CELL));
     }
 
+    @Test public void
+    inform_the_number_of_marks_placed() {
+        Marks marks = marks()
+                        .fromPlayerOneAt(CELL_2, CELL_6)
+                        .fromPlayerTwoAt(CELL_5, CELL_7)
+                        .build();
+
+        assertThat(marks.count(), is(4));
+    }
 }

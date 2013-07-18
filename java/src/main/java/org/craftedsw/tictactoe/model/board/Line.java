@@ -50,9 +50,9 @@ public class Line {
     }
 
     public int emptyEdgeCell(Marks marks) {
-        return marks.markAt(firstCell).trim().isEmpty()
+        return marks.isEmptyAt(firstCell)
                     ? firstCell
-                    : marks.markAt(thirdCell).trim().isEmpty()
+                    : marks.isEmptyAt(thirdCell)
                         ? thirdCell
                         : NO_CELL;
 
@@ -66,5 +66,9 @@ public class Line {
         return marks.markAt(firstCell)
                 + marks.markAt(secondCell)
                 + marks.markAt(thirdCell);
+    }
+
+    public int numberOfMakedCells(Marks marks) {
+        return lineAsString(marks).replace(" ", "").length();
     }
 }

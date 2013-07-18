@@ -25,6 +25,8 @@ public interface BoardStructure {
     Line DIAGONAL_1 = new Line(CELL_1, CELL_5, CELL_9);
     Line DIAGONAL_2 = new Line(CELL_3, CELL_5, CELL_7);
 
+    Line[] DIAGONALS = new Line[] {DIAGONAL_1, DIAGONAL_2};
+
     Line[] LINES_WITH_CORNERS = new Line[] {
                                     DIAGONAL_1, DIAGONAL_2,
                                     ROW_1, ROW_3,

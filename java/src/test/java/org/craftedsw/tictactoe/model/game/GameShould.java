@@ -50,7 +50,7 @@ public class GameShould {
 
         game.startNewGame();
 
-        verify(marks, times(1)).isFull();
+        verify(marks, times(2)).isFull();
     }
 
     @Test public void

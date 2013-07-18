@@ -138,4 +138,16 @@ public class LineShould {
         assertThat(DIAGONAL_1.hasSingleMark(NOUGHT, marks), is(true));
     }
 
+    @Test public void
+    inform_number_of_marks() {
+        Marks marks = marks()
+                            .fromPlayerOneAt(CELL_2, CELL_3)
+                            .fromPlayerTwoAt(CELL_5)
+                            .build();
+
+        assertThat(ROW_1.numberOfMakedCells(marks), is(2));
+        assertThat(COLUMN_3.numberOfMakedCells(marks), is(1));
+        assertThat(DIAGONAL_2.numberOfMakedCells(marks), is(2));
+    }
+
 }
