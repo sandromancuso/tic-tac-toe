@@ -31,13 +31,8 @@ public class BoardLines {
         return null;
     }
 
-    public Line loosingLine(PlayerMark opponent, Marks marks) {
-        for (Line line : LINES) {
-            if (line.isLoosingLine(opponent, marks)) {
-                return line;
-            }
-        }
-        return null;
+    public Line loosingLine(PlayerMark player, Marks marks) {
+        return winningLine(player.opponent(), marks);
     }
 
     public List<Line> linesWhereJustOneCornerIsSelectedBy(PlayerMark playerMark, Marks marks) {

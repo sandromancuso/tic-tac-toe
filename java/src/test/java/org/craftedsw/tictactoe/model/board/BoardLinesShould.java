@@ -52,9 +52,9 @@ public class BoardLinesShould {
                             .fromPlayerOneAt(CELL_4)
                             .fromPlayerTwoAt(CELL_1)
                             .build();
-        PlayerMark opponent = CROSS;
+        PlayerMark player = NOUGHT;
 
-        Line winningLine = boardLines.loosingLine(opponent, marks);
+        Line winningLine = boardLines.loosingLine(player, marks);
 
         assertThat(winningLine, is(nullValue()));
     }
@@ -65,9 +65,9 @@ public class BoardLinesShould {
                             .fromPlayerOneAt(CELL_4, CELL_6)
                             .fromPlayerTwoAt(CELL_1, CELL_7)
                             .build();
-        PlayerMark opponent = CROSS;
+        PlayerMark player = NOUGHT;
 
-        Line winningLine = boardLines.loosingLine(opponent, marks);
+        Line winningLine = boardLines.loosingLine(player, marks);
 
         assertThat(winningLine, is(ROW_2));
     }

@@ -13,7 +13,7 @@ public class StraightDefenceStrategy implements Strategy {
     public int nextCell(PlayerMark playerMark, Marks marks) {
         int cell = NO_CELL;
         BoardLines boardLines = new BoardLines();
-        Line loosingLine = boardLines.loosingLine(playerMark.opponent(), marks);
+        Line loosingLine = boardLines.loosingLine(playerMark, marks);
         if (loosingLine != null) {
             cell = loosingLine.firstEmptyCell(marks);
         }
