@@ -46,11 +46,12 @@ public class GameStrategiesShould {
     }
 
     private void assertStrategiesMatch(GameStrategies gameStrategies, List<Class> expectedStrategies) {
+        assertThat(gameStrategies.size(), is(expectedStrategies.size()));
+
         Iterator<Strategy> strategies = gameStrategies.iterator();
         for (int cnt = 0; strategies.hasNext(); cnt++) {
             assertThat(strategies.next(), is(instanceOf(expectedStrategies.get(cnt))));
         }
-        assertThat(gameStrategies.size(), is(expectedStrategies.size()));
     }
 
     private GameStrategies noughtPlayerStrategies() {

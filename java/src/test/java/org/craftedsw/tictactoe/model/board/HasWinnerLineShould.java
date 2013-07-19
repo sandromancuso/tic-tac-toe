@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class BoardLinesParameterizedShould {
+public class HasWinnerLineShould {
 
     @Parameters(name = "{index}: Winner line {1} ")
     public static Iterable<Object[]> marks() {
@@ -43,7 +43,7 @@ public class BoardLinesParameterizedShould {
     private String[] marks;
     private boolean winnerLine;
 
-    public BoardLinesParameterizedShould(String[] marks, boolean isWinnerLine) {
+    public HasWinnerLineShould(String[] marks, boolean isWinnerLine) {
         this.marks = marks;
         this.winnerLine = isWinnerLine;
     }
