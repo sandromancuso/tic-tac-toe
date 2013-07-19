@@ -1,6 +1,5 @@
 package org.craftedsw.tictactoe.view;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,8 +15,8 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerChooserShould {
 
-    @Mock
-    private Console console;
+    @Mock private Console console;
+
     private PlayerChooser playerChooser;
 
     @Before

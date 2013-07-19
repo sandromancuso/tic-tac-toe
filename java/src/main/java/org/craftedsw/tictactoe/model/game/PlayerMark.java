@@ -3,7 +3,8 @@ package org.craftedsw.tictactoe.model.game;
 public enum PlayerMark {
 
     CROSS("X"),
-    NOUGHT("0");
+    NOUGHT("0"),
+    EMPTY_MARK(" ");
 
     private final String mark;
 

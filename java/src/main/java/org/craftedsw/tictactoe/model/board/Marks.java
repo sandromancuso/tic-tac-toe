@@ -5,6 +5,7 @@ import org.craftedsw.tictactoe.model.game.PlayerMark;
 import static java.util.Arrays.asList;
 import static java.util.Arrays.copyOf;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.byMark;
 
 public class Marks {
     private final String[] marks;
@@ -33,8 +34,8 @@ public class Marks {
         this.marks[cell] = playerMark.mark();
     }
 
-    public String markAt(int cell) {
-        return marks[cell];
+    public PlayerMark markAt(int cell) {
+        return byMark(marks[cell]);
     }
 
     public String[] asArray() {

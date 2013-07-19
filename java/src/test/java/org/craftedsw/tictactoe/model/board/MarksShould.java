@@ -53,14 +53,14 @@ public class MarksShould {
 
         marks.placeMarkAt(CELL_3, CROSS);
 
-        assertThat(marks.markAt(CELL_3), is(CROSS.mark()));
+        assertThat(marks.markAt(CELL_3), is(CROSS));
     }
 
     @Test public void
     return_a_mark_at_specified_position() {
         Marks marks = marks().fromPlayerOneAt(CELL_3).build();
 
-        assertThat(marks.markAt(CELL_3), is(CROSS.mark()));
+        assertThat(marks.markAt(CELL_3), is(CROSS));
     }
 
     @Test public void

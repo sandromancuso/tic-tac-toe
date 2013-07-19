@@ -6,6 +6,7 @@ import static org.apache.commons.lang3.StringUtils.remove;
 import static org.apache.commons.lang3.StringUtils.repeat;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.EMPTY_CELL;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.EMPTY_MARK;
 
 public class Line {
 
@@ -21,19 +22,21 @@ public class Line {
     }
 
     public boolean isWinner(Marks marks) {
-        return (marks.markAt(firstCell) != EMPTY_CELL)
+        return (marks.markAt(firstCell) != EMPTY_MARK)
              && marks.markAt(firstCell).equals(marks.markAt(secondCell))
              && marks.markAt(secondCell).equals(marks.markAt(thirdCell));
     }
 
     public boolean isWinningLine(PlayerMark playerMark, Marks marks) {
-        return remove(lineAsString(marks), EMPTY_CELL).equals(repeat(playerMark.mark(), 2));
+        String lineMarks = remove(lineAsString(marks), EMPTY_MARK.mark());
+        String doublePlayerMark = repeat(playerMark.mark(), 2);
+        return lineMarks.equals(doublePlayerMark);
     }
 
     public int firstEmptyCell(Marks marks) {
-      int[] lineCells = new int[] {firstCell, secondCell, thirdCell};
+        int[] lineCells = new int[] {firstCell, secondCell, thirdCell};
         for (int cell : lineCells) {
-            if (marks.markAt(cell) == EMPTY_CELL) {
+            if (marks.markAt(cell) == EMPTY_MARK) {
                 return cell;
             }
         }
@@ -41,8 +44,9 @@ public class Line {
     }
 
     public boolean hasSingleCornerMarkForPlayer(PlayerMark playerMark, Marks marks) {
-        return lineAsString(marks).equals(DOUBLE_EMPTY_CELLS + playerMark.mark())
-                || lineAsString(marks).equals(playerMark.mark() + DOUBLE_EMPTY_CELLS);
+        String lineAsString = lineAsString(marks);
+        return lineAsString.equals(DOUBLE_EMPTY_CELLS + playerMark.mark())
+                || lineAsString.equals(playerMark.mark() + DOUBLE_EMPTY_CELLS);
     }
 
     public int emptyEdgeCell(Marks marks) {
@@ -63,9 +67,9 @@ public class Line {
     }
 
     private String lineAsString(Marks marks) {
-        return marks.markAt(firstCell)
-                + marks.markAt(secondCell)
-                + marks.markAt(thirdCell);
+        return marks.markAt(firstCell).mark()
+                + marks.markAt(secondCell).mark()
+                + marks.markAt(thirdCell).mark();
     }
 
 }

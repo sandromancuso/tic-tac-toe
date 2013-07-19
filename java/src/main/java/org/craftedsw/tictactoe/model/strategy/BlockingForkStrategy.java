@@ -23,9 +23,9 @@ public class BlockingForkStrategy implements Strategy {
 
     private boolean forkThreatOn(Line diagonal, Marks marks) {
         return
-               CROSS .mark().equals(marks.markAt(diagonal.firstCell))
-            && NOUGHT.mark().equals(marks.markAt(diagonal.secondCell))
-            && CROSS .mark().equals(marks.markAt(diagonal.thirdCell));
+               CROSS .equals(marks.markAt(diagonal.firstCell))
+            && NOUGHT.equals(marks.markAt(diagonal.secondCell))
+            && CROSS .equals(marks.markAt(diagonal.thirdCell));
     }
 
 }

@@ -3,6 +3,7 @@ package org.craftedsw.tictactoe.model.game;
 import org.junit.Test;
 
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
+import static org.craftedsw.tictactoe.model.game.PlayerMark.EMPTY_MARK;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.Is.is;

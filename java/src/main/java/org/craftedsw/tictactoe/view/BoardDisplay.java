@@ -42,7 +42,7 @@ public class BoardDisplay {
     public void displayBoardWith(Marks marks) {
         console.printLines(
                             EMPTY_LINE,
-                            format(EMPTY_BOARD, marks.asArray()));
+                            format(EMPTY_BOARD, (Object[]) marks.asArray()));
     }
 
     public void displayGameInstructions(Marks marks) {
