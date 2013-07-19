@@ -66,11 +66,11 @@ public class BoardDisplayShould {
         boardDisplay.displayBoardWith(marks);
 
         assertThat(printedLines, hasItems(
-                " X | 0 | X " + '\n' +
-                        "---+---+---" + '\n' +
-                        "   |   |   " + '\n' +
-                        "---+---+---" + '\n' +
-                        "   |   | 0 "));
+                                            " X | 0 | X " + '\n' +
+                                            "---+---+---" + '\n' +
+                                            "   |   |   " + '\n' +
+                                            "---+---+---" + '\n' +
+                                            "   |   | 0 "));
     }
 
     @Test public void
