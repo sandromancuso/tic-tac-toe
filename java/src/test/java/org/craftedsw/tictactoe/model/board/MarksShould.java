@@ -44,14 +44,14 @@ public class MarksShould {
     throw_exception_when_mark_is_placed_on_a_marked_cell() {
         Marks marks = marks().fromPlayerOneAt(CELL_2).build();
 
-        marks.placeMarkAt(CELL_2, CROSS.mark());
+        marks.placeMarkAt(CELL_2, CROSS);
     }
 
     @Test public void
     should_place_a_mark_on_specified_cell() {
         Marks marks = emptyMarks();
 
-        marks.placeMarkAt(CELL_3, CROSS.mark());
+        marks.placeMarkAt(CELL_3, CROSS);
 
         assertThat(marks.markAt(CELL_3), is(CROSS.mark()));
     }

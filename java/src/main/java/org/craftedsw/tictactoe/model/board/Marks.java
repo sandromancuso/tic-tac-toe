@@ -1,5 +1,7 @@
 package org.craftedsw.tictactoe.model.board;
 
+import org.craftedsw.tictactoe.model.game.PlayerMark;
+
 import static java.util.Arrays.asList;
 import static java.util.Arrays.copyOf;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
@@ -23,12 +25,12 @@ public class Marks {
         return EMPTY_CELL.equals(marks[cell]);
     }
 
-    public void placeMarkAt(int cell, String mark) {
+    public void placeMarkAt(int cell, PlayerMark playerMark) {
         if (!isEmptyAt(cell)) {
             throw new RuntimeException("Cell already occupied [" + cell + "]");
         }
 
-        this.marks[cell] = mark;
+        this.marks[cell] = playerMark.mark();
     }
 
     public String markAt(int cell) {

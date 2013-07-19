@@ -49,7 +49,7 @@ public class BoardLinesParameterizedShould {
     }
 
     @Test public void
-    should_inform_when_there_is_a_winner_line() {
+    inform_when_there_is_a_winner_line() {
         BoardLines boardLines = new BoardLines();
 
         assertThat(boardLines.hasWinnerLine(new Marks(marks)), is(winnerLine));

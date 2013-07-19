@@ -20,7 +20,7 @@ public class MachinePlayer implements Player {
     @Override
     public void placeMarkOn(Marks marks) {
         int cell = cellToBeMarked(marks);
-        marks.placeMarkAt(cell, playerMark.mark());
+        marks.placeMarkAt(cell, playerMark);
     }
 
     private int cellToBeMarked(Marks marks) {

@@ -34,19 +34,19 @@ public class HumanPlayerShould {
 
         player.placeMarkOn(marks);
 
-        verify(marks).placeMarkAt(CELL_3, NOUGHT.mark());
+        verify(marks).placeMarkAt(CELL_3, NOUGHT);
     }
 
     @Test public void
     ask_player_for_a_new_mark_when_player_tries_to_place_mark_on_a_occupied_cell() {
         when(console.getIntAnswerFor(ASK_FOR_NEXT_MARK)).thenReturn(3, 4);
-        doThrow(RuntimeException.class).when(marks).placeMarkAt(CELL_3, NOUGHT.mark());
+        doThrow(RuntimeException.class).when(marks).placeMarkAt(CELL_3, NOUGHT);
 
         player.placeMarkOn(marks);
 
         verify(console, times(2)).getIntAnswerFor(ASK_FOR_NEXT_MARK);
-        verify(marks, times(1)).placeMarkAt(CELL_3, NOUGHT.mark());
-        verify(marks, times(1)).placeMarkAt(CELL_4, NOUGHT.mark());
+        verify(marks, times(1)).placeMarkAt(CELL_3, NOUGHT);
+        verify(marks, times(1)).placeMarkAt(CELL_4, NOUGHT);
     }
 
     @Test public void

@@ -42,7 +42,7 @@ public class MachinePlayerShould {
 
         machinePlayer.placeMarkOn(marks);
 
-        verify(marks).placeMarkAt(CELL_3, CROSS.mark());
+        verify(marks).placeMarkAt(CELL_3, CROSS);
     }
 
     @Test public void
@@ -53,7 +53,7 @@ public class MachinePlayerShould {
 
         machinePlayer.placeMarkOn(marks);
 
-        verify(marks).placeMarkAt(CELL_4, CROSS.mark());
+        verify(marks).placeMarkAt(CELL_4, CROSS);
     }
 
     @Test public void

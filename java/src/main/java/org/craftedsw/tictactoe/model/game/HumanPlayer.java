@@ -19,7 +19,7 @@ public class HumanPlayer implements Player {
     public void placeMarkOn(Marks marks) {
         try {
             int cell = console.getIntAnswerFor(ASK_FOR_NEXT_MARK);
-            marks.placeMarkAt(cell - 1, playerMark.mark());
+            marks.placeMarkAt(cell - 1, playerMark);
         } catch (Exception e) {
             placeMarkOn(marks);
         }
