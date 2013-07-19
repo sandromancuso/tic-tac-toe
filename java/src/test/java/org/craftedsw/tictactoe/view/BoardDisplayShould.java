@@ -5,45 +5,55 @@ import org.craftedsw.tictactoe.model.game.PlayerMark;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Arrays.asList;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.emptyMarks;
 import static org.craftedsw.tictactoe.builder.MarksBuilder.marks;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.CROSS;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.craftedsw.tictactoe.view.BoardDisplay.*;
-import static org.mockito.Mockito.*;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BoardDisplayShould {
 
     private static final PlayerMark NO_WINNER = null;
 
-    @Mock private Console console;
+    private List<String> printedLines;
+    private Console console;
 
     private BoardDisplay boardDisplay;
 
     @Before
     public void initialise() {
+        printedLines = new ArrayList<String>();
+        console = createConsole();
         boardDisplay = new BoardDisplay(console);
     }
 
     @Test public void
     display_instructions() {
         String emptyBoard =
-                "   |   |   " + '\n' +
-                "---+---+---" + '\n' +
-                "   |   |   " + '\n' +
-                "---+---+---" + '\n' +
-                "   |   |   ";
+                            "   |   |   " + '\n' +
+                            "---+---+---" + '\n' +
+                            "   |   |   " + '\n' +
+                            "---+---+---" + '\n' +
+                            "   |   |   ";
+
 
         boardDisplay.displayGameInstructions(emptyMarks());
 
-        verify(console).print(CELL_INDEX_INSTRUCTIONS);
-        verify(console).print(CURRENT_BOARD_STATE_MESSAGE);
-        verify(console).print(emptyBoard);
+        assertThat(printedLines, hasItems(
+                                          CELL_INDEX_INSTRUCTIONS,
+                                          CURRENT_BOARD_STATE_MESSAGE,
+                                          emptyBoard));
     }
 
     @Test public void
@@ -55,27 +65,26 @@ public class BoardDisplayShould {
 
         boardDisplay.displayBoardWith(marks);
 
-        verify(console).print(
+        assertThat(printedLines, hasItems(
                 " X | 0 | X " + '\n' +
-                "---+---+---" + '\n' +
-                "   |   |   " + '\n' +
-                "---+---+---" + '\n' +
-                "   |   | 0 "
-        );
+                        "---+---+---" + '\n' +
+                        "   |   |   " + '\n' +
+                        "---+---+---" + '\n' +
+                        "   |   | 0 "));
     }
 
     @Test public void
     display_a_players_turn() {
         boardDisplay.nextPlayerIs(CROSS);
 
-        verify(console).print(NEXT_PLAYER_IS + CROSS);
+        assertThat(printedLines, hasItem(NEXT_PLAYER_IS + CROSS));
     }
 
     @Test public void
     inform_it_was_a_draw() {
         boardDisplay.displayGameResult(NO_WINNER);
 
-        verify(console).print(DRAW_MESSAGE);
+        assertThat(printedLines, hasItem(DRAW_MESSAGE));
     }
 
     @Test public void
@@ -84,7 +93,17 @@ public class BoardDisplayShould {
 
         boardDisplay.displayGameResult(WINNER);
 
-        verify(console).print("NOUGHT wins!!!");
+        assertThat(printedLines, hasItem("NOUGHT wins!!!"));
+    }
+
+    private Console createConsole() {
+
+        return new Console() {
+            @Override
+            public void printLines(String... lines) {
+                printedLines.addAll(asList(lines));
+            }
+        };
     }
 
 }

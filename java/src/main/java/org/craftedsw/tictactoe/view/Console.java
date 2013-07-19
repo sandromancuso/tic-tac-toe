@@ -14,6 +14,12 @@ public class Console {
         System.out.println(text);
     }
 
+    public void printLines(String... lines) {
+        for (String line : lines) {
+            print(line);
+        }
+    }
+
     public int getIntAnswerFor(String question) {
         System.out.print(question);
         try {

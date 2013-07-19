@@ -40,31 +40,34 @@ public class BoardDisplay {
     }
 
     public void displayBoardWith(Marks marks) {
-        console.print(EMPTY_LINE);
-        console.print(format(EMPTY_BOARD, marks.asArray()));
+        console.printLines(
+                            EMPTY_LINE,
+                            format(EMPTY_BOARD, marks.asArray()));
     }
 
     public void displayGameInstructions(Marks marks) {
-        console.print(NEW_LINE);
-        console.print(NEW_GAME_MESSAGE);
-        console.print(NEW_LINE);
-        console.print(CELL_INDEX_INSTRUCTIONS);
-        console.print(NEW_LINE);
-        console.print(CURRENT_BOARD_STATE_MESSAGE);
+        console.printLines(
+                            NEW_LINE,
+                            NEW_GAME_MESSAGE,
+                            NEW_LINE,
+                            CELL_INDEX_INSTRUCTIONS,
+                            NEW_LINE,
+                            CURRENT_BOARD_STATE_MESSAGE);
         displayBoardWith(marks);
     }
 
     public void displayGameResult(PlayerMark winner) {
-        if (winner == null) {
-            console.print(DRAW_MESSAGE);
-        } else {
-            console.print(format(WIN_MESSAGE, winner.name()));
-        }
-        console.print(NEW_LINE);
+        String gameResult = (winner == null)
+                                    ? DRAW_MESSAGE
+                                    : format(WIN_MESSAGE, winner.name());
+        console.printLines(
+                            gameResult,
+                            NEW_LINE);
     }
 
     public void nextPlayerIs(PlayerMark playerMark) {
-        console.print(NEW_LINE);
-        console.print(NEXT_PLAYER_IS + playerMark);
+        console.printLines(
+                            NEW_LINE,
+                            NEXT_PLAYER_IS + playerMark);
     }
 }
