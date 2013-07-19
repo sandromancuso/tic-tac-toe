@@ -46,7 +46,7 @@ public class MachinePlayerShould {
     }
 
     @Test public void
-    return_cell_from_third_strategy_when_previous_strategies_returned_no_cell() {
+    place_a_mark_returned_by_third_strategy_when_previous_two_strategies_returned_no_cell() {
         when(winStrategy.nextCell(CROSS, marks)).thenReturn(NO_CELL);
         when(straightDefenceStrategy.nextCell(CROSS, marks)).thenReturn(NO_CELL);
         when(cornerAttackStrategy.nextCell(CROSS, marks)).thenReturn(CELL_4);

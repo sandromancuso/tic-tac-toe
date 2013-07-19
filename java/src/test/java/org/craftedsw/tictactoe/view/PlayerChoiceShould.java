@@ -30,20 +30,20 @@ public class PlayerChoiceShould {
     create_machine_player_as_nought_player() {
         PlayerChoice playerChoice = new PlayerChoice(CROSS, console);
 
-        Player crossPlayer = playerChoice.noughtPlayer();
+        Player noughtPlayer = playerChoice.noughtPlayer();
 
-        assertThat(crossPlayer, is(instanceOf(MachinePlayer.class)));
-        assertThat(crossPlayer.mark(), is(NOUGHT));
+        assertThat(noughtPlayer, is(instanceOf(MachinePlayer.class)));
+        assertThat(noughtPlayer.mark(), is(NOUGHT));
     }
 
     @Test public void
     create_human_player_as_nought_player() {
         PlayerChoice playerChoice = new PlayerChoice(NOUGHT, console);
 
-        Player crossPlayer = playerChoice.noughtPlayer();
+        Player noughtPlayer = playerChoice.noughtPlayer();
 
-        assertThat(crossPlayer, is(instanceOf(HumanPlayer.class)));
-        assertThat(crossPlayer.mark(), is(NOUGHT));
+        assertThat(noughtPlayer, is(instanceOf(HumanPlayer.class)));
+        assertThat(noughtPlayer.mark(), is(NOUGHT));
     }
 
     @Test public void

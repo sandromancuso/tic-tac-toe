@@ -59,9 +59,8 @@ public class BoardDisplayShould {
     @Test public void
     display_marks_on_the_board() {
         Marks marks = marks()
-                        .fromPlayerOneAt(CELL_1, CELL_3)
-                        .fromPlayerTwoAt(CELL_2, CELL_9)
-                        .build();
+                            .fromPlayerOneAt(CELL_1, CELL_3)
+                            .fromPlayerTwoAt(CELL_2, CELL_9).build();
 
         boardDisplay.displayBoardWith(marks);
 

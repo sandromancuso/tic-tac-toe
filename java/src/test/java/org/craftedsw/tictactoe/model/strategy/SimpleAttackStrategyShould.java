@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(Parameterized.class)
 public class SimpleAttackStrategyShould {
 
-    @Parameterized.Parameters(name = "{index}: mark should be at cell {1} (0 based)")
+    @Parameterized.Parameters(name = "{index}: mark should be on cell {1} (0 based)")
     public static Iterable<Object[]> marks() {
         return Arrays.asList(new Object[][]{
                 {new String[]{"X", " ", " ", " ", "0", " ", " ", "X", " "}, CELL_3},

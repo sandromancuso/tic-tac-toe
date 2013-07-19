@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class BlockingForkStrategyShould {
 
-    @Parameterized.Parameters(name = "{index}: mark should be at cell {1} (0 based)")
+    @Parameterized.Parameters(name = "{index}: mark should be on cell {1} (0 based)")
     public static Iterable<Object[]> marks() {
         return Arrays.asList(new Object[][]{
                 {new String[]{"X", " ", " ", " ", "0", " ", " ", " ", "X"}, CELL_2},
@@ -44,7 +44,7 @@ public class BlockingForkStrategyShould {
 
     @Test
     public void
-    should_block_a_fork() {
+    block_a_fork() {
         assertThat(blockingForkStrategy.nextCell(NOUGHT, marks), is(cellToBeMarked));
     }
 

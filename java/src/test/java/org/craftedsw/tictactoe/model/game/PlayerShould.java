@@ -15,6 +15,7 @@ public class PlayerShould {
     return_player_mark_by_its_mark() {
         assertThat(PlayerMark.byMark("X"), is(CROSS));
         assertThat(PlayerMark.byMark("0"), is(NOUGHT));
+        assertThat(PlayerMark.byMark(" "), is(EMPTY_MARK));
         assertThat(PlayerMark.byMark("A"), is(nullValue()));
     }
 

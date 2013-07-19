@@ -28,8 +28,7 @@ public class BoardLinesShould {
     return_null_when_there_is_no_winning_line() {
         Marks marks = marks()
                            .fromPlayerOneAt(CELL_1, CELL_5)
-                           .fromPlayerTwoAt(CELL_4, CELL_9)
-                           .build();
+                           .fromPlayerTwoAt(CELL_4, CELL_9).build();
 
         assertThat(boardLines.winningLine(CROSS, marks),  is(nullValue()));
     }
@@ -38,8 +37,7 @@ public class BoardLinesShould {
     return_a_winning_line() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_4, CELL_6)
-                            .fromPlayerTwoAt(CELL_1, CELL_7)
-                            .build();
+                            .fromPlayerTwoAt(CELL_1, CELL_7).build();
 
         Line winningLine = boardLines.winningLine(CROSS, marks);
 
@@ -50,8 +48,7 @@ public class BoardLinesShould {
     return_null_when_there_is_no_loosing_line() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_4)
-                            .fromPlayerTwoAt(CELL_1)
-                            .build();
+                            .fromPlayerTwoAt(CELL_1).build();
         PlayerMark player = NOUGHT;
 
         Line winningLine = boardLines.loosingLine(player, marks);
@@ -63,8 +60,7 @@ public class BoardLinesShould {
     return_a_loosing_line() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_4, CELL_6)
-                            .fromPlayerTwoAt(CELL_1, CELL_7)
-                            .build();
+                            .fromPlayerTwoAt(CELL_1, CELL_7).build();
         PlayerMark player = NOUGHT;
 
         Line winningLine = boardLines.loosingLine(player, marks);
@@ -75,8 +71,7 @@ public class BoardLinesShould {
     @Test public void
     return_lines_where_just_one_corner_is_selected() {
         Marks marks = marks()
-                            .fromPlayerOneAt(CELL_3, CELL_6)
-                            .build();
+                            .fromPlayerOneAt(CELL_3, CELL_6).build();
 
         List<Line> lines = boardLines.linesWhereJustOneCornerIsSelectedBy(CROSS, marks);
 
@@ -89,8 +84,7 @@ public class BoardLinesShould {
     inform_there_are_no_winners_when_no_player_marked_a_full_line() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_1, CELL_5)
-                            .fromPlayerTwoAt(CELL_2, CELL_3)
-                            .build();
+                            .fromPlayerTwoAt(CELL_2, CELL_3).build();
 
         assertThat(boardLines.winnerMark(marks), is(nullValue()));
     }
@@ -99,8 +93,7 @@ public class BoardLinesShould {
     inform_player_one_is_the_winner_when_she_has_a_full_line_marked() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_1, CELL_5, CELL_9)
-                            .fromPlayerTwoAt(CELL_2, CELL_3)
-                            .build();
+                            .fromPlayerTwoAt(CELL_2, CELL_3).build();
 
         assertThat(boardLines.winnerMark(marks), is(CROSS));
     }
@@ -109,8 +102,7 @@ public class BoardLinesShould {
     inform_player_two_is_the_winner_when_she_has_a_full_line_marked() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_2, CELL_3)
-                            .fromPlayerTwoAt(CELL_1, CELL_5, CELL_9)
-                            .build();
+                            .fromPlayerTwoAt(CELL_1, CELL_5, CELL_9).build();
 
         assertThat(boardLines.winnerMark(marks), is(NOUGHT));
     }
@@ -119,8 +111,7 @@ public class BoardLinesShould {
     return_a_list_of_lines_with_a_single_matching_mark() {
         Marks marks = marks()
                             .fromPlayerOneAt(CELL_1, CELL_8)
-                            .fromPlayerTwoAt(CELL_5)
-                            .build();
+                            .fromPlayerTwoAt(CELL_5).build();
 
         List<Line> lines = boardLines.withSingleMark(NOUGHT, marks);
 

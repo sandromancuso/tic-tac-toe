@@ -38,7 +38,7 @@ public class HumanPlayerShould {
     }
 
     @Test public void
-    ask_player_for_a_new_mark_when_player_tries_to_place_mark_on_a_occupied_cell() {
+    ask_player_for_a_new_mark_when_player_tries_to_place_mark_on_an_occupied_cell() {
         when(console.getIntAnswerFor(ASK_FOR_NEXT_MARK)).thenReturn(3, 4);
         doThrow(RuntimeException.class).when(marks).placeMarkAt(CELL_3, NOUGHT);
 

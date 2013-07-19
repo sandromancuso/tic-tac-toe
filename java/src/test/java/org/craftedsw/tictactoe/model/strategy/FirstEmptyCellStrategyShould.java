@@ -24,8 +24,8 @@ public class FirstEmptyCellStrategyShould {
     @Test public void
     should_return_first_empty_cell_when_marks_already_exist() {
         Marks marks = marks()
-                        .fromPlayerOneAt(CELL_1)
-                        .fromPlayerTwoAt(CELL_3).build();
+                            .fromPlayerOneAt(CELL_1)
+                            .fromPlayerTwoAt(CELL_3).build();
 
         FirstEmptyCellStrategy strategy = new FirstEmptyCellStrategy();
 
