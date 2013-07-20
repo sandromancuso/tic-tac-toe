@@ -7,7 +7,7 @@ import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
-public class LineDefenceStrategy implements Strategy {
+public class BlockStrategy implements Strategy {
 
     @Override
     public int nextCell(PlayerMark playerMark, Marks marks) {

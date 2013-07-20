@@ -15,7 +15,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class LineDefenceStrategyShould {
+public class BlockStrategyShould {
 
     @Parameterized.Parameters(name = "{index}: Winning mark should be {1}")
     public static Iterable<Object[]> marks() {
@@ -36,13 +36,13 @@ public class LineDefenceStrategyShould {
         });
     }
 
-    private Strategy lineDefenceStrategy = new LineDefenceStrategy();
+    private Strategy blockStrategy = new BlockStrategy();
 
     private final int cellToBeMarked;
     private final PlayerMark opponent;
     private final Marks marks;
 
-    public LineDefenceStrategyShould(String[] marks, PlayerMark playerMark, int cellToBeMarked) {
+    public BlockStrategyShould(String[] marks, PlayerMark playerMark, int cellToBeMarked) {
         this.marks = new Marks(marks);
         this.opponent = playerMark;
         this.cellToBeMarked = cellToBeMarked;
@@ -50,8 +50,8 @@ public class LineDefenceStrategyShould {
 
     @Test
     public void
-    should_return_the_winning_cell_to_be_marked() {
-        assertThat(lineDefenceStrategy.nextCell(opponent, marks), is(cellToBeMarked));
+    block_opponents_win() {
+        assertThat(blockStrategy.nextCell(opponent, marks), is(cellToBeMarked));
     }
 
 

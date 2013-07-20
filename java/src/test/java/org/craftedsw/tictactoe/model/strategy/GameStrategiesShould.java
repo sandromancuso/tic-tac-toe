@@ -18,7 +18,7 @@ public class GameStrategiesShould {
     private List<Class> expectedCrossStrategies = new ArrayList<Class>(
                                 asList(
                                         WinStrategy.class,
-                                        LineDefenceStrategy.class,
+                                        BlockStrategy.class,
                                         ForkStrategy.class,
                                         CornerAttackStrategy.class,
                                         LineAttackStrategy.class,
@@ -28,7 +28,7 @@ public class GameStrategiesShould {
                                 asList(
                                         CentralCellStrategy.class,
                                         WinStrategy.class,
-                                        LineDefenceStrategy.class,
+                                        BlockStrategy.class,
                                         BlockingForkStrategy.class,
                                         ForkStrategy.class,
                                         CornerAttackStrategy.class,

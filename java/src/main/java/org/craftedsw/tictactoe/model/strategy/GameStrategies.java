@@ -35,7 +35,7 @@ public class GameStrategies implements Iterable<Strategy> {
 
     private void prepareCrossStrategies() {
         strategies.add(new WinStrategy());
-        strategies.add(new LineDefenceStrategy());
+        strategies.add(new BlockStrategy());
         strategies.add(new ForkStrategy());
         strategies.add(new CornerAttackStrategy());
         strategies.add(new LineAttackStrategy());
@@ -45,7 +45,7 @@ public class GameStrategies implements Iterable<Strategy> {
     private void prepareNoughtStrategies() {
         strategies.add(new CentralCellStrategy());
         strategies.add(new WinStrategy());
-        strategies.add(new LineDefenceStrategy());
+        strategies.add(new BlockStrategy());
         strategies.add(new BlockingForkStrategy());
         strategies.add(new ForkStrategy());
         strategies.add(new CornerAttackStrategy());
