@@ -1,7 +1,6 @@
 package org.craftedsw.tictactoe.model.strategy;
 
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -31,12 +30,7 @@ public class CornerAttackStrategyShould {
         });
     }
 
-    private CornerAttackStrategy cornerAttackStrategy;
-
-    @Before
-    public void initialise() {
-        cornerAttackStrategy = new CornerAttackStrategy();
-    }
+    private CornerAttackStrategy cornerAttackStrategy = new CornerAttackStrategy();
 
     private final int cellToBeMarked;
     private final Marks marks;

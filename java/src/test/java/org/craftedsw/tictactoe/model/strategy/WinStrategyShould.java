@@ -38,6 +38,8 @@ public class WinStrategyShould {
         });
     }
 
+    private WinStrategy markStrategy = new WinStrategy();
+
     private final int cellToBeMarked;
     private final PlayerMark playerMark;
     private final Marks marks;
@@ -49,8 +51,7 @@ public class WinStrategyShould {
     }
 
     @Test public void
-    should_return_the_winning_cell_to_be_marked() {
-        WinStrategy markStrategy = new WinStrategy();
+    return_the_winning_cell_to_be_marked() {
 
         assertThat(markStrategy.nextCell(playerMark, marks), is(cellToBeMarked));
     }

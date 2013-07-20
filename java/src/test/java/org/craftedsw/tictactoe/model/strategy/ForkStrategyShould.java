@@ -1,8 +1,6 @@
 package org.craftedsw.tictactoe.model.strategy;
 
-import org.craftedsw.tictactoe.model.board.BoardStructure;
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -12,7 +10,7 @@ import java.util.Arrays;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class ForkStrategyShould {
@@ -28,12 +26,7 @@ public class ForkStrategyShould {
         });
     }
 
-    private ForkStrategy forkStrategy;
-
-    @Before
-    public void initialise() {
-        forkStrategy = new ForkStrategy();
-    }
+    private ForkStrategy forkStrategy = new ForkStrategy();
 
     private final int cellToBeMarked;
     private final Marks marks;

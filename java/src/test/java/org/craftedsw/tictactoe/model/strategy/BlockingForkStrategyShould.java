@@ -1,7 +1,6 @@
 package org.craftedsw.tictactoe.model.strategy;
 
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -27,12 +26,7 @@ public class BlockingForkStrategyShould {
         });
     }
 
-    private BlockingForkStrategy blockingForkStrategy;
-
-    @Before
-    public void initialise() {
-        blockingForkStrategy = new BlockingForkStrategy();
-    }
+    private BlockingForkStrategy blockingForkStrategy = new BlockingForkStrategy();
 
     private final int cellToBeMarked;
     private final Marks marks;
