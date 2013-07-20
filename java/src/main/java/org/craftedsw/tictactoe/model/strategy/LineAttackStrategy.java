@@ -5,20 +5,22 @@ import org.craftedsw.tictactoe.model.board.Line;
 import org.craftedsw.tictactoe.model.board.Marks;
 import org.craftedsw.tictactoe.model.game.PlayerMark;
 
+import java.util.List;
+
 import static org.craftedsw.tictactoe.model.board.BoardStructure.NO_CELL;
 
-public class StraightDefenceStrategy implements Strategy {
+public class LineAttackStrategy implements Strategy {
 
     @Override
     public int nextCell(PlayerMark playerMark, Marks marks) {
-        Line loosingLine = loosingLineFor(playerMark, marks);
-        if (loosingLine != null) {
-            return loosingLine.firstEmptyCell(marks);
-        }
-        return NO_CELL;
+        List<Line> lines = linesWithSingleMarkFor(playerMark, marks);
+        return (lines.size() > 0)
+                    ? lines.get(0).emptyEdgeCell(marks)
+                    : NO_CELL;
     }
 
-    private Line loosingLineFor(PlayerMark playerMark, Marks marks) {
-        return new BoardLines().loosingLine(playerMark, marks);
+    private List<Line> linesWithSingleMarkFor(PlayerMark playerMark, Marks marks) {
+        return new BoardLines().withSingleMark(playerMark, marks);
     }
+
 }

@@ -22,7 +22,7 @@ public class MachinePlayerShould {
     @Mock private GameStrategies strategies;
     @Mock private Iterator<Strategy> strategiesIterator;
     @Mock private WinStrategy winStrategy;
-    @Mock private StraightDefenceStrategy straightDefenceStrategy;
+    @Mock private LineDefenceStrategy lineDefenceStrategy;
     @Mock private CornerAttackStrategy cornerAttackStrategy;
     @Mock private Marks marks;
 
@@ -32,7 +32,7 @@ public class MachinePlayerShould {
     public void initialise() {
         machinePlayer = new MachinePlayer(CROSS, strategies);
         when(strategies.iterator()).thenReturn(strategiesIterator);
-        when(strategiesIterator.next()).thenReturn(winStrategy, straightDefenceStrategy, cornerAttackStrategy);
+        when(strategiesIterator.next()).thenReturn(winStrategy, lineDefenceStrategy, cornerAttackStrategy);
         when(strategiesIterator.hasNext()).thenReturn(true, true, true, false);
     }
 
@@ -48,7 +48,7 @@ public class MachinePlayerShould {
     @Test public void
     place_a_mark_returned_by_third_strategy_when_previous_two_strategies_returned_no_cell() {
         when(winStrategy.nextCell(CROSS, marks)).thenReturn(NO_CELL);
-        when(straightDefenceStrategy.nextCell(CROSS, marks)).thenReturn(NO_CELL);
+        when(lineDefenceStrategy.nextCell(CROSS, marks)).thenReturn(NO_CELL);
         when(cornerAttackStrategy.nextCell(CROSS, marks)).thenReturn(CELL_4);
 
         machinePlayer.placeMarkOn(marks);

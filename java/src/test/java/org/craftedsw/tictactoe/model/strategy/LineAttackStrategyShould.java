@@ -1,7 +1,6 @@
 package org.craftedsw.tictactoe.model.strategy;
 
 import org.craftedsw.tictactoe.model.board.Marks;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -11,10 +10,10 @@ import java.util.Arrays;
 import static org.craftedsw.tictactoe.model.board.BoardStructure.*;
 import static org.craftedsw.tictactoe.model.game.PlayerMark.NOUGHT;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class SimpleAttackStrategyShould {
+public class LineAttackStrategyShould {
 
     @Parameterized.Parameters(name = "{index}: mark should be on cell {1} (0 based)")
     public static Iterable<Object[]> marks() {
@@ -26,17 +25,12 @@ public class SimpleAttackStrategyShould {
         });
     }
 
-    private SimpleAttackStrategy simpleAttackStrategy;
-
-    @Before
-    public void initialise() {
-        simpleAttackStrategy = new SimpleAttackStrategy();
-    }
+    private LineAttackStrategy lineAttackStrategy = new LineAttackStrategy();
 
     private final int cellToBeMarked;
     private final Marks marks;
 
-    public SimpleAttackStrategyShould(String[] marks, int cellToBeMarked) {
+    public LineAttackStrategyShould(String[] marks, int cellToBeMarked) {
         this.marks = new Marks(marks);
         this.cellToBeMarked = cellToBeMarked;
     }
@@ -44,6 +38,6 @@ public class SimpleAttackStrategyShould {
     @Test
     public void
     make_simple_attack() {
-        assertThat(simpleAttackStrategy.nextCell(NOUGHT, marks), is(cellToBeMarked));
+        assertThat(lineAttackStrategy.nextCell(NOUGHT, marks), is(cellToBeMarked));
     }
 }

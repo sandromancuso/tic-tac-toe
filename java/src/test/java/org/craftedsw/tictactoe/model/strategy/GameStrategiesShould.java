@@ -18,21 +18,21 @@ public class GameStrategiesShould {
     private List<Class> expectedCrossStrategies = new ArrayList<Class>(
                                 asList(
                                         WinStrategy.class,
-                                        StraightDefenceStrategy.class,
+                                        LineDefenceStrategy.class,
                                         ForkStrategy.class,
                                         CornerAttackStrategy.class,
-                                        SimpleAttackStrategy.class,
+                                        LineAttackStrategy.class,
                                         FirstEmptyCellStrategy.class));
 
     private List<Class> expectedNoughtStrategies = new ArrayList<Class>(
                                 asList(
                                         CentralCellStrategy.class,
                                         WinStrategy.class,
-                                        StraightDefenceStrategy.class,
+                                        LineDefenceStrategy.class,
                                         BlockingForkStrategy.class,
                                         ForkStrategy.class,
                                         CornerAttackStrategy.class,
-                                        SimpleAttackStrategy.class,
+                                        LineAttackStrategy.class,
                                         FirstEmptyCellStrategy.class));
 
     @Test public void
