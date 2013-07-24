@@ -4,7 +4,7 @@ import org.craftedsw.tictactoe.model.game.PlayerMark;
 
 public class PlayerChooser {
 
-    public static String WHICH_PLAYER_DO_YOU_WANT_TO_BE = "Which player do you want to be [X/0]? ";
+    public static String WHICH_PLAYER_DO_YOU_WANT_TO_BE = "Do you want to be CROSS or NOUGHT? Please type 'X' or '0'? ";
 
     private final Console console;
 
